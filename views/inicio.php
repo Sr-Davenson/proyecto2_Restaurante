@@ -6,6 +6,6 @@
     <title>Inicio</title>
 </head>
 <body>
-    
+    <a href="../index.php">volver</a>
 </body>
 </html>
