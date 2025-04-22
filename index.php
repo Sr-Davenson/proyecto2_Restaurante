@@ -33,7 +33,7 @@ switch($f->calcSaludo()){
                     <img src="images/logo.png" alt="Logo">
                 </a>
             </div>
-            <p> <?php echo $sal.'<br>';?> Bienvenido!!</p>
+            <p><b><?php echo $sal.'<br>';?></b>  Bienvenido!!</p>
             <p><?php ?></p>
             <a class="boton" href="views/inicio.php">Ingresar</a>
             <br>

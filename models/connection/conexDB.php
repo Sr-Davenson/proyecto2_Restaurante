@@ -7,7 +7,7 @@ class ConexDB {
     private $host = 'localhost';
     private $user = 'root';
     private $password = '';
-    private $dataBase = '';
+    private $dataBase = 'proyecto_2_db';
     private $conex = null;
 
     public function __construct(){
