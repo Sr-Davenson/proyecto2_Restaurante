@@ -61,17 +61,33 @@ class Mesas extends Model
         $conexDb = new ConexDB();
         $sql = "SELECT * FROM restaurant_tables WHERE LOWER(name) LIKE LOWER('%{$this->nombre}%')";
         $res = $conexDb->exeSQL($sql);
-        $cat = null;
+        $mesa = null;
         
         if ($res->num_rows > 0) {
             while ($row = $res->fetch_assoc()) {
-                $cat = new Mesas();
-                $cat->set('id', $row['id']);
-                $cat->set('nombre', $row['name']); 
+                $mesa = new Mesas();
+                $mesa->set('id', $row['id']);
+                $mesa->set('nombre', $row['name']); 
                 break;
             }
         }
         
-        return $cat;
+        return $mesa;
+    }
+    public function find(){
+        $conexDb = new ConexDB();
+        $sql = "select * from restaurant_tables where id=" . $this->id;
+        $res = $conexDb->exeSQL($sql);
+        $mesa = null;
+        if($res->num_rows>0){
+            while($row = $res->fetch_assoc()){
+                $mesa = new Mesas();
+                $mesa->set('id', $row['id']);
+                $mesa->set('nombre', $row['name']); 
+                    break;
+                }
+            }
+            $conexDb->closeDB();
+            return $mesa;
     }
 }

@@ -7,9 +7,12 @@
 </head>
 <body>
     <form action="searchMesa.php" method="post">
-        <input type="number" name="search" placeholder="Buscar por nombre" required>
+        <input type="number" name="search" placeholder="Buscar por numero" min="1" required >
         <button type="submit">Buscar</button>
     </form>
+    <br>
+    <a class="img" href="formMesa.php">Crear una nueva mesa</a>
+    <br>
     <a href="inicio.php">Volver</a>
 </body>
 </html>

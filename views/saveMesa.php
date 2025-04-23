@@ -6,31 +6,31 @@ include '../controller/controllerMesas.php';
 
 use App\controllers\controllerMesas;
 
-
 $controller = new controllerMesas();
-$mesa = $controller->searchMesa($_POST['search']);
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    header('location: ../Mesas.php');
+}
+$res = empty($_POST['idMesa'])
+    ? $controller->saveNewMesas($_POST)
+    : $controller->updateMesas($_POST);
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/acciones.css">
-    <title>Buscar Mesa</title>
+    <title>Resultado operación</title>
 </head>
+
 <body>
-    <h1>Resultados de la operación</h1>
+    <h1>Resultado de la operación</h1>
     <?php
-    
-    if (!$mesa) {
-        echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
+    if ($res == 'yes') {
+        echo '<p>Datos guardados</p>';
+        echo '<a href="formMesa.php">Crear otra persona</a>';
     } else {
-        echo '<p>Categoría encontrada:</p>';
-        echo '<p>' . $mesa->get('nombre') . '</p>';
-        echo '      <a href="formMesa.php?id=' . $mesa->get('id') . '">
-                    <img src="../images/update.svg" alt="update">
-                </a>';
+        echo  '<p>No se pudo guardar los datos</p>';
     }
     ?>
     <br>
@@ -38,4 +38,5 @@ $mesa = $controller->searchMesa($_POST['search']);
     <br>
     <a href="inicio.php">Ir a inicio</a>
 </body>
+
 </html>

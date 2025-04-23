@@ -32,6 +32,6 @@ $cat = $controller->searchCategoria($_POST['search']);
     ?>
     <br>
     <a href="AdminCategoria.php">Buscar otra categoria</a>
-    <a href="inicio.php">I a inicio</a>
+    <a href="inicio.php">Ir a inicio</a>
 </body>
 </html>
