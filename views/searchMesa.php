@@ -17,7 +17,7 @@ $mesa = $controller->searchMesa($_POST['search']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/acciones.css">
-    <title>Buscar Categoria</title>
+    <title>Buscar Mesa</title>
 </head>
 <body>
     <h1>Resultados de la operación</h1>
@@ -31,7 +31,7 @@ $mesa = $controller->searchMesa($_POST['search']);
     }
     ?>
     <br>
-    <a href="AdminCategoria.php">Buscar otra categoria</a>
+    <a href="AdminMesas.php">Buscar otra Mesa</a>
     <a href="inicio.php">I a inicio</a>
 </body>
 </html>

@@ -12,7 +12,7 @@ class Mesas extends Model
     public function all()
     {
         $conexDb = new ConexDB();
-        $sql = "SELECT * FROM categories";
+        $sql = "SELECT * FROM restaurant_tables";
         $resConsul = $conexDb->exeSQL($sql);
         $categorias = [];
         
@@ -32,7 +32,7 @@ class Mesas extends Model
     public function save()
     {
         $conexDb = new ConexDB();
-        $sql = "INSERT INTO mesas (name) VALUES ('" . $this->nombre . "')";
+        $sql = "INSERT INTO restaurant_tables (name) VALUES ('" . $this->nombre . "')";
         $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
         return $resConsul;
@@ -41,7 +41,7 @@ class Mesas extends Model
     public function update()
     {
         $conexDb = new ConexDB();
-        $sql = "UPDATE mesas SET name='" . $this->nombre . "' WHERE id=" . $this->id;
+        $sql = "UPDATE restaurant_tables SET name='" . $this->nombre . "' WHERE id=" . $this->id;
         $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
         return $resConsul;
@@ -50,7 +50,7 @@ class Mesas extends Model
     public function delete()
     {
         $conexDb = new ConexDB();
-        $sql = "DELETE FROM mesas WHERE id=" . $this->id;
+        $sql = "DELETE FROM restaurant_tables WHERE id=" . $this->id;
         $res = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
         return $res;
@@ -59,13 +59,13 @@ class Mesas extends Model
     public function findName()
     {
         $conexDb = new ConexDB();
-        $sql = "SELECT * FROM mesas WHERE LOWER(name) LIKE LOWER('%{$this->nombre}%')";
+        $sql = "SELECT * FROM restaurant_tables WHERE LOWER(name) LIKE LOWER('%{$this->nombre}%')";
         $res = $conexDb->exeSQL($sql);
         $cat = null;
         
         if ($res->num_rows > 0) {
             while ($row = $res->fetch_assoc()) {
-                $cat = new Categoria();
+                $cat = new Mesas();
                 $cat->set('id', $row['id']);
                 $cat->set('nombre', $row['name']); 
                 break;
