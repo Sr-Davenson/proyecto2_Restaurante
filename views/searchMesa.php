@@ -1,14 +1,14 @@
 <?php
 include '../models/connection/conexDB.php';
 include '../models/util/model.php';
-include '../models/entities/categoria.php';
-include '../controller/controllerCategorias.php';
+include '../models/entities/Mesas.php';
+include '../controller/controllerMesas.php';
 
-use App\controllers\controllerCategorias;
+use App\controllers\controllerMesas;
 
 
-$controller = new controllerCategorias();
-$cat = $controller->searchCategoria($_POST['search']);
+$controller = new controllerMesas();
+$mesa = $controller->searchMesa($_POST['search']);
 ?>
 
 <!DOCTYPE html>
@@ -23,11 +23,11 @@ $cat = $controller->searchCategoria($_POST['search']);
     <h1>Resultados de la operación</h1>
     <?php
     
-    if (!$cat) {
+    if (!$mesa) {
         echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
     } else {
         echo '<p>Categoría encontrada:</p>';
-        echo '<p>' . htmlspecialchars($cat->get('nombre')) . '</p>';
+        echo '<p>' . htmlspecialchars($mesa->get('nombre')) . '</p>';
     }
     ?>
     <br>

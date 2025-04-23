@@ -4,7 +4,7 @@ namespace App\models\entities;
 use App\models\util\Model;
 use App\models\conexDB\ConexDB;
 
-class Categoria extends Model
+class Mesas extends Model
 {
     protected $id = null;
     protected $nombre = '';
@@ -32,7 +32,7 @@ class Categoria extends Model
     public function save()
     {
         $conexDb = new ConexDB();
-        $sql = "INSERT INTO categories (name) VALUES ('" . $this->nombre . "')";
+        $sql = "INSERT INTO mesas (name) VALUES ('" . $this->nombre . "')";
         $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
         return $resConsul;
@@ -41,7 +41,7 @@ class Categoria extends Model
     public function update()
     {
         $conexDb = new ConexDB();
-        $sql = "UPDATE categories SET name='" . $this->nombre . "' WHERE id=" . $this->id;
+        $sql = "UPDATE mesas SET name='" . $this->nombre . "' WHERE id=" . $this->id;
         $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
         return $resConsul;
@@ -50,7 +50,7 @@ class Categoria extends Model
     public function delete()
     {
         $conexDb = new ConexDB();
-        $sql = "DELETE FROM categories WHERE id=" . $this->id;
+        $sql = "DELETE FROM mesas WHERE id=" . $this->id;
         $res = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
         return $res;
@@ -59,7 +59,7 @@ class Categoria extends Model
     public function findName()
     {
         $conexDb = new ConexDB();
-        $sql = "SELECT * FROM categories WHERE LOWER(name) LIKE LOWER('%{$this->nombre}%')";
+        $sql = "SELECT * FROM mesas WHERE LOWER(name) LIKE LOWER('%{$this->nombre}%')";
         $res = $conexDb->exeSQL($sql);
         $cat = null;
         
