@@ -1,4 +1,5 @@
 <?php
+
 namespace App\models\entities;
 
 use App\models\util\Model;
@@ -15,16 +16,16 @@ class Mesas extends Model
         $sql = "SELECT * FROM restaurant_tables";
         $resConsul = $conexDb->exeSQL($sql);
         $categorias = [];
-        
+
         if ($resConsul->num_rows > 0) {
             while ($row = $resConsul->fetch_assoc()) {
-                $cat = new Categoria();
-                $cat->set('id', $row['id']);
-                $cat->set('nombre', $row['name']);
-                array_push($categorias, $cat);
+                $mesa = new Categoria();
+                $mesa->set('id', $row['id']);
+                $mesa->set('nombre', $row['name']);
+                array_push($categorias, $mesa);
             }
         }
-        
+
         $conexDb->closeDB();
         return $categorias;
     }
@@ -51,43 +52,44 @@ class Mesas extends Model
     {
         $conexDb = new ConexDB();
         $sql = "DELETE FROM restaurant_tables WHERE id=" . $this->id;
-        $res = $conexDb->exeSQL($sql);
+        $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
-        return $res;
+        return $resConsul;
     }
 
     public function findName()
     {
         $conexDb = new ConexDB();
-        $sql = "SELECT * FROM restaurant_tables WHERE LOWER(name) LIKE LOWER('%{$this->nombre}%')";
-        $res = $conexDb->exeSQL($sql);
+        $sql = "SELECT * FROM restaurant_tables WHERE LOWER(name) LIKE LOWER('%{$this->nombre}')";
+        $resConsul = $conexDb->exeSQL($sql);
         $mesa = null;
-        
-        if ($res->num_rows > 0) {
-            while ($row = $res->fetch_assoc()) {
+
+        if ($resConsul->num_rows > 0) {
+            while ($row = $resConsul->fetch_assoc()) {
                 $mesa = new Mesas();
                 $mesa->set('id', $row['id']);
-                $mesa->set('nombre', $row['name']); 
+                $mesa->set('nombre', $row['name']);
                 break;
             }
         }
-        
+
         return $mesa;
     }
-    public function find(){
+    public function find()
+    {
         $conexDb = new ConexDB();
         $sql = "select * from restaurant_tables where id=" . $this->id;
-        $res = $conexDb->exeSQL($sql);
+        $resConsul = $conexDb->exeSQL($sql);
         $mesa = null;
-        if($res->num_rows>0){
-            while($row = $res->fetch_assoc()){
+        if ($resConsul->num_rows > 0) {
+            while ($row = $resConsul->fetch_assoc()) {
                 $mesa = new Mesas();
                 $mesa->set('id', $row['id']);
-                $mesa->set('nombre', $row['name']); 
-                    break;
-                }
+                $mesa->set('nombre', $row['name']);
+                break;
             }
-            $conexDb->closeDB();
-            return $mesa;
+        }
+        $conexDb->closeDB();
+        return $mesa;
     }
 }

@@ -7,9 +7,7 @@ include '../controller/controllerMesas.php';
 use App\controllers\controllerMesas;
 
 $controller = new controllerMesas();
-if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header('location: ../Mesas.php');
-}
+
 $res = empty($_POST['idMesa'])
     ? $controller->saveNewMesas($_POST)
     : $controller->updateMesas($_POST);
@@ -28,7 +26,7 @@ $res = empty($_POST['idMesa'])
     <?php
     if ($res == 'yes') {
         echo '<p>Datos guardados</p>';
-        echo '<a href="formMesa.php">Crear otra persona</a>';
+        echo '<a href="formMesa.php">Crear otra mesa</a>';
     } else {
         echo  '<p>No se pudo guardar los datos</p>';
     }

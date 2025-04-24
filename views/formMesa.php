@@ -17,12 +17,12 @@ $mesa = empty($id) ? null : $controller->getMesa($id);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        if (empty($id)) {
-            echo '<title>Crear Mesa</title>';
-        } else {
-            echo '<title>Modificar Mesa</title>';
-        }
-        ?>
+    if (empty($id)) {
+        echo '<title>Crear Mesa</title>';
+    } else {
+        echo '<title>Modificar Mesa</title>';
+    }
+    ?>
 </head>
 
 <body>
@@ -43,13 +43,13 @@ $mesa = empty($id) ? null : $controller->getMesa($id);
         }
         ?>
         <div>
-            <label for="namePerson">Nombre</label>
-            <input type="text" id="nameMesa" name="nameMesa" value="<?php echo empty($mesa) ?'':$mesa->get('nombre') ?>" required>
+            <label for="nameMesa">Nombre</label>
+            <input type="text" id="nameMesa" name="nameMesa" value="<?php echo empty($mesa) ? '' : $mesa->get('nombre') ?>" required>
         </div>
         <div>
-        <div>
-            <button type="submit">Guardar</button>
-        </div>
+            <div>
+                <button type="submit">Guardar</button>
+            </div>
     </form>
     <a href="AdminMesas.php">Buscar otra Mesa</a>
     <br>

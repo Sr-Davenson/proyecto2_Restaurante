@@ -1,4 +1,5 @@
 <?php
+
 namespace App\models\entities;
 
 use App\models\util\Model;
@@ -15,7 +16,7 @@ class Categoria extends Model
         $sql = "SELECT * FROM categories";
         $resConsul = $conexDb->exeSQL($sql);
         $categorias = [];
-        
+
         if ($resConsul->num_rows > 0) {
             while ($row = $resConsul->fetch_assoc()) {
                 $cat = new Categoria();
@@ -24,7 +25,7 @@ class Categoria extends Model
                 array_push($categorias, $cat);
             }
         }
-        
+
         $conexDb->closeDB();
         return $categorias;
     }
@@ -51,27 +52,45 @@ class Categoria extends Model
     {
         $conexDb = new ConexDB();
         $sql = "DELETE FROM categories WHERE id=" . $this->id;
-        $res = $conexDb->exeSQL($sql);
+        $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
-        return $res;
+        return $resConsul;
     }
 
     public function findName()
     {
         $conexDb = new ConexDB();
-        $sql = "SELECT * FROM categories WHERE LOWER(name) LIKE LOWER('%{$this->nombre}%')";
-        $res = $conexDb->exeSQL($sql);
-        $cat = null;
-        
-        if ($res->num_rows > 0) {
-            while ($row = $res->fetch_assoc()) {
+        $sql = "SELECT * FROM categories WHERE LOWER(name) LIKE LOWER('{$this->nombre}%')";
+        $resConsul = $conexDb->exeSQL($sql);
+        $categorias = [];
+
+        if ($resConsul->num_rows > 0) {
+            while ($row = $resConsul->fetch_assoc()) {
                 $cat = new Categoria();
                 $cat->set('id', $row['id']);
-                $cat->set('nombre', $row['name']); 
+                $cat->set('nombre', $row['name']);
+                $categorias[] = $cat;
+            }
+        }
+
+        return $categorias;
+    }
+
+    public function find()
+    {
+        $conexDb = new ConexDB();
+        $sql = "select * from categories where id=" . $this->id;
+        $resConsul = $conexDb->exeSQL($sql);
+        $cat = null;
+        if ($resConsul->num_rows > 0) {
+            while ($row = $resConsul->fetch_assoc()) {
+                $cat = new Categoria();
+                $cat->set('id', $row['id']);
+                $cat->set('nombre', $row['name']);
                 break;
             }
         }
-        
+        $conexDb->closeDB();
         return $cat;
     }
 }

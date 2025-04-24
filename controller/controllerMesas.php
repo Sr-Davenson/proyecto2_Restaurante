@@ -1,23 +1,18 @@
 <?php
+
 namespace App\controllers;
 
 use App\models\entities\Mesas;
 
-class controllerMesas {
-    
-    public function getAllMesas()
-    {
-        $model = new Mesas();
-        $persons = $model->all();
-        return $persons;
-    }
+class controllerMesas
+{
 
     public function saveNewMesas($resquest)
     {
         $model = new Mesas();
         $model->set('nombre', $resquest['nameMesa']);
-        $res = $model->save();
-        return $res ? 'yes' : 'not';
+        $resConsul = $model->save();
+        return $resConsul ? 'yes' : 'not';
     }
 
     public function updateMesas($resquest)
@@ -25,8 +20,8 @@ class controllerMesas {
         $model = new Mesas();
         $model->set('id', $resquest['idMesa']);
         $model->set('nombre', $resquest['nameMesa']);
-        $res = $model->update();
-        return $res ? 'yes' : 'not';
+        $resConsul = $model->update();
+        return $resConsul ? 'yes' : 'not';
     }
 
     public function removeMesas($id)
@@ -36,8 +31,8 @@ class controllerMesas {
         if (empty($model->find())) {
             return "empty";
         }
-        $res =  $model->delete();
-        return $res ? 'yes' : 'not';
+        $resConsul =  $model->delete();
+        return $resConsul ? 'yes' : 'not';
     }
 
     public function searchMesa($search)
@@ -49,7 +44,7 @@ class controllerMesas {
             return null;
         }
         return $mesa;
-    } 
+    }
 
     public function getMesa($id)
     {
