@@ -8,6 +8,18 @@ use App\controllers\controllerMesas;
 
 $controller = new controllerMesas();
 
+$nameMesa = trim($_POST['nameMesa']);
+if (empty($nameMesa)) {
+    echo 'El nombre no puede estar vacío o contener solo espacios.';
+    echo '<a href="AdminMesas.php">Ir a inicio</a>';
+    exit();
+}
+if ($controller->mesaExiste($nameMesa)==true) {
+    echo 'La mesa #<b>'.$nameMesa.'</b> ya está registrada. Ingresa otra.';
+    echo '<a href="AdminMesas.php">Ir a inicio</a>';
+    exit();
+}
+
 $res = empty($_POST['idMesa'])
     ? $controller->saveNewMesas($_POST)
     : $controller->updateMesas($_POST);

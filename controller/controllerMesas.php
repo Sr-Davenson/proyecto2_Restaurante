@@ -52,4 +52,12 @@ class controllerMesas
         $model->set('id', $id);
         return $model->find();
     }
+    public function mesaExiste($nameMesa)
+    {
+        $model = new Mesas();
+        if($model->exist($nameMesa) == $nameMesa){
+            return true;
+        }
+        return false;
+    }
 }

@@ -52,4 +52,12 @@ class controllerCategorias
         $model->set('id', $id);
         return $model->find();
     }
+    public function categoriaExiste($nameCat)
+    {
+        $model = new Categoria();
+        if($model->exist($nameCat) == $nameCat){
+            return true;
+        }
+        return false;
+    }
 }

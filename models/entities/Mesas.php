@@ -10,25 +10,25 @@ class Mesas extends Model
     protected $id = null;
     protected $nombre = '';
 
-    public function all()
-    {
-        $conexDb = new ConexDB();
-        $sql = "SELECT * FROM restaurant_tables";
-        $resConsul = $conexDb->exeSQL($sql);
-        $categorias = [];
+    // public function all()
+    // {
+    //     $conexDb = new ConexDB();
+    //     $sql = "SELECT * FROM restaurant_tables";
+    //     $resConsul = $conexDb->exeSQL($sql);
+    //     $categorias = [];
 
-        if ($resConsul->num_rows > 0) {
-            while ($row = $resConsul->fetch_assoc()) {
-                $mesa = new Categoria();
-                $mesa->set('id', $row['id']);
-                $mesa->set('nombre', $row['name']);
-                array_push($categorias, $mesa);
-            }
-        }
+    //     if ($resConsul->num_rows > 0) {
+    //         while ($row = $resConsul->fetch_assoc()) {
+    //             $mesa = new Categoria();
+    //             $mesa->set('id', $row['id']);
+    //             $mesa->set('nombre', $row['name']);
+    //             array_push($categorias, $mesa);
+    //         }
+    //     }
 
-        $conexDb->closeDB();
-        return $categorias;
-    }
+    //     $conexDb->closeDB();
+    //     return $categorias;
+    // }
 
     public function save()
     {
@@ -91,5 +91,12 @@ class Mesas extends Model
         }
         $conexDb->closeDB();
         return $mesa;
+    }
+    public function exist($nameMesa)
+    {
+        $conexDb = new ConexDB();
+        $sql = "SELECT id FROM restaurant_tables WHERE LOWER(name) = LOWER('$nameMesa')";
+        $res = $conexDb->exeSQL($sql);
+        return ($res->num_rows > 0);
     }
 }

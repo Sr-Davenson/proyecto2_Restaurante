@@ -9,6 +9,7 @@ use App\controllers\controllerCategorias;
 $controller = new controllerCategorias();
 $id = empty($_GET['id']) ? null : $_GET['id'];
 $cat = empty($id) ? null : $controller->getCategoria($id);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

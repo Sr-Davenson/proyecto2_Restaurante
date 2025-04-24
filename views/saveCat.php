@@ -8,12 +8,18 @@ use App\controllers\controllerCategorias;
 
 $controller = new controllerCategorias();
 
-$nameCat = trim($_POST['nameCat']);
+$nameCat = strtolower(trim($_POST['nameCat']));
 if (empty($nameCat)) {
     echo 'El nombre no puede estar vacío o contener solo espacios.';
     echo '<a href="AdminCategoria.php">Ir a inicio</a>';
     exit();
 }
+if ($controller->categoriaExiste($nameCat)==true) {
+    echo 'El nombre <b>'.$nameCat.'</b> ya está registrado. Ingresa otro.';
+    echo '<a href="AdminCategoria.php">Ir a inicio</a>';
+    exit();
+}
+
 $res = empty($_POST['idCat'])
     ? $controller->saveNewCategoria($_POST)
     : $controller->updateCategoria($_POST);

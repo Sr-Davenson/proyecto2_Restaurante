@@ -10,25 +10,25 @@ class Categoria extends Model
     protected $id = null;
     protected $nombre = '';
 
-    public function all()
-    {
-        $conexDb = new ConexDB();
-        $sql = "SELECT * FROM categories";
-        $resConsul = $conexDb->exeSQL($sql);
-        $categorias = [];
+    // public function all()
+    // {
+    //     $conexDb = new ConexDB();
+    //     $sql = "SELECT * FROM categories";
+    //     $resConsul = $conexDb->exeSQL($sql);
+    //     $categorias = [];
 
-        if ($resConsul->num_rows > 0) {
-            while ($row = $resConsul->fetch_assoc()) {
-                $cat = new Categoria();
-                $cat->set('id', $row['id']);
-                $cat->set('nombre', $row['name']);
-                array_push($categorias, $cat);
-            }
-        }
+    //     if ($resConsul->num_rows > 0) {
+    //         while ($row = $resConsul->fetch_assoc()) {
+    //             $cat = new Categoria();
+    //             $cat->set('id', $row['id']);
+    //             $cat->set('nombre', $row['name']);
+    //             array_push($categorias, $cat);
+    //         }
+    //     }
 
-        $conexDb->closeDB();
-        return $categorias;
-    }
+    //     $conexDb->closeDB();
+    //     return $categorias;
+    // }
 
     public function save()
     {
@@ -92,5 +92,12 @@ class Categoria extends Model
         }
         $conexDb->closeDB();
         return $cat;
+    }
+    public function exist($nameCat)
+    {
+        $conexDb = new ConexDB();
+        $sql = "SELECT id FROM categories WHERE LOWER(name) = LOWER('$nameCat')";
+        $res = $conexDb->exeSQL($sql);
+        return ($res->num_rows > 0);
     }
 }
