@@ -30,10 +30,10 @@ $cats = $controller->searchCategoria($_POST['search']);
         echo '<p>Categorías encontradas:</p>';
         echo '<ul>';
         foreach ($cats as $cat) {
-            echo '<p>' . $cat->get('nombre') . '</p>';
-            echo '<a href="formCat.php?id=' . $cat->get('id') . '">
-            <img src="../images/update.svg" alt="update">
-            </a>';
+            echo '<p>' . $cat->get('nombre') .' 
+            <a href="formCat.php?id=' . $cat->get('id') . '"> <img src="../images/update.svg" alt="update"></a>'. 
+            ' <a href="deleteCat.php?id=' . $cat->get('id') . '"> <img src="../images/delete.svg" alt="delete"></a>'
+            . '</p>' ;
         }
         echo '</ul>';
     }
