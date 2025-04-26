@@ -1,0 +1,79 @@
+body{
+    display: flex;
+    justify-content: right;
+    background-color: #E9D8B7;
+    padding: 0%;
+    margin: 0%;
+    animation: animacion 1s ease-in-out;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+@keyframes animacion {
+    from {
+        transform: scale(0.9);
+        filter: brightness(0.8);
+    }
+    to {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+p{
+    font-size: 30px;
+    text-align: justify;
+}
+.Session {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 50vw;
+    height: 97.8vh; 
+    background-color: #ffffff;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 50px 3px  #d1cec6;
+    margin-left: 0px;
+}
+
+.boton {
+    height: 40px;
+    width: 25%;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #cda54d;
+    border-radius: 5px;
+    border: 2px solid #cda54d00;
+    /* margin: 10px; */
+    font-size: 120%;
+    text-align: center;
+    box-shadow: 1px 1px 5px 3px  #d1cec6;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+}
+.boton:hover {
+    background-color: #080808;
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
+}
+
+.boton:active { 
+    background: #faaf4d;
+}
+.Session img {
+    margin-top: 10vh;
+    transition: transform 0.3s ease-in-out,filter 0.3s ease;
+    animation: animacion 0.9s ease-in-out;
+    height: 40%;
+    width: 40%;
+}
+
+
+.Session img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2) contrast(1.1);
+}
+.img{
+    width: 50vw;
+    height: 100vh; 
+}
