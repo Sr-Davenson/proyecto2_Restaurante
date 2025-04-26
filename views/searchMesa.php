@@ -8,7 +8,7 @@ use App\controllers\controllerMesas;
 
 
 $controller = new controllerMesas();
-$mesa = $controller->searchMesa($_POST['search']);
+$mesas = $controller->searchMesa($_POST['search']);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,6 @@ $mesa = $controller->searchMesa($_POST['search']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/acciones.css">
     <title>Buscar Mesa</title>
 </head>
 
@@ -25,15 +24,19 @@ $mesa = $controller->searchMesa($_POST['search']);
     <h1>Resultados de la operación</h1>
     <?php
 
-    if (!$mesa) {
+    if (!$mesas) {
         echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
     } else {
-        echo '<p>Mesa encontrada:</p>';
-        echo '<p>' . $mesa->get('nombre') . '</p>';
-        echo '<a href="formMesa.php?id=' . $mesa->get('id') . '">
-            <img src="../images/update.svg" alt="update">
-            </a>';
+        echo '<p>Mesas encontrada:</p>';
+    echo '<ul>';
+    foreach ($mesas as $mesa) {
+        echo '<p>' . $mesa->get('nombre') .' 
+        <a href="formMesa.php?id=' . $mesa->get('id') . '"> <img src="../images/update.svg" alt="update"></a>'. 
+        ' <a href="deleteMesa.php?id=' . $mesa->get('id') . '"> <img src="../images/delete.svg" alt="delete"></a>'
+        . '</p>' ;
     }
+    echo '</ul>';
+}
     ?>
     <br>
     <a href="AdminMesas.php">Buscar otra Mesa</a>

@@ -8,7 +8,7 @@ use App\controllers\controllerCategorias;
 
 $controller = new controllerCategorias();
 
-$nameCat = strtolower(trim($_POST['nameCat']));
+$nameCat = ucfirst(strtolower(trim($_POST['nameCat'])));
 if (empty($nameCat)) {
     echo 'El nombre no puede estar vacío o contener solo espacios.';
     echo '<a href="AdminCategoria.php">Ir a inicio</a>';

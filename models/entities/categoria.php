@@ -10,26 +10,23 @@ class Categoria extends Model
     protected $id = null;
     protected $nombre = '';
 
-    // public function all()
-    // {
-    //     $conexDb = new ConexDB();
-    //     $sql = "SELECT * FROM categories";
-    //     $resConsul = $conexDb->exeSQL($sql);
-    //     $categorias = [];
-
-    //     if ($resConsul->num_rows > 0) {
-    //         while ($row = $resConsul->fetch_assoc()) {
-    //             $cat = new Categoria();
-    //             $cat->set('id', $row['id']);
-    //             $cat->set('nombre', $row['name']);
-    //             array_push($categorias, $cat);
-    //         }
-    //     }
-
-    //     $conexDb->closeDB();
-    //     return $categorias;
-    // }
-
+    public function all()
+    {
+        $conexDb = new ConexDB();
+        $sql = "select * from categories";
+        $resConsul = $conexDb->exeSQL($sql);
+        $categorias = [];
+        if ($resConsul->num_rows > 0) {
+            while ($row = $resConsul->fetch_assoc()) {
+                $cat = new Categoria();
+                $cat->set('id', $row['id']);
+                $cat->set('nombre', $row['name']);
+                array_push($categorias, $cat);
+            }
+        }
+        $conexDb->closeDB();
+        return $categorias;
+    }
     public function save()
     {
         $conexDb = new ConexDB();
@@ -60,7 +57,7 @@ class Categoria extends Model
     public function findName()
     {
         $conexDb = new ConexDB();
-        $sql = "SELECT * FROM categories WHERE LOWER(name) LIKE LOWER('{$this->nombre}%')";
+        $sql = "SELECT * FROM categories WHERE LOWER(name) LIKE LOWER('%{$this->nombre}%')";
         $resConsul = $conexDb->exeSQL($sql);
         $categorias = [];
 

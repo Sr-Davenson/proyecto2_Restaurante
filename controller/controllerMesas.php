@@ -6,6 +6,12 @@ use App\models\entities\Mesas;
 
 class controllerMesas
 {
+    public function getAllMesas()
+    {
+        $model = new Mesas();
+        $mesas = $model->all();
+        return $mesas;
+    }
 
     public function saveNewMesas($resquest)
     {
@@ -39,12 +45,13 @@ class controllerMesas
     {
         $model = new Mesas();
         $model->set('nombre', $search);
-        $mesa = $model->findName();
-        if (empty($mesa)) {
-            return null;
+        $mesas = $model->findName();
+        if (empty($mesas)) {
+            return [];
         }
-        return $mesa;
+        return $mesas;
     }
+
 
     public function getMesa($id)
     {

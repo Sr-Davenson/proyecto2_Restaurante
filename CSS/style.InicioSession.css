@@ -7,14 +7,11 @@ body{
     animation: animacion 1s ease-in-out;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 @keyframes animacion {
     from {
-        transform: scale(0.9);
-        filter: brightness(0.8);
-    }
-    to {
-        transform: scale(1);
-        filter: brightness(1);
+        filter: blur(20px);
+        opacity: 0;
     }
 }
 p{

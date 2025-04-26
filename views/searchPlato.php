@@ -1,0 +1,51 @@
+<?php
+include '../models/connection/conexDB.php';
+include '../models/util/model.php';
+include '../models/entities/Plato.php';
+include '../models/entities/Categoria.php';
+include '../controller/controllerCategorias.php';
+include '../controller/controllerPlatos.php';
+
+use App\controllers\controllerPlatos;
+use App\controllers\controllerCategorias;
+
+$controllerPlato = new controllerPlatos();
+$controllerCat = new controllerCategorias();
+$platos = $controllerPlato->searchPlato($_POST['search']);
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" conte nt="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/acciones.css">
+    <title>Buscar Plato</title>
+</head>
+
+<body>
+    <h1>Resultados de la operación</h1>
+
+    <?php
+    if (empty($platos)) {
+        echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
+    } else {
+        echo '<p>Platos encontradas:</p>';
+        echo '<ul>';
+        foreach ($platos as $plato) {
+            echo '<p>' . $plato->get('descrip') . ', Precio: COP $'. $plato->get('precio') .',  categoria:'. $plato->get('idCat') .
+            '<a href="formPlato.php?id=' . $plato->get('id') . '"> <img src="../images/update.svg" alt="update"></a>'. 
+            ' <a href="deletePlato.php?id=' . $plato->get('id') . '"> <img src="../images/delete.svg" alt="delete"></a>'
+            . '</p>' ;
+        }
+        echo '</ul>';
+    }
+    ?>
+
+    <br>
+    <a href="AdminPlatos.php">Buscar otro plato</a>
+    <a href="inicio.php">Ir a inicio</a>
+</body>
+
+</html>

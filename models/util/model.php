@@ -4,7 +4,6 @@ namespace App\models\util;
 
 abstract class Model
 {
-    // abstract function all();
     abstract function save();
     abstract function update();
     abstract function delete();
