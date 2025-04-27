@@ -97,4 +97,5 @@ class Categoria extends Model
         $res = $conexDb->exeSQL($sql);
         return ($res->num_rows > 0);
     }
+    
 }

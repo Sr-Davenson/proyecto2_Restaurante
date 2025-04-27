@@ -52,7 +52,7 @@ class controllerCategorias
         }
         return $cats;
     }
-
+    
     public function getCategoria($id)
     {
         $model = new Categoria();

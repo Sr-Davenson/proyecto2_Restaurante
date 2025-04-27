@@ -49,6 +49,7 @@ class controllerPlatos
         }
         return $platos;
     }
+    
 
     public function getPlato($id)
     {

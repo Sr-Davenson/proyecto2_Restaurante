@@ -2,13 +2,23 @@
 include '../models/connection/conexDB.php';
 include '../models/util/model.php';
 include '../models/entities/Categoria.php';
+include '../models/entities/Plato.php';
 include '../controller/controllerCategorias.php';
+include '../controller/controllerPlatos.php';
 
 use App\controllers\controllerCategorias;
+use App\controllers\controllerPlatos;
 
-$controller = new controllerCategorias();
+$controllerPlatos = new controllerPlatos();
+$controllerCat = new controllerCategorias();
 
-$res = $controller->removeCategoria($_GET['id']);
+// if (empty($controllerPlatos->)) {
+//     echo 'El nombre no puede estar vacío o contener solo espacios.';
+//     echo '<a href="AdminPlatos.php">Ir a inicio</a>';
+//     exit();
+// }
+
+$res = $controllerCat->removeCategoria($_GET['id']);
 
 ?>
 <!DOCTYPE html>

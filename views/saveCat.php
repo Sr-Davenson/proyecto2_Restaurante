@@ -14,12 +14,13 @@ if (empty($nameCat)) {
     echo '<a href="AdminCategoria.php">Ir a inicio</a>';
     exit();
 }
-if ($controller->categoriaExiste($nameCat)==true) {
-    echo 'El nombre <b>'.$nameCat.'</b> ya está registrado. Ingresa otro.';
+if ($controller->categoriaExiste($nameCat) == true) {
+    echo 'El nombre <b>' . $nameCat . '</b> ya está registrado. Ingresa otro.';
     echo '<a href="AdminCategoria.php">Ir a inicio</a>';
     exit();
 }
 
+$_POST['nameCat'] = $nameCat;
 $res = empty($_POST['idCat'])
     ? $controller->saveNewCategoria($_POST)
     : $controller->updateCategoria($_POST);

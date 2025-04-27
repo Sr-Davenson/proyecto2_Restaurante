@@ -12,7 +12,7 @@ class ControllerFechas {
         $horaManInicio = strtotime("05:00");
         $horaManFin = strtotime("12:00");
         $horaTarInicio = strtotime("12:00");
-        $horaTarFin = strtotime("18:00");
+        $horaTarFin = strtotime("19:00");
 
         
         if ($hora >= $horaManInicio && $hora < $horaManFin) {
