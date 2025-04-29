@@ -1,8 +1,8 @@
 <?php
-include '../models/connection/conexDB.php';
-include '../models/util/model.php';
-include '../models/entities/Mesas.php';
-include '../controller/controllerMesas.php';
+include '../../models/connection/conexDB.php';
+include '../../models/util/model.php';
+include '../../models/entities/Mesas.php';
+include '../../controller/controllerMesas.php';
 
 use App\controllers\controllerMesas;
 
@@ -36,7 +36,7 @@ $mesa = empty($id) ? null : $controller->getMesa($id);
         ?>
     </h1>
     <br>
-    <form action="saveMesa.php" method="post">
+    <form action="../Actions/saveMesa.php" method="post">
         <?php
         if (!empty($id)) {
             echo '<input type="hidden" name="idMesa" value="' . $id . '">';
@@ -51,9 +51,9 @@ $mesa = empty($id) ? null : $controller->getMesa($id);
                 <button type="submit">Guardar</button>
             </div>
     </form>
-    <a href="AdminMesas.php">Buscar otra Mesa</a>
+    <a href="../AdminMesas.php">Buscar otra Mesa</a>
     <br>
-    <a href="inicio.php">Ir a inicio</a>
+    <a href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>

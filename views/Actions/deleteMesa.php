@@ -1,14 +1,14 @@
 <?php
-include '../models/connection/conexDB.php';
-include '../models/util/model.php';
-include '../models/entities/Plato.php';
-include '../controller/controllerPlatos.php';
+include '../../models/connection/conexDB.php';
+include '../../models/util/model.php';
+include '../../models/entities/Mesas.php';
+include '../../controller/controllerMesas.php';
 
-use App\controllers\controllerPlatos;
+use App\controllers\controllerMesas;
 
-$controller = new controllerPlatos();
+$controller = new controllerMesas();
 
-$res = $controller->removePlato($_GET['id']);
+$res = $controller->removeMesas($_GET['id']);
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ $res = $controller->removePlato($_GET['id']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Plato</title>
+    <title>Eliminar Mesa</title>
 </head>
 
 <body>
@@ -36,7 +36,7 @@ $res = $controller->removePlato($_GET['id']);
     }
     ?>
     <br>
-    <a href="searchPlato.php">Volver</a>
+    <a href="searchMesa.php">Volver</a>
 </body>
 
 </html>

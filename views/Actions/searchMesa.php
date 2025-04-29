@@ -1,8 +1,8 @@
 <?php
-include '../models/connection/conexDB.php';
-include '../models/util/model.php';
-include '../models/entities/Mesas.php';
-include '../controller/controllerMesas.php';
+include '../../models/connection/conexDB.php';
+include '../../models/util/model.php';
+include '../../models/entities/Mesas.php';
+include '../../controller/controllerMesas.php';
 
 use App\controllers\controllerMesas;
 
@@ -31,17 +31,17 @@ $mesas = $controller->searchMesa($_POST['search']);
     echo '<ul>';
     foreach ($mesas as $mesa) {
         echo '<p>' . $mesa->get('nombre') .' 
-        <a href="formMesa.php?id=' . $mesa->get('id') . '"> <img src="../images/update.svg" alt="update"></a>'. 
-        ' <a href="deleteMesa.php?id=' . $mesa->get('id') . '"> <img src="../images/delete.svg" alt="delete"></a>'
+        <a href="../Forms/formMesa.php?id=' . $mesa->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>'. 
+        ' <a href="deleteMesa.php?id=' . $mesa->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>'
         . '</p>' ;
     }
     echo '</ul>';
 }
     ?>
     <br>
-    <a href="AdminMesas.php">Buscar otra Mesa</a>
+    <a href="../AdminMesas.php">Buscar otra Mesa</a>
     <br>
-    <a href="inicio.php">Ir a inicio</a>
+    <a href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>

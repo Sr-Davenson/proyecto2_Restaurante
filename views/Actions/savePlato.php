@@ -1,8 +1,8 @@
 <?php
-include '../models/connection/conexDB.php';
-include '../models/util/model.php';
-include '../models/entities/Plato.php';
-include '../controller/controllerPlatos.php';
+include '../../models/connection/conexDB.php';
+include '../../models/util/model.php';
+include '../../models/entities/Plato.php';
+include '../../controller/controllerPlatos.php';
 
 use App\controllers\controllerPlatos;
 
@@ -11,7 +11,7 @@ $controller = new controllerPlatos();
 $descripPlato = ucfirst(strtolower(trim($_POST['descripPlato'])));
 if (empty($descripPlato)) {
     echo 'El nombre no puede estar vacío o contener solo espacios.';
-    echo '<a href="AdminPlatos.php">Ir a inicio</a>';
+    echo '<a href="../AdminPlatos.php">Ir a inicio</a>';
     exit();
 }
 // if ($controller->platoExiste($$descripPlato)==true) {
@@ -39,15 +39,15 @@ $res = empty($_POST['idPlato'])
     <?php
     if ($res == 'yes') {
         echo '<p>Datos guardados</p>';
-        echo '<a href="formPlato.php">Crear otro plato</a>';
+        echo '<a href="../Forms/formPlato.php">Crear otro plato</a>';
     } else {
         echo  '<p>No se pudo guardar los datos</p>';
     }
     ?>
     <br>
-    <a href="AdminPlatos.php">Buscar otra Plato</a>
+    <a href="../AdminPlatos.php">Buscar otra Plato</a>
     <br>
-    <a href="inicio.php">Ir a inicio</a>
+    <a href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>

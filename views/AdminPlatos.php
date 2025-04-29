@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <form action="searchPlato.php" method="post">
+    <form action="Actions/searchPlato.php" method="post">
         <input type="text" name="search" placeholder="Buscar por nombre" required>
         <button type="submit">Buscar</button>
     </form>
     <br>
-    <a class="img" href="formPlato.php">Registrar nuevo plato</a>
+    <a class="img" href="Forms/formPlato.php">Registrar nuevo plato</a>
     <br>
     <a href="inicio.php">Volver</a>
 </body>

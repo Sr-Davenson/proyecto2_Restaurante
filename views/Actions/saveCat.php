@@ -1,8 +1,8 @@
 <?php
-include '../models/connection/conexDB.php';
-include '../models/util/model.php';
-include '../models/entities/Categoria.php';
-include '../controller/controllerCategorias.php';
+include '../../models/connection/conexDB.php';
+include '../../models/util/model.php';
+include '../../models/entities/Categoria.php';
+include '../../controller/controllerCategorias.php';
 
 use App\controllers\controllerCategorias;
 
@@ -11,12 +11,12 @@ $controller = new controllerCategorias();
 $nameCat = ucfirst(strtolower(trim($_POST['nameCat'])));
 if (empty($nameCat)) {
     echo 'El nombre no puede estar vacío o contener solo espacios.';
-    echo '<a href="AdminCategoria.php">Ir a inicio</a>';
+    echo '<a href="../AdminCategoria.php">Ir a inicio</a>';
     exit();
 }
 if ($controller->categoriaExiste($nameCat) == true) {
     echo 'El nombre <b>' . $nameCat . '</b> ya está registrado. Ingresa otro.';
-    echo '<a href="AdminCategoria.php">Ir a inicio</a>';
+    echo '<a href="../AdminCategoria.php">Ir a inicio</a>';
     exit();
 }
 
@@ -40,15 +40,15 @@ $res = empty($_POST['idCat'])
     <?php
     if ($res == 'yes') {
         echo '<p>Datos guardados</p>';
-        echo '<a href="formCat.php">Crear otra Categoria</a>';
+        echo '<a href="../Forms/formCat.php">Crear otra Categoria</a>';
     } else {
         echo  '<p>No se pudo guardar los datos</p>';
     }
     ?>
     <br>
-    <a href="AdminCategoria.php">Buscar otra Categoria</a>
+    <a href="../AdminCategoria.php">Buscar otra Categoria</a>
     <br>
-    <a href="inicio.php">Ir a inicio</a>
+    <a href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>

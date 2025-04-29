@@ -1,8 +1,8 @@
 <?php
-include '../models/connection/conexDB.php';
-include '../models/util/model.php';
-include '../models/entities/categoria.php';
-include '../controller/controllerCategorias.php';
+include '../../models/connection/conexDB.php';
+include '../../models/util/model.php';
+include '../../models/entities/categoria.php';
+include '../../controller/controllerCategorias.php';
 
 use App\controllers\controllerCategorias;
 
@@ -16,7 +16,7 @@ $cats = $controller->searchCategoria($_POST['search']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/acciones.css">
+    <link rel="stylesheet" href="../../CSS/acciones.css">
     <title>Buscar Categoría</title>
 </head>
 
@@ -31,8 +31,8 @@ $cats = $controller->searchCategoria($_POST['search']);
         echo '<ul>';
         foreach ($cats as $cat) {
             echo '<p>' . $cat->get('nombre') .' 
-            <a href="formCat.php?id=' . $cat->get('id') . '"> <img src="../images/update.svg" alt="update"></a>'. 
-            ' <a href="deleteCat.php?id=' . $cat->get('id') . '"> <img src="../images/delete.svg" alt="delete"></a>'
+            <a href="../Forms/formCat.php?id=' . $cat->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>'. 
+            ' <a href="deleteCat.php?id=' . $cat->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>'
             . '</p>' ;
         }
         echo '</ul>';
@@ -40,8 +40,8 @@ $cats = $controller->searchCategoria($_POST['search']);
     ?>
 
     <br>
-    <a href="AdminCategoria.php">Buscar otra categoría</a>
-    <a href="inicio.php">Ir a inicio</a>
+    <a href="../AdminCategoria.php">Buscar otra categoría</a>
+    <a href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>

@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <form action="searchMesa.php" method="post">
+    <form action="Actions/searchMesa.php" method="post">
         <input type="text" name="search" placeholder="Buscar mesa" required>
         <button type="submit">Buscar</button>
     </form>
     <br>
-    <a class="img" href="formMesa.php">Crear una nueva mesa</a>
+    <a class="img" href="Forms/formMesa.php">Crear una nueva mesa</a>
     <br>
     <a href="inicio.php">Volver</a>
 </body>

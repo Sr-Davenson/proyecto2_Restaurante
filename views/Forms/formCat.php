@@ -1,8 +1,8 @@
 <?php
-include '../models/connection/conexDB.php';
-include '../models/util/model.php';
-include '../models/entities/Categoria.php';
-include '../controller/controllerCategorias.php';
+include '../../models/connection/conexDB.php';
+include '../../models/util/model.php';
+include '../../models/entities/Categoria.php';
+include '../../controller/controllerCategorias.php';
 
 use App\controllers\controllerCategorias;
 
@@ -37,7 +37,7 @@ $cat = empty($id) ? null : $controller->getCategoria($id);
         ?>
     </h1>
     <br>
-    <form action="saveCat.php" method="post">
+    <form action="../Actions/saveCat.php" method="post">
         <?php
         if (!empty($id)) {
             echo '<input type="hidden" name="idCat" value="' . $id . '">';
@@ -52,9 +52,9 @@ $cat = empty($id) ? null : $controller->getCategoria($id);
                 <button type="submit">Guardar</button>
             </div>
     </form>
-    <a href="AdminCategoria.php">Buscar otra Categoria</a>
+    <a href="../AdminCategoria.php">Buscar otra Categoria</a>
     <br>
-    <a href="inicio.php">Ir a inicio</a>
+    <a href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>

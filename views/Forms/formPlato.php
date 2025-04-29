@@ -1,10 +1,10 @@
 <?php
-include '../models/connection/conexDB.php';
-include '../models/util/model.php';
-include '../models/entities/Plato.php';
-include '../models/entities/Categoria.php';
-include '../controller/controllerCategorias.php';
-include '../controller/controllerPlatos.php';
+include '../../models/connection/conexDB.php';
+include '../../models/util/model.php';
+include '../../models/entities/Plato.php';
+include '../../models/entities/Categoria.php';
+include '../../controller/controllerCategorias.php';
+include '../../controller/controllerPlatos.php';
 
 use App\controllers\controllerPlatos;
 use App\controllers\controllerCategorias;
@@ -41,7 +41,7 @@ $cats = $controllerCat->getAllCategorias();
         ?>
     </h1>
     <br>
-    <form action="savePlato.php" method="post">
+    <form action="../Actions/savePlato.php" method="post">
         <?php
         if (!empty($id)) {
             echo '<input type="hidden" name="idPlato" value="' . $id . '">';
@@ -66,9 +66,9 @@ $cats = $controllerCat->getAllCategorias();
                 <button type="submit">Guardar</button>
             </div>
     </form>
-    <a href="AdminCategoria.php">Buscar otra Categoria</a>
+    <a href="../AdminCategoria.php">Buscar otra Categoria</a>
     <br>
-    <a href="inicio.php">Ir a inicio</a>
+    <a href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>

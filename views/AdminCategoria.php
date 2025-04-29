@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <form action="searchCategoria.php" method="post">
+    <form action="Actions/searchCategoria.php" method="post">
         <input type="text" name="search" placeholder="Buscar por nombre" required>
         <button type="submit">Buscar</button>
     </form>
     <br>
-    <a class="img" href="formCat.php">Crear una nueva Categoria</a>
+    <a class="img" href="Forms/formCat.php">Crear una nueva Categoria</a>
     <br>
     <a href="inicio.php">Volver</a>
 </body>
