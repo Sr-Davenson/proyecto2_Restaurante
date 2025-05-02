@@ -21,17 +21,18 @@ $mesas = $controller->searchMesa($search);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/styleSearch.css">
     <title>Buscar Mesa</title>
 </head>
 
 <body>
-    <h1>Resultados de la operación</h1>
     <?php
 
     if (!$mesas) {
+        echo '<h1>Resultados de la operación</h1>';
         echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
     } else {
-        echo '<p>Mesas encontrada:</p>';
+        echo '<h1>Mesas encontradas:</h1>';
         echo '<ul>';
         foreach ($mesas as $mesa) {
             echo '<p>' . $mesa->get('nombre') . ' 
@@ -43,9 +44,10 @@ $mesas = $controller->searchMesa($search);
     }
     ?>
     <br>
-    <a href="../AdminMesas.php">Buscar otra Mesa</a>
-    <br>
-    <a href="../inicio.php">Ir a inicio</a>
+    <div class="botones">
+        <a href="../AdminMesas.php">Buscar otra Mesa</a>
+        <a href="../inicio.php">Ir a inicio</a>
+    </div>
 </body>
 
 </html>

@@ -25,33 +25,34 @@ $platos = $controllerPlato->searchPlato($_POST['search']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" conte nt="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/acciones.css">
+    <link rel="stylesheet" href="../../CSS/styleSearch.css">
     <title>Buscar Plato</title>
 </head>
 
 <body>
-    <h1>Resultados de la operación</h1>
-
     <?php
     if (empty($platos)) {
+        echo ' <h1>Resultados de la operación</h1>';
         echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
     } else {
-        echo '<p>Platos encontradas:</p>';
+        echo '<h1>Platos encontradas:</h1>';
         echo '<ul>';
         foreach ($platos as $plato) {
             $cat = $controllerCat->searchNameCategoria($plato->get('idCat'));
-            echo '<p>' . $plato->get('descrip') . ', Precio: COP $' . $plato->get('precio') . ', Categoría: ' . $cat->get('nombre').
-            '<a href="../Forms/formPlato.php?id=' . $plato->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' .
-            ' <a href="deletePlato.php?id=' . $plato->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' .
-            '</p>';
+            echo '<p>' . $plato->get('descrip') . ', Precio: COP $' . $plato->get('precio') . ', Categoría: ' . $cat->get('nombre') .
+                '<a href="../Forms/formPlato.php?id=' . $plato->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' .
+                ' <a href="deletePlato.php?id=' . $plato->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' .
+                '</p>';
         }
         echo '</ul>';
     }
     ?>
 
     <br>
-    <a href="../AdminPlatos.php">Buscar otro plato</a>
-    <a href="../inicio.php">Ir a inicio</a>
+    <div class="botones">
+        <a href="../AdminPlatos.php">Buscar otro plato</a>
+        <a href="../inicio.php">Ir a inicio</a>
+    </div>
 </body>
 
 </html>
