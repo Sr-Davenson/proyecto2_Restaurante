@@ -12,6 +12,7 @@ use App\controllers\controllerCategorias;
 $controllerPlato = new controllerPlatos();
 $controllerCat = new controllerCategorias();
 $platos = $controllerPlato->searchPlato($_POST['search']);
+
 ?>
 
 <!DOCTYPE html>
@@ -34,10 +35,11 @@ $platos = $controllerPlato->searchPlato($_POST['search']);
         echo '<p>Platos encontradas:</p>';
         echo '<ul>';
         foreach ($platos as $plato) {
-            echo '<p>' . $plato->get('descrip') . ', Precio: COP $'. $plato->get('precio') .',  categoria:'. $plato->get('idCat') .
-            '<a href="../Forms/formPlato.php?id=' . $plato->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>'. 
-            ' <a href="deletePlato.php?id=' . $plato->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>'
-            . '</p>' ;
+            $cat = $controllerCat->searchNameCategoria($plato->get('idCat'));
+            echo '<p>' . $plato->get('descrip') . ', Precio: COP $' . $plato->get('precio') . ', Categoría: ' . $cat->get('nombre').
+            '<a href="../Forms/formPlato.php?id=' . $plato->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' .
+            ' <a href="deletePlato.php?id=' . $plato->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' .
+            '</p>';
         }
         echo '</ul>';
     }

@@ -59,6 +59,13 @@ class controllerCategorias
         $model->set('id', $id);
         return $model->find();
     }
+
+    public function searchNameCategoria($id)
+    {
+        $model = new Categoria();
+        $model->set('id', $id);
+        return $model->find();
+    }
     public function categoriaExiste($nameCat)
     {
         $model = new Categoria();
