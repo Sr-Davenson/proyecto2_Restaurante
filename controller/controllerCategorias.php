@@ -34,12 +34,17 @@ class controllerCategorias
     public function removeCategoria($id)
     {
         $model = new Categoria();
-        $model->set('id', $id);
-        if (empty($model->find())) {
-            return "empty";
+        if ($model->confirmDelete($id) == false) {
+            $model->set('id', $id);
+
+            if (empty($model->find())) {
+                return "empty";
+            }
+            $resConsul = $model->delete();
+            return $resConsul ? '1' : '2';
+        } else {
+            return 3;
         }
-        $resConsul =  $model->delete();
-        return $resConsul ? 'yes' : 'not';
     }
 
     public function searchCategoria($search)
@@ -52,7 +57,7 @@ class controllerCategorias
         }
         return $cats;
     }
-    
+
     public function getCategoria($id)
     {
         $model = new Categoria();
@@ -69,7 +74,7 @@ class controllerCategorias
     public function categoriaExiste($nameCat)
     {
         $model = new Categoria();
-        if($model->exist($nameCat) == $nameCat){
+        if ($model->exist($nameCat) == $nameCat) {
             return true;
         }
         return false;

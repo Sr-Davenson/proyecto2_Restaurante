@@ -3,12 +3,15 @@ include '../../models/connection/conexDB.php';
 include '../../models/util/model.php';
 include '../../models/entities/Categoria.php';
 include '../../controller/controllerCategorias.php';
+include '../../controller/controllerValidaciones.php';
 
 use App\controllers\controllerCategorias;
+use App\controllers\controllerValidaciones;
 
 $controller = new controllerCategorias();
+$val = new controllerValidaciones();
 
-$nameCat = ucfirst(strtolower(trim($_POST['nameCat'])));
+$nameCat = $val->formatoTextos('nameCat');
 if (empty($nameCat)) {
     echo 'El nombre no puede estar vacío o contener solo espacios.';
     echo '<a href="../AdminCategoria.php">Ir a inicio</a>';

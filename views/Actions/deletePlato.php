@@ -24,11 +24,14 @@ $res = $controller->removePlato($_GET['id']);
     <h1>Resultados de la operacion</h1>
     <?php
     switch ($res) {
-        case 'yes':
+        case '1':
             echo '<p class="msg-ok">Datos borrados</p>';
             break;
-        case 'not':
+        case '2':
             echo  '<p class="msg-error">No se pudo borrar los datos</p>';
+            break;
+        case '3':
+            echo  '<p class="msg-error">No se puede eliminar el plato, Tiene una categoria asocida.</p>';
             break;
         default:
             echo  '<p class="msg-error">El registro no existe</p>';

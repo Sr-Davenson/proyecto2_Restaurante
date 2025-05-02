@@ -2,23 +2,22 @@
 include '../../models/connection/conexDB.php';
 include '../../models/util/model.php';
 include '../../models/entities/Plato.php';
+include '../../controller/controllerValidaciones.php';
 include '../../controller/controllerPlatos.php';
 
+use App\controllers\controllerValidaciones;
 use App\controllers\controllerPlatos;
 
-$controller = new controllerPlatos();
 
-$descripPlato = ucfirst(strtolower(trim($_POST['descripPlato'])));
+$controller = new controllerPlatos();
+$val = new controllerValidaciones();
+
+$descripPlato = $val->formatoTextos('descripPlato');
 if (empty($descripPlato)) {
     echo 'El nombre no puede estar vacío o contener solo espacios.';
     echo '<a href="../AdminPlatos.php">Ir a inicio</a>';
     exit();
 }
-// if ($controller->platoExiste($$descripPlato)==true) {
-//     echo 'El nombre <b>'.$$descripPlato.'</b> ya está registrado. Ingresa otro.';
-//     echo '<a href="AdminPlatos.php">Ir a inicio</a>';
-//     exit();
-// }
 
 $res = empty($_POST['idPlato'])
     ? $controller->saveNewPlato($_POST)
@@ -45,7 +44,7 @@ $res = empty($_POST['idPlato'])
     }
     ?>
     <br>
-    <a href="../AdminPlatos.php">Buscar otra Plato</a>
+    <a href="../AdminPlatos.php">Buscar otro Plato</a>
     <br>
     <a href="../inicio.php">Ir a inicio</a>
 </body>

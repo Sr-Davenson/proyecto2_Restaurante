@@ -54,6 +54,17 @@ class Categoria extends Model
         return $resConsul;
     }
 
+    public function confirmDelete($id)
+    {
+        $conexDb = new ConexDB();
+        $sqlCheck = "SELECT COUNT(*) as total FROM dishes WHERE idCategory = $id";
+        $result = $conexDb->exeSQL($sqlCheck);
+        $row = $result->fetch_assoc();
+        if ($row['total'] > 0) {
+            return true;
+        }
+        return false;
+    }
     public function findName()
     {
         $conexDb = new ConexDB();
@@ -97,5 +108,4 @@ class Categoria extends Model
         $res = $conexDb->exeSQL($sql);
         return ($res->num_rows > 0);
     }
-    
 }

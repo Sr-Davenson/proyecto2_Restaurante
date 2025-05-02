@@ -51,7 +51,7 @@ $cats = $controllerCat->getAllCategorias();
             <label for="descripPlato">Descripción</label>
             <input type="text" id="descripPlato" name="descripPlato" value="<?php echo empty($plato) ? '' : $plato->get('descrip') ?>" required>
             <label for="precioPlato">Precio</label>
-            <input type="number" id="precioPlato" name="precioPlato" min="0" step="0.01" value="<?php echo empty($plato) ? '' : $plato->get('precio') ?>" required>
+            <input type="number" id="precioPlato" name="precioPlato" min="1" step="0.01" value="<?php echo empty($plato) ? '' : $plato->get('precio') ?>" required>
             <label for="categoria">Selecciona una categoría:</label>
             <select name="idCat" id="categoria">
                 <?php 

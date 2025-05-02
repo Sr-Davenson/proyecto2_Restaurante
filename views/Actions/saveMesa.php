@@ -3,12 +3,18 @@ include '../../models/connection/conexDB.php';
 include '../../models/util/model.php';
 include '../../models/entities/Mesas.php';
 include '../../controller/controllerMesas.php';
+include '../../controller/controllerValidaciones.php';
+
 
 use App\controllers\controllerMesas;
+use App\controllers\controllerValidaciones;
 
 $controller = new controllerMesas();
+$val = new controllerValidaciones();
 
-$nameMesa = ucfirst(strtolower(trim($_POST['nameMesa'])));
+$nameMesa = $val->formatoTextos('nameMesa');
+
+
 if (empty($nameMesa)) {
     echo 'El nombre no puede estar vacío o contener solo espacios.';
     echo '<a href="../AdminMesas.php">Ir a inicio</a>';

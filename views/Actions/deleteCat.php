@@ -2,21 +2,11 @@
 include '../../models/connection/conexDB.php';
 include '../../models/util/model.php';
 include '../../models/entities/Categoria.php';
-include '../../models/entities/Plato.php';
 include '../../controller/controllerCategorias.php';
-include '../../controller/controllerPlatos.php';
 
 use App\controllers\controllerCategorias;
-use App\controllers\controllerPlatos;
 
-$controllerPlatos = new controllerPlatos();
 $controllerCat = new controllerCategorias();
-
-// if (empty($controllerPlatos->)) {
-//     echo 'El nombre no puede estar vacío o contener solo espacios.';
-//     echo '<a href="AdminPlatos.php">Ir a inicio</a>';
-//     exit();
-// }
 
 $res = $controllerCat->removeCategoria($_GET['id']);
 
@@ -34,11 +24,14 @@ $res = $controllerCat->removeCategoria($_GET['id']);
     <h1>Resultados de la operacion</h1>
     <?php
     switch ($res) {
-        case 'yes':
+        case '1':
             echo '<p class="msg-ok">Datos borrados</p>';
             break;
-        case 'not':
+        case '2':
             echo  '<p class="msg-error">No se pudo borrar los datos</p>';
+            break;
+        case '3':
+            echo  '<p class="msg-error">No se puede eliminar la categoria, Tiene platos asociados.</p>';
             break;
         default:
             echo  '<p class="msg-error">El registro no existe</p>';

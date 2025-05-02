@@ -6,6 +6,11 @@ include '../../controller/controllerCategorias.php';
 
 use App\controllers\controllerCategorias;
 
+$search = isset($_POST['search']) ? $_POST['search'] : null;
+
+if ($search == null) {
+    header("Location: ../AdminCategoria.php");
+}
 $controller = new controllerCategorias();
 $cats = $controller->searchCategoria($_POST['search']);
 ?>

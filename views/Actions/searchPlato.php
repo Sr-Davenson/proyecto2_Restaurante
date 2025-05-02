@@ -9,10 +9,14 @@ include '../../controller/controllerPlatos.php';
 use App\controllers\controllerPlatos;
 use App\controllers\controllerCategorias;
 
+$search = isset($_POST['search']) ? $_POST['search'] : null;
+
+if ($search == null) {
+    header("Location: ../AdminPlatos.php");
+}
 $controllerPlato = new controllerPlatos();
 $controllerCat = new controllerCategorias();
 $platos = $controllerPlato->searchPlato($_POST['search']);
-
 ?>
 
 <!DOCTYPE html>
