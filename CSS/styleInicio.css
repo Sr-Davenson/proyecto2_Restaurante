@@ -19,7 +19,12 @@ body{
     border-bottom-left-radius: 300px;
     animation: animacionSuperior 1s ease-in-out;
 }
-
+img {
+    display: block;
+    margin: auto;
+    place-items: center; 
+    height: 80vh;
+}
 a {
     text-align: center;
     height: 60px;
