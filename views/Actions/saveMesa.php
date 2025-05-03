@@ -5,30 +5,11 @@ include '../../models/entities/Mesas.php';
 include '../../controller/controllerMesas.php';
 include '../../controller/controllerValidaciones.php';
 
-
 use App\controllers\controllerMesas;
 use App\controllers\controllerValidaciones;
 
 $controller = new controllerMesas();
 $val = new controllerValidaciones();
-
-$nameMesa = $val->formatoTextos('nameMesa');
-
-
-if (empty($nameMesa)) {
-    echo 'El nombre no puede estar vacío o contener solo espacios.';
-    echo '<a href="../AdminMesas.php">Ir a inicio</a>';
-    exit();
-}
-if ($controller->mesaExiste($nameMesa)==true) {
-    echo 'La mesa <b>'.$nameMesa.'</b> ya está registrada. Ingresa otra.';
-    echo '<a href="../AdminMesas.php">Ir a inicio</a>';
-    exit();
-}
-$_POST['nameMesa'] = $nameMesa;
-$res = empty($_POST['idMesa'])
-    ? $controller->saveNewMesas($_POST)
-    : $controller->updateMesas($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -43,6 +24,9 @@ $res = empty($_POST['idMesa'])
 <body>
     <h1>Resultado de la operación</h1>
     <?php
+    $nameMesa = isset($_POST['nameMesa']) ? $_POST['nameMesa'] : header("Location: ../AdminMesas.php");
+    $nameMesa = $val->formatoTextos('nameMesa');
+    $res = $controller->procesarMesa($nameMesa, $_POST);
     if ($res == 'yes') {
         echo '<p>Datos guardados</p>';
     } else {

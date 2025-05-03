@@ -7,6 +7,7 @@ include '../../controller/controllerMesas.php';
 use App\controllers\controllerMesas;
 
 $controller = new controllerMesas();
+// $controller->getMesa($_GET['id']) ? $_GET['id'] : header("Location: ../AdminMesas.php");
 $id = empty($_GET['id']) ? null : $_GET['id'];
 $mesa = empty($id) ? null : $controller->getMesa($id);
 ?>
@@ -41,20 +42,28 @@ $mesa = empty($id) ? null : $controller->getMesa($id);
         <?php
         if (!empty($id)) {
             echo '<input type="hidden" name="idMesa" value="' . $id . '">';
+            echo '<div>' .
+                '<label for="nameMesa">Nombre Anterior:</label>' .
+                '<input type="text" value="' . (empty($mesa) ? '' : $mesa->get('nombre')) . '" disabled>' .
+                '</div>' .
+                '<div>' .
+                '<label for="nameMesa">Nuevo Nombre:</label>' .
+                '<input type="text" id="nameMesa" name="nameMesa" required>' .
+                '</div>';
+        } else {
+            echo '<div>' .
+                '<label for="nameMesa">Nombre:</label>' .
+                '<input type="text" id="nameMesa" name="nameMesa" required>' .
+                '</div>';
         }
         ?>
-        <div>
-            <label for="nameMesa">Nombre</label>
-            <input type="text" id="nameMesa" name="nameMesa" value="<?php echo empty($mesa) ? '' : $mesa->get('nombre') ?>" required>
-        </div>
-        <div>
-            <div>
-                <button type="submit">Guardar</button>
-            </div>
+        <button type="submit">Guardar</button>
     </form>
-    <a href="../AdminMesas.php">Buscar otra Mesa</a>
-    <br>
-    <a href="../inicio.php">Ir a inicio</a>
+    <div class="botones">
+        <a href="../AdminMesas.php">Buscar otra Mesa</a>
+        <br>
+        <a href="../inicio.php">Ir a inicio</a>
+    </div>
 </body>
 
 </html>

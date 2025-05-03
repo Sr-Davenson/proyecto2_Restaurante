@@ -8,21 +8,8 @@ include '../../controller/controllerPlatos.php';
 use App\controllers\controllerValidaciones;
 use App\controllers\controllerPlatos;
 
-
 $controller = new controllerPlatos();
 $val = new controllerValidaciones();
-
-$descripPlato = $val->formatoTextos('descripPlato');
-if (empty($descripPlato)) {
-    echo 'El nombre no puede estar vacío o contener solo espacios.';
-    echo '<a href="../AdminPlatos.php">Ir a inicio</a>';
-    exit();
-}
-
-$res = empty($_POST['idPlato'])
-    ? $controller->saveNewPlato($_POST)
-    : $controller->updatePlato($_POST);
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,6 +24,9 @@ $res = empty($_POST['idPlato'])
 <body>
     <h1>Resultado de la operación</h1>
     <?php
+    $descripPlato = isset($_POST['descripPlato']) ? $_POST['descripPlato'] : header("Location: ../AdminPlatos.php");
+    $descripPlato = $val->formatoTextos('descripPlato');
+    $res = $controller->procesarPlato($descripPlato, $_POST);
     if ($res == 'yes') {
         echo '<p>Datos guardados</p>';
     } else {

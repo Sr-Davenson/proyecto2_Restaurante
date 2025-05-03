@@ -49,7 +49,7 @@ class controllerPlatos
         }
         return $platos;
     }
-    
+
 
     public function getPlato($id)
     {
@@ -60,9 +60,21 @@ class controllerPlatos
     public function platoExiste($nameCat)
     {
         $model = new Plato();
-        if($model->exist($nameCat) == $nameCat){
+        if ($model->exist($nameCat) == $nameCat) {
             return true;
         }
         return false;
+    }
+    public function procesarPlato($descripPlato, $pos)
+    {
+        if (empty($descripPlato)) {
+            echo '<p class="msg-error"El nombre no puede estar vacío o contener solo espacios.</p>';
+            echo '<a class="botones" href="../AdminPlatos.php">Ir a inicio</a>';
+            exit();
+        }
+
+        return empty($pos['idPlato'])
+            ? $this->saveNewPlato($pos)
+            : $this->updatePlato($pos);
     }
 }

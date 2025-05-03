@@ -51,8 +51,6 @@ class controllerMesas
         }
         return $mesas;
     }
-
-
     public function getMesa($id)
     {
         $model = new Mesas();
@@ -62,9 +60,26 @@ class controllerMesas
     public function mesaExiste($nameMesa)
     {
         $model = new Mesas();
-        if($model->exist($nameMesa) == $nameMesa){
+        if ($model->exist($nameMesa) == $nameMesa) {
             return true;
         }
         return false;
+    }
+    public function procesarMesa($nameMesa, $pos)
+    {
+        if (empty($nameMesa)) {
+            echo '<p class="msg-error">El nombre no puede estar vacío o contener solo espacios</p>';
+            echo '<a class="botones" href="../AdminMesas.php">Ir a inicio</a>';
+            exit();
+        }
+        if ($this->mesaExiste($nameMesa) == true) {
+            echo '<p class="msg-error">La mesa <b>' . $nameMesa . '</b> ya está registrada. Ingresa otra</p>';
+            echo '<a class="botones" href="../AdminMesas.php">Ir a inicio</a>';
+            exit();
+        }
+        $pos['nameMesa'] = $nameMesa;
+        return empty($pos['idMesa'])
+            ? $this->saveNewMesas($_POST)
+            : $this->updateMesas($_POST);
     }
 }

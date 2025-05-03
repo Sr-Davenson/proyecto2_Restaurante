@@ -46,30 +46,41 @@ $cats = $controllerCat->getAllCategorias();
         <?php
         if (!empty($id)) {
             echo '<input type="hidden" name="idPlato" value="' . $id . '">';
+            echo '<div>' .
+                '<label for="descripPlato">Descripción Anterior</label>' .
+                '<input type="text" value=" ' . (empty($plato) ? '' : $plato->get('descrip')) . ' "  disabled>' .
+                '<label for="precioPlato">Precio Anterior</label>' .
+                '<input type="number" value="' . (empty($plato) ? '' : $plato->get('precio')) . '"  disabled>' .
+                '</div>' .
+                '<br>'.
+                '<div>' .
+                '<label for="descripPlato">Descripción Nueva</label>' .
+                '<input type="text" id="descripPlato" name="descripPlato" required>' .
+                '<label for="precioPlato">Precio Nuevo</label>' .
+                '<input type="number" id="precioPlato" name="precioPlato" min="1" step="0.01" required>' .
+                '<div>';
+        } else {
+            echo '<div>' .
+                '<label for="descripPlato">Descripción</label>' .
+                '<input type="text" id="descripPlato" name="descripPlato" required>' .
+                '<label for="precioPlato">Precio</label>' .
+                '<input type="number" id="precioPlato" name="precioPlato" min="1" step="0.01" required>' .
+                '<label for="categoria">Selecciona una categoría:</label>' .
+                '<select name="idCat" id="categoria">';
+            foreach ($cats as $cat) {
+                echo '<option value="' . $cat->get('id') . '" id="idCat" name="idCat">' . $cat->get('nombre') . '</option>';
+            }
+            echo'</select>' ;
+            echo'</div>';
         }
         ?>
-        <div>
-            <label for="descripPlato">Descripción</label>
-            <input type="text" id="descripPlato" name="descripPlato" value="<?php echo empty($plato) ? '' : $plato->get('descrip') ?>" required>
-            <label for="precioPlato">Precio</label>
-            <input type="number" id="precioPlato" name="precioPlato" min="1" step="0.01" value="<?php echo empty($plato) ? '' : $plato->get('precio') ?>" required>
-            <label for="categoria">Selecciona una categoría:</label>
-            <select name="idCat" id="categoria">
-                <?php 
-                foreach ($cats as $cat) {
-                    echo '<option value="'.$cat->get('id').'" id="idCat" name="idCat">'.$cat->get('nombre') .'</option>' ;
-                }
-                ?>
-            </select>
-        </div>
-        <div>
-            <div>
-                <button type="submit">Guardar</button>
-            </div>
+        <button type="submit">Guardar</button>
     </form>
-    <a href="../AdminCategoria.php">Buscar otra Categoria</a>
-    <br>
-    <a href="../inicio.php">Ir a inicio</a>
+    <div class="botones">
+        <a href="../AdminPlatos.php">Buscar otro plato</a>
+        <br>
+        <a href="../inicio.php">Ir a inicio</a>
+    </div>
 </body>
 
 </html>

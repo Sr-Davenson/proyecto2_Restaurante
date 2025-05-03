@@ -7,6 +7,7 @@ include '../../controller/controllerCategorias.php';
 use App\controllers\controllerCategorias;
 
 $controller = new controllerCategorias();
+// $controller->getCategoria($_GET['id']) ? $_GET['id'] : header("Location: ../AdminCategoria.php");
 $id = empty($_GET['id']) ? null : $_GET['id'];
 $cat = empty($id) ? null : $controller->getCategoria($id);
 
@@ -52,7 +53,7 @@ $cat = empty($id) ? null : $controller->getCategoria($id);
             '</div>';
         } else {
             echo '<div>'.
-                 '<label for="nameCat">Nuevo Nombre:</label>'.
+                 '<label for="nameCat">Nombre:</label>'.
                  '<input type="text" id="nameCat" name="nameCat" required>'.
             '</div>';
         }
