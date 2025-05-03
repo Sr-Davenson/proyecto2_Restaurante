@@ -79,4 +79,21 @@ class controllerCategorias
         }
         return false;
     }
+    public function procesarCategoria($nameCat, $pos)
+    {
+        if (empty($nameCat)) {
+            echo '<p class="msg-error">El nombre no puede estar vacío o contener solo espacios</p>';
+            echo '<a class="botones" href="../AdminCategoria.php">Ir a inicio</a>';
+            exit();
+        }
+        if ($this->categoriaExiste($nameCat)) {
+            echo '<p class="msg-error">El nombre <b>' . $nameCat . '</b> ya está registrado. Ingresa otro.</p>';
+            echo '<a class="botones" href="../AdminCategoria.php">Ir a inicio</a>';
+            exit();
+        }
+        $pos['nameCat'] = $nameCat;
+        return empty($datos['idCat'])
+            ? $this->saveNewCategoria($pos)
+            : $this->updateCategoria($pos);
+    }
 }

@@ -30,6 +30,7 @@ $res = empty($_POST['idPlato'])
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/styleResulOp.css">
     <title>Resultado operación</title>
 </head>
 
@@ -38,14 +39,13 @@ $res = empty($_POST['idPlato'])
     <?php
     if ($res == 'yes') {
         echo '<p>Datos guardados</p>';
-        echo '<a href="../Forms/formPlato.php">Crear otro plato</a>';
     } else {
         echo  '<p>No se pudo guardar los datos</p>';
     }
     ?>
     <br>
-    <a href="../AdminPlatos.php">Buscar otro Plato</a>
-    <br>
+    <a href="../Forms/formPlato.php">Crear otro plato</a>
+    <a class="botones" href="../AdminPlatos.php">Buscar otro Plato</a>
     <a href="../inicio.php">Ir a inicio</a>
 </body>
 

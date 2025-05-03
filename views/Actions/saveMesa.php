@@ -36,6 +36,7 @@ $res = empty($_POST['idMesa'])
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/styleResulOp.css">
     <title>Resultado operación</title>
 </head>
 
@@ -44,15 +45,14 @@ $res = empty($_POST['idMesa'])
     <?php
     if ($res == 'yes') {
         echo '<p>Datos guardados</p>';
-        echo '<a href="../Forms/formMesa.php">Crear otra mesa</a>';
     } else {
         echo  '<p>No se pudo guardar los datos</p>';
     }
     ?>
     <br>
-    <a href="../AdminMesas.php">Buscar otra Mesa</a>
-    <br>
-    <a href="../inicio.php">Ir a inicio</a>
+    <a class="botones" href="../Forms/formMesa.php">Crear otra mesa</a>
+    <a class="botones" href="../AdminMesas.php">Buscar otra Mesa</a>
+    <a class="botones" href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>

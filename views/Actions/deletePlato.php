@@ -7,7 +7,7 @@ include '../../controller/controllerPlatos.php';
 use App\controllers\controllerPlatos;
 
 $controller = new controllerPlatos();
-
+isset($_GET['id']) ?    $_GET['id'] : header("Location: ../AdminPlatos.php");
 $res = $controller->removePlato($_GET['id']);
 
 ?>
@@ -17,6 +17,7 @@ $res = $controller->removePlato($_GET['id']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/styleResulOp.css">
     <title>Eliminar Plato</title>
 </head>
 
@@ -39,7 +40,7 @@ $res = $controller->removePlato($_GET['id']);
     }
     ?>
     <br>
-    <a href="searchPlato.php">Volver</a>
+    <a class="botones" href="searchPlato.php">Volver</a>
 </body>
 
 </html>

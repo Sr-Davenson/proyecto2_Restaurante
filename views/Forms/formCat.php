@@ -17,6 +17,7 @@ $cat = empty($id) ? null : $controller->getCategoria($id);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/styleForms.css">
     <?php
     if (empty($id)) {
         echo '<title>Crear Categoria</title>';
@@ -37,24 +38,32 @@ $cat = empty($id) ? null : $controller->getCategoria($id);
         ?>
     </h1>
     <br>
-    <form action="../Actions/saveCat.php" method="post">
+    <form class="form" action="../Actions/saveCat.php" method="post">
         <?php
         if (!empty($id)) {
             echo '<input type="hidden" name="idCat" value="' . $id . '">';
+            echo '<div>'.
+                 '<label for="nameCat">Nombre Anterior:</label>'.
+                 '<input type="text" value="' . (empty($cat) ? '' : $cat->get('nombre')) . '" disabled>'.
+            '</div>'.
+            '<div>'.
+                 '<label for="nameCat">Nuevo Nombre:</label>'.
+                 '<input type="text" id="nameCat" name="nameCat" required>'.
+            '</div>';
+        } else {
+            echo '<div>'.
+                 '<label for="nameCat">Nuevo Nombre:</label>'.
+                 '<input type="text" id="nameCat" name="nameCat" required>'.
+            '</div>';
         }
         ?>
-        <div>
-            <label for="nameCat">Nombre</label>
-            <input type="text" id="nameCat" name="nameCat" value="<?php echo empty($cat) ? '' : $cat->get('nombre') ?>" required>
-        </div>
-        <div>
-            <div>
-                <button type="submit">Guardar</button>
-            </div>
+        <button type="submit">Guardar</button>
     </form>
-    <a href="../AdminCategoria.php">Buscar otra Categoria</a>
-    <br>
-    <a href="../inicio.php">Ir a inicio</a>
+    <div class="botones">
+        <a href="../AdminCategoria.php">Buscar otra Categoria</a>
+        <br>
+        <a href="../inicio.php">Ir a inicio</a>
+    </div>
 </body>
 
 </html>

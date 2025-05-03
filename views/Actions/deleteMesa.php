@@ -8,6 +8,7 @@ use App\controllers\controllerMesas;
 
 $controller = new controllerMesas();
 
+isset($_GET['id']) ?  $_GET['id'] : header("Location: ../AdminMesas.php");
 $res = $controller->removeMesas($_GET['id']);
 
 ?>
@@ -17,6 +18,7 @@ $res = $controller->removeMesas($_GET['id']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/styleResulOp.css">
     <title>Eliminar Mesa</title>
 </head>
 
@@ -36,7 +38,7 @@ $res = $controller->removeMesas($_GET['id']);
     }
     ?>
     <br>
-    <a href="searchMesa.php">Volver</a>
+    <a class="botones" href="searchMesa.php">Volver</a>
 </body>
 
 </html>

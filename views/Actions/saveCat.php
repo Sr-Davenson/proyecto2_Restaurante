@@ -10,24 +10,6 @@ use App\controllers\controllerValidaciones;
 
 $controller = new controllerCategorias();
 $val = new controllerValidaciones();
-
-$nameCat = $val->formatoTextos('nameCat');
-if (empty($nameCat)) {
-    echo 'El nombre no puede estar vacío o contener solo espacios.';
-    echo '<a href="../AdminCategoria.php">Ir a inicio</a>';
-    exit();
-}
-if ($controller->categoriaExiste($nameCat) == true) {
-    echo 'El nombre <b>' . $nameCat . '</b> ya está registrado. Ingresa otro.';
-    echo '<a href="../AdminCategoria.php">Ir a inicio</a>';
-    exit();
-}
-
-$_POST['nameCat'] = $nameCat;
-$res = empty($_POST['idCat'])
-    ? $controller->saveNewCategoria($_POST)
-    : $controller->updateCategoria($_POST);
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -35,23 +17,27 @@ $res = empty($_POST['idCat'])
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/styleResulOp.css">
     <title>Resultado operación</title>
 </head>
 
 <body>
     <h1>Resultado de la operación</h1>
     <?php
+    $nameCat = isset($_POST['nameCat']) ? $_POST['nameCat'] : header("Location: ../AdminCategoria.php");
+    $nameCat = $val->formatoTextos('nameCat');
+    $res = $controller->procesarCategoria($nameCat, $_POST);
     if ($res == 'yes') {
-        echo '<p>Datos guardados</p>';
-        echo '<a href="../Forms/formCat.php">Crear otra Categoria</a>';
+        echo '<p class="msg-ok">Datos guardados</p>';
+        echo '';
     } else {
-        echo  '<p>No se pudo guardar los datos</p>';
+        echo  '<p class="msg-error">No se pudo guardar los datos</p>';
     }
     ?>
     <br>
-    <a href="../AdminCategoria.php">Buscar otra Categoria</a>
-    <br>
-    <a href="../inicio.php">Ir a inicio</a>
+    <a class="botones" href="../Forms/formCat.php">Crear otra Categoria</a>
+    <a class="botones" href="../AdminCategoria.php">Buscar otra Categoria</a>
+    <a class="botones" href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>
