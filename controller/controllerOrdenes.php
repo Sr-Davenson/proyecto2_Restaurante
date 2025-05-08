@@ -3,68 +3,59 @@
 namespace App\controllers;
 
 use App\models\entities\Orden;
-use App\controllers\controllerPlatos;
 
 class controllerOrdenes
 {
-    public function saveNewOrden($request)
+    public function __construct()
     {
-        $model = new Orden();
-        
-        $model->set('fecha', $request['fechaOrden']);
-        $model->set('mesa_id', $request['idMesa']);
-        
-        $detalleOrden = [];
-        $total = 0;
+    }
 
-        foreach ($request['platos'] as $platoItem) {
-            $platoController = new controllerPlatos();
-            $platoInfo = $platoController->getPlato($platoItem['idPlato']); 
+    // Obtener todas las mesas disponibles (Validación incluida)
+    public function obtenerMesas()
+    {
+        $ordenModel = new Orden();
+        $mesas = $ordenModel->getMesas();
 
-            if ($platoInfo) {
-                $cantidad = intval($platoItem['cantidad']);
-                $precioUnitario = floatval($platoInfo->get('precio'));
-                
-                $detalleOrden[] = [
-                    'plato_id' => $platoItem['idPlato'],
-                    'cantidad' => $cantidad,
-                    'precio' => $precioUnitario
-                ];
-
-                $total += $cantidad * $precioUnitario;
-            }
+        if (empty($mesas)) {
+            return array("error" => "No hay mesas disponibles.");
         }
 
-        $model->set('total', $total);
-        $model->set('detalle', $detalleOrden);
-
-        return $model->save() ? 'yes' : 'not';
+        return $mesas;
     }
 
- }
-
-    public function getAllOrdenes()
+    // Obtener todos los platos disponibles (Validación incluida)
+    public function obtenerPlatos()
     {
-        $model = new Orden();
-        return $model->all();
-    }
+        $ordenModel = new Orden();
+        $platos = $ordenModel->getPlatos();
 
-    public function getOrden($id)
-    {
-        $model = new Orden();
-        $model->set('id', $id);
-        return $model->find();
-    }
-
-    public function removeOrden($id)
-    {
-        $model = new Orden();
-        $model->set('id', $id);
-
-        if (empty($model->find())) {
-            return "empty";
+        if (empty($platos)) {
+            return array("error" => "No hay platos disponibles.");
         }
 
-        return $model->delete() ? 'yes' : 'not';
+        return $platos;
+    }
+
+    // Registrar una nueva orden (Validaciones incluidas)
+    public function registrarOrden($fechaOrden, $idMesa, $platos)
+    {
+        if (empty($fechaOrden) || empty($idMesa) || empty($platos)) {
+            return array("error" => "Todos los campos son obligatorios.");
+        }
+
+        if (!is_numeric($idMesa)) {
+            return array("error" => "El ID de la mesa debe ser numérico.");
+        }
+
+        // Crear instancia del modelo y registrar la orden
+        $ordenModel = new Orden();
+        $idOrden = $ordenModel->saveOrden($fechaOrden, $idMesa, $platos);
+
+        if ($idOrden) {
+            return array("success" => "Orden registrada correctamente.", "orden_id" => $idOrden);
+        } else {
+            return array("error" => "Error al registrar la orden.");
+        }
     }
 }
+
