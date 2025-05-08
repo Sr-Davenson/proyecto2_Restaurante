@@ -41,6 +41,8 @@ class controllerOrdenes
         return $model->save() ? 'yes' : 'not';
     }
 
+ }
+
     public function getAllOrdenes()
     {
         $model = new Orden();

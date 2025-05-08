@@ -31,8 +31,7 @@ class Orden extends Model
         $conexDb->closeDB();
         return $resConsul;
     }
-
-    public function update()
+ public function update()
     {
         $conexDb = new ConexDB();
         $sql = "UPDATE orders SET fecha='{$this->fecha}', mesa_id={$this->mesa_id}, total={$this->total} WHERE id={$this->id}";
@@ -64,7 +63,6 @@ class Orden extends Model
         $sql = "SELECT * FROM orders WHERE id={$this->id}";
         $resConsul = $conexDb->exeSQL($sql);
         $orden = null;
-
         if ($resConsul->num_rows > 0) {
             while ($row = $resConsul->fetch_assoc()) {
                 $orden = new Orden();
@@ -97,6 +95,6 @@ class Orden extends Model
             }
         }
         $conexDb->closeDB();
-        return $ordenes;
+   return $ordenes;
     }
 }

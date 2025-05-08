@@ -82,5 +82,4 @@ class controllerPlatos
     $model = new Plato();
     return $model->all();
 }
-
 }

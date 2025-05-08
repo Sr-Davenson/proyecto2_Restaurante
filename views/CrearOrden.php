@@ -59,34 +59,22 @@ if (!$platos || count($platos) == 0) {
 
         <label>Seleccione Mesa:</label>
         <select name="idMesa" required>
-            <?php if ($mesas && count($mesas) > 0): ?>
-                <?php foreach ($mesas as $mesa): ?>
-                    <option value="<?= $mesa->id; ?>"><?= $mesa->nombre; ?></option>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <option disabled>No hay mesas disponibles</option>
-            <?php endif; ?>
+                <?php foreach ($mesas as $mesa){
+                    echo '<option value="'.$mesa->get('id').'"  id="idMesa" name="idMesa">' . $mesa->get('nombre') . '</option>';
+                 } ?>
         </select>
-
-        <h3>Seleccione los Platos:</h3>
-        <?php if ($platos && count($platos) > 0): ?>
-            <?php foreach ($platos as $plato): ?>
-                <div class="plato-item">
-                    <input type="checkbox" class="plato-checkbox" name="platos[<?= $plato->id; ?>][idPlato]" value="<?= $plato->id; ?>" onchange="calcularTotal()">
-                    <label><?= $plato->descrip; ?> - $<?= $plato->precio; ?></label>
-                    <input type="number" name="platos[<?= $plato->id; ?>][cantidad]" class="cantidad" min="1" value="1" onchange="calcularTotal()">
-                    <input type="hidden" name="platos[<?= $plato->id; ?>][precio]" class="precio" value="<?= $plato->precio; ?>">
+        <label>Seleccione los Platos:</label>
+        <div class="plato-item">
+            <?php foreach ($platos as $plato){
+                echo '<input type="checkbox" value="'.$plato->get('id').'"  id="idPlato" name="idPlato">' . $plato->get('descrip').', $'. $plato->get('precio').'<br>';
+            }?>
                 </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p style="color: red;">Error: No hay platos disponibles.</p>
-        <?php endif; ?>
-
         <p id="totalOrden">Total: $0.00</p>
         <input type="hidden" name="total" id="totalInput">
 
         <button type="submit" <?= (!$mesas || count($mesas) == 0 || !$platos || count($platos) == 0) ? 'disabled' : ''; ?>>Registrar Orden</button>
     </form>
+    <a href="inicio.php">Volver</a>
+
 </body>
 </html>
-
