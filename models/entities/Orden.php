@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace App\models\entities;
@@ -41,3 +42,5 @@ class Orden
         return $orden_id ?? false;
     }
 }
+=======
+>>>>>>> 70cdb19 (Guardando cambios)

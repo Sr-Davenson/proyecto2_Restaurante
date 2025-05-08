@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 namespace App\controllers;
@@ -59,3 +60,5 @@ class controllerOrdenes
     }
 }
 
+=======
+>>>>>>> 70cdb19 (Guardando cambios)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 include '../models/connection/conexDB.php';
 include '../models/util/model.php';
@@ -107,3 +108,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["platos"])) {
     <a href="inicio.php">Volver</a>
 </body>
 </html>
+=======
+>>>>>>> 70cdb19 (Guardando cambios)
