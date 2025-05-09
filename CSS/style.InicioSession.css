@@ -1,7 +1,7 @@
 body{
     display: flex;
     justify-content: right;
-    background-color: #E9D8B7;
+    background-color: #dddddd;
     padding: 0%;
     margin: 0%;
     animation: animacion 1s ease-in-out;
@@ -12,11 +12,13 @@ body{
     from {
         filter: blur(20px);
         opacity: 0;
+        transform: scale(0.9);
     }
-}
-p{
-    font-size: 30px;
-    text-align: justify;
+    to {
+        filter: blur(0);
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 .Session {
     display: flex;
@@ -38,9 +40,9 @@ p{
     color: white;
     text-decoration: none;
     padding: 5px 10px;
-    background-color: #cda54d;
+    background-color: #661d5a;
     border-radius: 5px;
-    border: 2px solid #cda54d00;
+    border: 2px solid  #661d5a;
     font-size: 120%;
     text-align: center;
     box-shadow: 1px 1px 5px 3px  #d1cec6;
@@ -54,7 +56,7 @@ p{
 }
 
 .boton:active { 
-    background: #faaf4d;
+    background: #f8f6f3;
 }
 .Session img {
     margin-top: 10vh;
