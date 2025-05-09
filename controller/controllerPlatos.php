@@ -78,9 +78,16 @@ class controllerPlatos
             : $this->updatePlato($pos);
     }
     public function getAllPlatos()
+<<<<<<< HEAD
     {
         $model = new Plato();
         $platos = $model->all();
         return $platos;
     }
+=======
+{
+    $model = new Plato();
+    return $model->all();
+}
+>>>>>>> ff3284fade6d1d116e68d8ed07622d4832619967
 }

@@ -106,4 +106,24 @@ class Plato extends Model
         $res = $conexDb->exeSQL($sql);
         return ($res->num_rows > 0);
     }
+    public function all()
+    {
+        $conexDb = new ConexDB();
+        $sql = "SELECT * FROM dishes";
+        $resConsul = $conexDb->exeSQL($sql);
+        $platos = [];
+
+        if ($resConsul->num_rows > 0) {
+            while ($row = $resConsul->fetch_assoc()) {
+                $plato = new Plato();
+                $plato->set('id', $row['id']);
+                $plato->set('descrip', $row['description']);
+                $plato->set('precio', $row['price']);
+                $plato->set('idCat', $row['idCategory']);
+                $platos[] = $plato;
+            }
+        }
+        $conexDb->closeDB();
+        return $platos;
+    }
 }
