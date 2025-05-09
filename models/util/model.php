@@ -19,4 +19,3 @@ abstract class Model
         $this->{$nameProp} = $value;
     }
 }
-
