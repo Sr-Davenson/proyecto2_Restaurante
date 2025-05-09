@@ -38,7 +38,7 @@ p{
     color: white;
     text-decoration: none;
     padding: 5px 10px;
-    background-color: #cda54d;
+    background-color: #720101;
     border-radius: 5px;
     border: 2px solid #cda54d00;
     font-size: 120%;
@@ -54,7 +54,7 @@ p{
 }
 
 .boton:active { 
-    background: #faaf4d;
+    background: #e7a5a5;
 }
 .Session img {
     margin-top: 10vh;

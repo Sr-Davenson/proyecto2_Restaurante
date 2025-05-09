@@ -77,4 +77,10 @@ class controllerPlatos
             ? $this->saveNewPlato($pos)
             : $this->updatePlato($pos);
     }
+    public function getAllPlatos()
+    {
+        $model = new Plato();
+        $platos = $model->all();
+        return $platos;
+    }
 }

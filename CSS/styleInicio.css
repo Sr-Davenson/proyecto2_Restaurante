@@ -6,7 +6,7 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .menu {
-    background: -webkit-linear-gradient(90deg, #000000,#141007,#a4843d,#a4843d,#cda54d);/* Chrome 10-25, Safari 5.1-6 */                          background: linear-gradient(90deg, #000000,#141007,#a4843d,#a4843d,#cda54d);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */                                             
+    background:-webkit-linear-gradient(90deg, #000000,#2c1616,#700000,#4c0000);/* Chrome 10-25, Safari 5.1-6 */                          background: linear-gradient(90deg, #000000,#2c1616,#700000,#4c0000);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */                                                                             
     width: 98.8vw;
     height: 15vh;
     margin-top: 0%;
@@ -41,10 +41,10 @@ a {
 }
 
 a:hover {
-    background-color: #e1c17b;
+    background-color: #9d0303;
     border: 2px solid #ffffff;
 }
 
 a:active { 
-    background: #faaf4d;
+    background: #e7a5a5;
 }
