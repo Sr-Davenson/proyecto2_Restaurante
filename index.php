@@ -30,12 +30,16 @@ switch ($f->calcSaludo()) {
 <body>
     <div>
         <fieldset class="Session">
+<<<<<<< HEAD
             <img src="images/log.png" alt="Logo">
+=======
+            <img src="images/log.jpg" alt="Logo">
+>>>>>>> 4c39206432d105bc0c5a96bea03cde14d9e7867a
             <p><b><?php echo $sal . '<br>'; ?></b> Bienvenido!!</p>
             <a class="boton" href="views/inicio.php">Ingresar</a>
         </fieldset>
     </div>
-    <img class="img" src="images/login.png" alt="l">
+    <img class="img" src="images/menu.jpg" alt="l">
 
 </body>
 
