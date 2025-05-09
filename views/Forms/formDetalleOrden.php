@@ -12,6 +12,17 @@ use App\controllers\controllerPlatos;
 $controllerOrden = new controllerDetalleOrden();
 $controllerPlato = new controllerPlatos();
 $platos = $controllerPlato->getAllPlatos();
+
+// Verificar si 'idOrden' está presente en $_POST
+$idOrden = $_POST['idOrden'] ?? null;
+
+if ($idOrden === null) {
+    echo '<p class="msg-error">Error: No se recibió el ID de la orden.</p>';
+    exit();
+}
+
+echo "<p>ID de la orden recibida: $idOrden</p>";
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

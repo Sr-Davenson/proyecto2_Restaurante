@@ -21,6 +21,7 @@ class Orden extends Model
         return $resConsul;
     }
 
+
     public function update()
 {
     $conexDb = new ConexDB();

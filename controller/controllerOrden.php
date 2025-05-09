@@ -10,7 +10,7 @@ class controllerOrden
     public function saveNewOrden($resquest)
     {
         $model = new Orden();
-        $model->set('fecha', $resquest['dateOrder']);
+        $model->set('fecha', $resquest['fecha']);
         $model->set('total', $resquest['total']);
         $model->set('idMesa', $resquest['idMesa']);
 
@@ -36,15 +36,10 @@ class controllerOrden
         $resConsul =  $model->delete();
         return $resConsul;
     }
-    public function procesarOrden($fecha,$pos)
+    public function procesarOrden()
     {
-        if (empty($fecha)) {
-            echo '<p class="msg-error">La fecha no puede estar vacia</p>';
-            echo '<a class="botones" href="../inicio.php">Ir a inicio</a>';
-            exit();
-        } 
-        return empty($pos['id'])
-        ? $this->saveNewOrden($pos)
-        : $this->updateOrden($pos);
+        return empty($_POST['id'])
+        ? $this->saveNewOrden($_POST)
+        : $this->updateOrden($_POST);
     }
 }

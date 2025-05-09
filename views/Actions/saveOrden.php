@@ -1,4 +1,18 @@
 <?php
+// include '../../models/connection/conexDB.php';
+// include '../../models/util/model.php';
+// include '../../models/entities/Orden.php';
+// include '../../controller/controllerOrden.php';
+
+// use App\controllers\controllerOrden;
+// $controller = new controllerOrden();
+
+// $total = $_POST['total'];
+// $fecha = $_POST['fecha'];
+// $res = $controller->procesarOrden($_POST);
+
+
+
 include '../../models/connection/conexDB.php';
 include '../../models/util/model.php';
 include '../../models/entities/Orden.php';
@@ -6,17 +20,22 @@ include '../../controller/controllerOrden.php';
 
 use App\controllers\controllerOrden;
 $controller = new controllerOrden();
-// $fecha = isset($_POST['dateOrder']) ? $_POST['dateOrder'] : null;
-// $total = isset($_POST['total']) ? $_POST['total'] : null;
-if (isset($_POST['fecha'])) {
-    $fecha = date('Y-m-d H:i:s', strtotime($_POST['fecha'])); // Formato correcto
+var_dump($_POST); // Para ver qué datos llegan
+$total = $_POST['total'];
+$fecha = $_POST['fecha'];
+$idOrden = $_POST['id'] ; // Asegura que 'idOrden' esté definido
 
-    echo "Fecha recibida: " . htmlspecialchars($fecha);
-} else {
-    echo "No se envió ninguna fecha.";
+if ($total == null || empty($total)) {
+    if ($idOrden) {
+        header("Location: formDetalleOrden.php?id=$idOrden");
+        exit();
+    } else {
+        echo '<p class="msg-error">Error: No se puede redirigir porque falta el ID de la orden.</p>';
+        exit();
+    }
 }
-$res = $controller->procesarOrden($fecha,$_POST);
 
+$res = $controller->procesarOrden($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="es">

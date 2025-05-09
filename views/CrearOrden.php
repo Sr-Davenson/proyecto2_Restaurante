@@ -33,7 +33,7 @@ $mesas = $controllerMesa->getAllMesas();
 
         <label for="total">Total</label>
         <?php
-        echo '<input type="number" value="0" readonly disabled>';
+        echo '<input type="number" name="total" value="0" readonly>';
         echo '<div>' .
             '<label for="categoria">Selecciona una mesa:</label>';
         echo'<select name="idMesa" id="mesas">';
