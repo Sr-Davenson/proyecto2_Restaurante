@@ -19,54 +19,30 @@ class Orden extends Model
         $resConsul = $conexDb->exeSQL($sql);
         $id = $conexDb->lastInsertId();
         $conexDb->closeDB();
-        
         return $id;
     }
 
 
-    public function update($orderID,$totalOrden)
+    public function update($orderID, $totalOrden)
     {
         $conexDb = new ConexDB();
         $sql = "UPDATE orders SET total = $totalOrden WHERE id = $orderID";
         $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
-
         return $resConsul;
     }
 
-    public function delete()
-    {
-        $conexDb = new ConexDB();
-        $sql = "DELETE FROM orders WHERE id=" . $this->id;
-        $resConsul = $conexDb->exeSQL($sql);
-        $conexDb->closeDB();
-        return $resConsul;
-    }
-
-
-    public function find()
+    public function exist()
     {
         $conexDb = new ConexDB();
         $sql = "select * from orders where id=" . $this->id;
         $resConsul = $conexDb->exeSQL($sql);
-        $orden = null;
         if ($resConsul->num_rows > 0) {
-            while ($row = $resConsul->fetch_assoc()) {
-                $orden = new Orden();
-                $orden->set('id', $row['id']);
-                $orden->set('fecha', $row['dateOrder']);
-                $orden->set('total', $row['total']);
-                $orden->set('idMesa', $row['idTable']);
-                break;
-            }
+            return true;
         }
-        $conexDb->closeDB();
-        return $orden;
+        return false;
     }
-    public function exist($namePlato)
-    {
-
-    }
+    
     public function obtenerOrdenesPorFecha($fechaInicio, $fechaFin)
     {
         $conexDb = new ConexDB();
@@ -87,29 +63,4 @@ class Orden extends Model
 
         return  $ordens;
     }
-
-
-    public function all()
-    {
-        $conexDb = new ConexDB();
-        $sql = "select * from orders";
-        $resConsul = $conexDb->exeSQL($sql);
-        $categorias = [];
-        if ($resConsul->num_rows > 0) {
-            while ($row = $resConsul->fetch_assoc()) {
-                $orden = new Orden();
-                $orden->set('id', $row['id']);
-                $orden->set('fecha', $row['dateOrder']);
-                $orden->set('total', $row['total']);
-                $orden->set('idMesa', $row['idTable']);
-                array_push($categorias, $orden);
-            }
-        }
-        $conexDb->closeDB();
-        return $categorias;
-    }
-    // public function consultarId(){
-    //     $conexDb = new ConexDB();
-    //     return 
-    // }
 }

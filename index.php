@@ -35,7 +35,7 @@ switch ($f->calcSaludo()) {
             <a class="boton" href="views/inicio.php">Ingresar</a>
         </fieldset>
     </div>
-    <img class="img" src="images/menu.jpg" alt="l">
+    <img class="img" src="images/menu.jpg" alt="logo">
 
 </body>
 

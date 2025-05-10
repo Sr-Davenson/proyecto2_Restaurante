@@ -12,34 +12,43 @@ use App\controllers\controllerOrden;
 $controllerOrden = new controllerOrden();
 $controllerDetalle = new controllerDetalleOrden();
 
-$fecha = isset($_POST['fecha']) ? date('Y-m-d H:i:s', strtotime($_POST['fecha'])) : null;
-$idMesa = isset($_POST['idMesa']) ? intval($_POST['idMesa']) : null;
-if ($fecha == null || $idMesa == null) {
-    header("Location: ../crearOrden.php");
+isset($_POST['fecha']) ? $_POST['fecha'] : header("Location: ../crearOrden.php");
+isset($_POST['idMesa']) ? $_POST['idMesa'] : header("Location: ../crearOrden.php");
+if (isset($_POST['idPlato']) == null) {
+    echo "<p class='msg-error'>Debe seleccionar al menos un plato</p>";
+    echo '<a href="../CrearOrden.php">Volver</a>';
+    exit();
 }
 $fecha = date('Y-m-d H:i:s', strtotime($_POST['fecha']));
 $idMesa = intval($_POST['idMesa']);
-$platosSeleccionados = $_POST['idPlato'] ?? [];
+$platosSeleccionados = $_POST['idPlato'];
 $totalOrden = 0;
+$idOrden = $controllerOrden->saveNewOrden($_POST, 0);
+$totalOrden = $controllerDetalle->saveNewDetalleOrden($platosSeleccionados, $_POST['cantidad'], $idOrden);
 
+$res = $controllerOrden->updateOrden($idOrden, $totalOrden);
 
-$orderID = $controllerOrden->saveNewOrden($_POST, 0);
+?>
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/styleResulOp.css">
+    <title>Crear Orden</title>
+</head>
 
-echo "ID de orden creada: " . $orderID;
+<body>
+    <h1>Resultado de la operación</h1>
+    <?php
+    if ($res == 'yes') {
+        echo "<p class='msg-ok'>Orden creada, preparando preparacion</p>";
+        echo '<a class="botones" href="../inicio.php">Ir a inicio</a>';
+    } else {
+        echo "<p class='msg-error'>No se pudo registrar la orden</p>";
+    }
+    ?>
+</body>
 
-
-$totalOrden = $controllerDetalle->saveNewDetalleOrden($platosSeleccionados, ['idOrden' => $orderID, 'cantidad' => $_POST['cantidad']]);
-
-
-
-
-$res = $controllerOrden->updateOrden($orderID, $totalOrden);
-
-
-if ($res == 'yes') {
-    echo "<p class='msg-ok'>Orden creada con ID: $orderID</p>";
-    echo '<a href="../inicio.php">Ir a inicio</a>';
-} else {
-    echo "<p class='msg-error'>No se pudo registrar la orden</p>";
-}
+</html>

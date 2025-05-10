@@ -97,4 +97,15 @@ class Mesas extends Model
         $res = $conexDb->exeSQL($sql);
         return ($res->num_rows > 0);
     }
+    public function confirmDelete($id)
+    {
+        $conexDb = new ConexDB();
+        $sql = "SELECT COUNT(*) as total FROM orders WHERE idTable = $id";
+        $result = $conexDb->exeSQL($sql);
+        $row = $result->fetch_assoc();
+        if ($row['total'] > 0) {
+            return true;
+        }
+        return false;
+    }
 }

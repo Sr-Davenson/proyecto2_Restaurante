@@ -17,7 +17,7 @@
         <a href="AdminOrdenes.php">Administrar ordenes</a>
         <a href="../index.php">Salir</a>
     </div>
-    <img class="img" src="../images/log.png" alt="l">
+    <img class="img" src="" alt="imagenInicio">
 </body>
 
 </html>

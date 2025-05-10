@@ -30,15 +30,21 @@ class controllerMesas
         return $resConsul ? 'yes' : 'not';
     }
 
+
     public function removeMesas($id)
     {
         $model = new Mesas();
-        $model->set('id', $id);
-        if (empty($model->find())) {
-            return "empty";
+        if ($model->confirmDelete($id) == false) {
+            $model->set('id', $id);
+
+            if (empty($model->find())) {
+                return "empty";
+            }
+            $resConsul = $model->delete();
+            return $resConsul ? '1' : '2';
+        } else {
+            return 3;
         }
-        $resConsul =  $model->delete();
-        return $resConsul ? 'yes' : 'not';
     }
 
     public function searchMesa($search)

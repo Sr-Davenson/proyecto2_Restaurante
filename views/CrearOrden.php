@@ -52,7 +52,7 @@ $mesas = $controllerMesa->getAllMesas();
         foreach ($platos as $plato) {
             echo '<input type="checkbox" name="idPlato[]" value="' . $plato->get('id') . '">';
             echo '<label>' . $plato->get('descrip') . ' ($' . $plato->get('precio') . ')</label>';
-            echo '<input type="number" name="cantidad[' . $plato->get('id') . ']" min="0" value="0">';
+            echo '<input type="number" name="cantidad[' . $plato->get('id') . ']" min="1" value="1">';
         }
         ?>
 

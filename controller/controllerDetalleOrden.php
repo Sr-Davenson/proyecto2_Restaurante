@@ -6,20 +6,20 @@ use App\models\entities\DetalleOrden;
 
 class controllerDetalleOrden
 {
-    public function saveNewDetalleOrden($platosSeleccionados, $request)
+    public function saveNewDetalleOrden($platosSeleccionados, $cantidad, $idOrden)
     {
         $totalOrden = 0;
 
         foreach ($platosSeleccionados as $idPlato) {
             $model = new DetalleOrden();
 
-            $cantidad = intval($request['cantidad'][$idPlato]);
+            $cantidadPlato = isset($cantidad[$idPlato]) ? intval($cantidad[$idPlato]) : 0;
             $precioUnitario = $model->obtenerPrecio($idPlato);
-            $subtotal = $cantidad * $precioUnitario;
+            $subtotal = $cantidadPlato * $precioUnitario;
 
-            $model->set('cantidad', $cantidad);
+            $model->set('cantidad', $cantidadPlato);
             $model->set('precio', $precioUnitario);
-            $model->set('idOrden', $request['idOrden']);
+            $model->set('idOrden', $idOrden);
             $model->set('idPlato', $idPlato);
 
             if ($model->save()) {

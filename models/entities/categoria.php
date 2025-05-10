@@ -57,8 +57,8 @@ class Categoria extends Model
     public function confirmDelete($id)
     {
         $conexDb = new ConexDB();
-        $sqlCheck = "SELECT COUNT(*) as total FROM dishes WHERE idCategory = $id";
-        $result = $conexDb->exeSQL($sqlCheck);
+        $sql = "SELECT COUNT(*) as total FROM dishes WHERE idCategory = $id";
+        $result = $conexDb->exeSQL($sql);
         $row = $result->fetch_assoc();
         if ($row['total'] > 0) {
             return true;
