@@ -13,15 +13,6 @@ $controllerOrden = new controllerDetalleOrden();
 $controllerPlato = new controllerPlatos();
 $platos = $controllerPlato->getAllPlatos();
 
-// Verificar si 'idOrden' está presente en $_POST
-$idOrden = $_POST['idOrden'] ?? null;
-
-if ($idOrden === null) {
-    echo '<p class="msg-error">Error: No se recibió el ID de la orden.</p>';
-    exit();
-}
-
-echo "<p>ID de la orden recibida: $idOrden</p>";
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +22,7 @@ echo "<p>ID de la orden recibida: $idOrden</p>";
     <title>Crear Detalle orden</title>
 </head>
 <body>
-    <h1>Registrar Plato</h1>
+    <h1>Registrar Pedido</h1>
     <br>
     <form action="../Actions/saveDetalleOrden.php" method="post">
         <?php
@@ -43,14 +34,14 @@ echo "<p>ID de la orden recibida: $idOrden</p>";
             echo '<label for="Precio">Precio</label>';
             echo '<input type="number" value="' . (empty($plato) ? '' : $plato->get('precio')) . '"  disabled> ';
             echo '<label for="cantidad">Cantidad plato</label>';
-            echo ' <input type="number" id="cantidad" name="cantidad" min="1" step="0.01" required>';
+            echo ' <input type="number" id="cantidad" name="cantidad" min="1" required>';
         }
         ?>
             <br>
         <button type="submit">Guardar</button>
     </form>
     <div class="botones">
-        <a href="../CrearOden.php">Volver</a>
+        <a href="../inicio.php">Volver</a>
     </div>
 </body>
 

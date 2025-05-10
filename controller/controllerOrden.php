@@ -39,7 +39,22 @@ class controllerOrden
     public function procesarOrden()
     {
         return empty($_POST['id'])
-        ? $this->saveNewOrden($_POST)
-        : $this->updateOrden($_POST);
+            ? $this->saveNewOrden($_POST)
+            : $this->updateOrden($_POST);
+    }
+
+    public function filtarPorfechas($fechaInicio, $fechaFin)
+    {
+        $model = new Orden();
+        $cats = [];
+        $cats = $model->obtenerOrdenesPorFecha($fechaInicio, $fechaFin);
+        return $cats;
+    
+    }
+    public function getAllOrdenes()
+    {
+        $model = new Orden();
+        $cats = $model->all();
+        return $cats;
     }
 }

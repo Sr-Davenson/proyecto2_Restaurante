@@ -1,64 +1,49 @@
 <?php
-// include '../../models/connection/conexDB.php';
-// include '../../models/util/model.php';
-// include '../../models/entities/Orden.php';
-// include '../../controller/controllerOrden.php';
-
-// use App\controllers\controllerOrden;
-// $controller = new controllerOrden();
-
-// $total = $_POST['total'];
-// $fecha = $_POST['fecha'];
-// $res = $controller->procesarOrden($_POST);
-
-
-
 include '../../models/connection/conexDB.php';
 include '../../models/util/model.php';
 include '../../models/entities/Orden.php';
 include '../../controller/controllerOrden.php';
 
-use App\controllers\controllerOrden;
-$controller = new controllerOrden();
-var_dump($_POST); // Para ver qué datos llegan
-$total = $_POST['total'];
-$fecha = $_POST['fecha'];
-$idOrden = $_POST['id'] ; // Asegura que 'idOrden' esté definido
+$fecha = date('Y-m-d H:i:s', strtotime($_POST['fecha']));
+$idTable = intval($_POST['idTable']);
+$platosSeleccionados = $_POST['idPlato'] ?? [];
+$totalOrden = 0;
 
-if ($total == null || empty($total)) {
-    if ($idOrden) {
-        header("Location: formDetalleOrden.php?id=$idOrden");
-        exit();
-    } else {
-        echo '<p class="msg-error">Error: No se puede redirigir porque falta el ID de la orden.</p>';
-        exit();
-    }
+$conexDb = new mysqli("localhost", "root", "", "proyecto_2_db");
+
+// Insertar la orden en `orders`
+$sqlOrden = "INSERT INTO orders (dateOrder, total, idTable) VALUES ('$fecha', 0, $idTable)";
+$conexDb->query($sqlOrden);
+
+// Obtener el ID de la orden recién creada
+$orderID = $conexDb->insert_id;
+
+// Insertar detalles de la orden en `order_details`
+foreach ($platosSeleccionados as $idPlato) {
+    $cantidad = intval($_POST['cantidad'][$idPlato]);
+
+    // Obtener precio del plato desde la base de datos
+    $sqlPrecio = "SELECT price FROM dishes WHERE id = $idPlato";
+    $result = $conexDb->query($sqlPrecio);
+    $row = $result->fetch_assoc();
+    $precioUnitario = $row['price'];
+
+    // Calcular subtotal
+    $subtotal = $cantidad * $precioUnitario;
+
+    // Insertar detalle en `order_details`
+    $sqlDetalle = "INSERT INTO order_details (idOrder, idDish, quantity, price) VALUES ($orderID, $idPlato, $cantidad, $precioUnitario)";
+    $conexDb->query($sqlDetalle);
+
+    // Acumular total
+    $totalOrden += $subtotal;
 }
 
-$res = $controller->procesarOrden($_POST);
-?>
-<!DOCTYPE html>
-<html lang="es">
+// Actualizar el total de la orden
+$conexDb->query("UPDATE orders SET total = $totalOrden WHERE id = $orderID");
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../CSS/styleResulOp.css">
-    <title>Resultado operación</title>
-</head>
+echo "<p class='msg-ok'>Orden creada con ID: $orderID</p>";
+echo '    <a href="../inicio.php">Ir a inicio</a>';
 
-<body>
-    <h1>Resultado de la operación</h1>
-    <?php
-    if ($res == 'yes') {
-        echo '<p class="msg-ok">Datos guardados</p>';
-        echo '';
-    } else {
-        echo  '<p class="msg-error">No se pudo guardar los datos</p>';
-    }
-    ?>
-    <br>
-    <a class="botones" href="../inicio.php">Ir a inicio</a>
-</body>
 
-</html>
+$conexDb->close();

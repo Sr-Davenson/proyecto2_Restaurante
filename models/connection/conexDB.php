@@ -26,6 +26,8 @@ class ConexDB {
     public function exeSQL($sql){
         return $this->conex->query($sql);
     }
-
+        public function lastInsertId(){
+        return $this->conex->insert_id;
+    }
 
 }
