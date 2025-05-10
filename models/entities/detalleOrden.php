@@ -13,6 +13,16 @@ class DetalleOrden extends Model
     protected $idOrden = null;
     protected $idPlato = null;
 
+    public function obtenerPrecio($idPlato)
+    {
+        $conexDb = new ConexDB();
+        $sqlPrecio = "SELECT price FROM dishes WHERE id = $idPlato";
+        $result = $conexDb->exeSQL($sqlPrecio);
+        $row = $result->fetch_assoc();
+        $precioUnitario = $row['price'];
+        return $precioUnitario;
+    }
+
     public function save()
     {
         $conexDb = new ConexDB();
@@ -20,30 +30,5 @@ class DetalleOrden extends Model
         $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
         return $resConsul;
-    }
-
-    public function update()
-    {
-        $conexDb = new ConexDB();
-        $sql = "UPDATE orders SET quantity='" . $this->cantidad . "', price=" . $this->precio . ", idOrder=" . $this->idOrden . ", idDish=" . $this->idPlato . " WHERE id=" . $this->id;
-        $resConsul = $conexDb->exeSQL($sql);
-        $conexDb->closeDB();
-        return $resConsul;
-    }
-
-    public function delete()
-    {
-        $conexDb = new ConexDB();
-        $sql = "DELETE FROM orders WHERE id=" . $this->id;
-        $resConsul = $conexDb->exeSQL($sql);
-        $conexDb->closeDB();
-        return $resConsul;
-    }
-    public function exist($namePlato)
-    {
-        // $conexDb = new ConexDB();
-        // $sql = "SELECT id FROM dishes WHERE LOWER(description) = LOWER('$namePlato')";
-        // $res = $conexDb->exeSQL($sql);
-        // return ($res->num_rows > 0);
     }
 }

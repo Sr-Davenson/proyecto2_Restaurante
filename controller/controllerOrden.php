@@ -7,40 +7,23 @@ use App\models\entities\Orden;
 class controllerOrden
 {
 
-    public function saveNewOrden($resquest)
+    public function saveNewOrden($request, $totalOrden)
     {
         $model = new Orden();
-        $model->set('fecha', $resquest['fecha']);
-        $model->set('total', $resquest['total']);
-        $model->set('idMesa', $resquest['idMesa']);
-
-        return $model->save() ? 'yes' : 'not';
+        $model->set('fecha', $request['fecha']);
+        $model->set('total', $totalOrden);
+        $model->set('idMesa', $request['idMesa']);
+        $a = $model->save();
+        return $a;
     }
 
-    public function updateOrden($resquest)
+    public function updateOrden($totalOrden, $orderID)
     {
         $model = new Orden();
-        $model->set('id', $resquest['id']);
-        $model->set('total', $resquest['total']);
-        $resConsul = $model->update();
+        $model->set('id', $orderID);
+        $model->set('total', $totalOrden);
+        $resConsul = $model->update($totalOrden, $orderID);
         return $resConsul ? 'yes' : 'not';
-    }
-
-    public function removeOrden($id)
-    {
-        $model = new Orden();
-        $model->set('id', $id);
-        if (empty($model->find())) {
-            return "empty";
-        }
-        $resConsul =  $model->delete();
-        return $resConsul;
-    }
-    public function procesarOrden()
-    {
-        return empty($_POST['id'])
-            ? $this->saveNewOrden($_POST)
-            : $this->updateOrden($_POST);
     }
 
     public function filtarPorfechas($fechaInicio, $fechaFin)
@@ -50,6 +33,7 @@ class controllerOrden
         $cats = $model->obtenerOrdenesPorFecha($fechaInicio, $fechaFin);
         return $cats;
     }
+
     public function getAllOrdenes()
     {
         $model = new Orden();

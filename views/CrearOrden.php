@@ -16,8 +16,8 @@ use App\controllers\controllerPlatos;
 $controllerOrden = new controllerOrden();
 $controllerMesa = new controllerMesas();
 $controllerPlato = new controllerPlatos();
+
 $platos = $controllerPlato->getAllPlatos();
-$id = empty($_GET['id']) ? null : $_GET['id'];
 $mesas = $controllerMesa->getAllMesas();
 ?>
 
@@ -37,7 +37,7 @@ $mesas = $controllerMesa->getAllMesas();
         <input type="datetime-local" name="fecha" id="fecha" required>
 
         <label for="mesa">Mesa:</label>
-        <select name="idTable">
+        <select name="idMesa">
             <?php
             foreach ($mesas as $mesa) {
                 echo '<option value="' . $mesa->get('id') . '">' . $mesa->get('nombre') . '</option>';
@@ -46,7 +46,7 @@ $mesas = $controllerMesa->getAllMesas();
         </select>
         <h1>Registrar Pedido</h1>
 
-        <h3>Selecciona los platos:</h3>
+        <h2>Seleccionar los platos</h2>
         <?php
 
         foreach ($platos as $plato) {

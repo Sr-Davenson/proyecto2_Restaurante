@@ -6,32 +6,27 @@ use App\models\entities\DetalleOrden;
 
 class controllerDetalleOrden
 {
+    public function saveNewDetalleOrden($platosSeleccionados, $request)
+    {
+        $totalOrden = 0;
 
-    public function saveNewDetalleOrden($resquest)
-    {
-        $model = new DetalleOrden();
-        $model->set('cantidad', $resquest['quantity']);
-        $model->set('precio', $resquest['price']);
-        $model->set('idOrden', $resquest['idOrder']);
-        $model->set('idPlato', $resquest['idDish']);
-        return $model->save() ? 'yes' : 'not';
-    }
+        foreach ($platosSeleccionados as $idPlato) {
+            $model = new DetalleOrden();
 
-    public function updateDetalleOrden($resquest)
-    {
-        $model = new DetalleOrden();
-        $model->set('cantidad', $resquest['quantity']);
-        $model->set('precio', $resquest['price']);
-        $model->set('idOrden', $resquest['idOrder']);
-        $model->set('idPlato', $resquest['idDish']);
-        $resConsul = $model->update();
-        return $resConsul ? 'yes' : 'not';
-    }
-    public function procesarDetalleOrden($pos)
-    {
-        // $pos['nameCat'] = $nameCat;
-        return empty($pos['id'])
-            ? $this->saveNewDetalleOrden($pos)
-            : $this->updateDetalleOrden($pos);
+            $cantidad = intval($request['cantidad'][$idPlato]);
+            $precioUnitario = $model->obtenerPrecio($idPlato);
+            $subtotal = $cantidad * $precioUnitario;
+
+            $model->set('cantidad', $cantidad);
+            $model->set('precio', $precioUnitario);
+            $model->set('idOrden', $request['idOrden']);
+            $model->set('idPlato', $idPlato);
+
+            if ($model->save()) {
+                $totalOrden += $subtotal;
+            }
+        }
+
+        return $totalOrden;
     }
 }

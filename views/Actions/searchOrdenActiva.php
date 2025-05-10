@@ -8,13 +8,11 @@ use App\controllers\controllerOrden;
 
 $controller = new controllerOrden();
 
-// Verificar si las fechas fueron enviadas correctamente
 $fechaIni = isset($_POST['fechaIni']) ? $_POST['fechaIni'] : null;
 $fechaFin = isset($_POST['fechaFin']) ? $_POST['fechaFin'] : null;
 
 if ($fechaIni && $fechaFin) {
     $os = $controller->filtarPorfechas($fechaIni, $fechaFin);
-    // $os = $controller->filtrarPorFechas($fechaIni, $fechaFin);
 } else {
     $os = [];
 }

@@ -17,15 +17,17 @@ class Orden extends Model
         $conexDb = new ConexDB();
         $sql = "INSERT INTO orders (dateOrder,total,idTable) VALUES ('" . $this->fecha . "', '" . $this->total . "', '" . $this->idMesa . "')";
         $resConsul = $conexDb->exeSQL($sql);
+        $id = $conexDb->lastInsertId();
         $conexDb->closeDB();
-        return $resConsul;
+        
+        return $id;
     }
 
 
-    public function update()
+    public function update($orderID,$totalOrden)
     {
         $conexDb = new ConexDB();
-        $sql = "UPDATE orders SET dateOrder='" . $this->fecha . "', total=" . $this->total . ", idTable=" . $this->idMesa . " WHERE id=" . $this->id;
+        $sql = "UPDATE orders SET total = $totalOrden WHERE id = $orderID";
         $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
 
@@ -63,10 +65,7 @@ class Orden extends Model
     }
     public function exist($namePlato)
     {
-        // $conexDb = new ConexDB();
-        // $sql = "SELECT id FROM dishes WHERE LOWER(description) = LOWER('$namePlato')";
-        // $res = $conexDb->exeSQL($sql);
-        // return ($res->num_rows > 0);
+
     }
     public function obtenerOrdenesPorFecha($fechaInicio, $fechaFin)
     {
@@ -109,4 +108,8 @@ class Orden extends Model
         $conexDb->closeDB();
         return $categorias;
     }
+    // public function consultarId(){
+    //     $conexDb = new ConexDB();
+    //     return 
+    // }
 }

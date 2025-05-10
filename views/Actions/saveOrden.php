@@ -2,48 +2,44 @@
 include '../../models/connection/conexDB.php';
 include '../../models/util/model.php';
 include '../../models/entities/Orden.php';
+include '../../models/entities/DetalleOrden.php';
 include '../../controller/controllerOrden.php';
+include '../../controller/controllerDetalleOrden.php';
 
+use App\controllers\controllerDetalleOrden;
+use App\controllers\controllerOrden;
+
+$controllerOrden = new controllerOrden();
+$controllerDetalle = new controllerDetalleOrden();
+
+$fecha = isset($_POST['fecha']) ? date('Y-m-d H:i:s', strtotime($_POST['fecha'])) : null;
+$idMesa = isset($_POST['idMesa']) ? intval($_POST['idMesa']) : null;
+if ($fecha == null || $idMesa == null) {
+    header("Location: ../crearOrden.php");
+}
 $fecha = date('Y-m-d H:i:s', strtotime($_POST['fecha']));
-$idTable = intval($_POST['idTable']);
+$idMesa = intval($_POST['idMesa']);
 $platosSeleccionados = $_POST['idPlato'] ?? [];
 $totalOrden = 0;
 
-$conexDb = new mysqli("localhost", "root", "", "proyecto_2_db");
 
-// Insertar la orden en `orders`
-$sqlOrden = "INSERT INTO orders (dateOrder, total, idTable) VALUES ('$fecha', 0, $idTable)";
-$conexDb->query($sqlOrden);
+$orderID = $controllerOrden->saveNewOrden($_POST, 0);
 
-// Obtener el ID de la orden recién creada
-$orderID = $conexDb->insert_id;
 
-// Insertar detalles de la orden en `order_details`
-foreach ($platosSeleccionados as $idPlato) {
-    $cantidad = intval($_POST['cantidad'][$idPlato]);
+echo "ID de orden creada: " . $orderID;
 
-    // Obtener precio del plato desde la base de datos
-    $sqlPrecio = "SELECT price FROM dishes WHERE id = $idPlato";
-    $result = $conexDb->query($sqlPrecio);
-    $row = $result->fetch_assoc();
-    $precioUnitario = $row['price'];
 
-    // Calcular subtotal
-    $subtotal = $cantidad * $precioUnitario;
+$totalOrden = $controllerDetalle->saveNewDetalleOrden($platosSeleccionados, ['idOrden' => $orderID, 'cantidad' => $_POST['cantidad']]);
 
-    // Insertar detalle en `order_details`
-    $sqlDetalle = "INSERT INTO order_details (idOrder, idDish, quantity, price) VALUES ($orderID, $idPlato, $cantidad, $precioUnitario)";
-    $conexDb->query($sqlDetalle);
 
-    // Acumular total
-    $totalOrden += $subtotal;
+
+
+$res = $controllerOrden->updateOrden($orderID, $totalOrden);
+
+
+if ($res == 'yes') {
+    echo "<p class='msg-ok'>Orden creada con ID: $orderID</p>";
+    echo '<a href="../inicio.php">Ir a inicio</a>';
+} else {
+    echo "<p class='msg-error'>No se pudo registrar la orden</p>";
 }
-
-// Actualizar el total de la orden
-$conexDb->query("UPDATE orders SET total = $totalOrden WHERE id = $orderID");
-
-echo "<p class='msg-ok'>Orden creada con ID: $orderID</p>";
-echo '    <a href="../inicio.php">Ir a inicio</a>';
-
-
-$conexDb->close();
