@@ -1,26 +1,30 @@
-body{
+body {
     background-color: #cccccc;
     padding: 0%;
     margin: 0%;
     animation: animacion 1s ease-in-out;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 @keyframes animacion {
     from {
         filter: blur(20px);
         opacity: 0;
     }
 }
-h1{
+
+h1 {
     text-align: center;
 }
-p{
+
+p {
     text-align: center;
     font-size: 30px;
 }
+
 img {
     transition-property: background-color, box-shadow;
-    transition: transform 0.3s ease-in-out,filter 0.3s ease;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease;
     animation: animacion 0.9s ease-in-out;
 }
 
@@ -28,14 +32,16 @@ img:hover {
     transform: scale(1.1);
     filter: brightness(1.2) contrast(1.1);
 }
-.botones{
+
+.botones {
     display: flex;
     flex-direction: row;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    height: 5vh; 
+    height: 5vh;
 }
-.botones a{
+
+.botones a {
     height: 40px;
     width: 17%;
     color: white;
@@ -46,16 +52,17 @@ img:hover {
     border: 2px solid #cda54d00;
     font-size: 120%;
     text-align: center;
-    box-shadow: 1px 1px 5px 3px  #d1cec6;
+    box-shadow: 1px 1px 5px 3px #d1cec6;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     margin: 50px;
 }
+
 .botones a:hover {
     background-color: #080808;
     border: 2px solid #ffffff;
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
 
-.botones a:active { 
+.botones a:active {
     background: #faaf4d;
 }

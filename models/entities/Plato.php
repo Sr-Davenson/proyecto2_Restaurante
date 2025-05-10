@@ -42,14 +42,14 @@ class Plato extends Model
     }
 
     public function update()
-{
-    $conexDb = new ConexDB();
-    $sql = "UPDATE dishes SET description='" . $this->descrip . "', price=" . $this->precio . ", idCategory=" . $this->idCat . " WHERE id=" . $this->id;
-    $resConsul = $conexDb->exeSQL($sql);
-    $conexDb->closeDB();
-    
-    return $resConsul;
-}
+    {
+        $conexDb = new ConexDB();
+        $sql = "UPDATE dishes SET description='" . $this->descrip . "', price=" . $this->precio . ", idCategory=" . $this->idCat . " WHERE id=" . $this->id;
+        $resConsul = $conexDb->exeSQL($sql);
+        $conexDb->closeDB();
+
+        return $resConsul;
+    }
 
     public function delete()
     {

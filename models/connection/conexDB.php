@@ -1,16 +1,19 @@
 <?php
+
 namespace App\models\conexDB;
 
 use mysqli;
 
-class ConexDB {
+class ConexDB
+{
     private $host = 'localhost';
     private $user = 'root';
     private $password = '';
     private $dataBase = 'proyecto_2_db';
     private $conex = null;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->conex = new mysqli(
             $this->host,
             $this->user,
@@ -19,15 +22,17 @@ class ConexDB {
         );
     }
 
-    public function closeDB(){
+    public function closeDB()
+    {
         $this->conex->close();
     }
 
-    public function exeSQL($sql){
+    public function exeSQL($sql)
+    {
         return $this->conex->query($sql);
     }
-        public function lastInsertId(){
+    public function lastInsertId()
+    {
         return $this->conex->insert_id;
     }
-
 }

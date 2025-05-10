@@ -49,7 +49,6 @@ class controllerOrden
         $cats = [];
         $cats = $model->obtenerOrdenesPorFecha($fechaInicio, $fechaFin);
         return $cats;
-    
     }
     public function getAllOrdenes()
     {

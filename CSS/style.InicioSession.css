@@ -1,4 +1,4 @@
-body{
+body {
     display: flex;
     justify-content: right;
     background-color: #E9D8B7;
@@ -14,21 +14,23 @@ body{
         opacity: 0;
     }
 }
-p{
+
+p {
     font-size: 30px;
     text-align: justify;
 }
+
 .Session {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
     width: 50vw;
-    height: 97.8vh; 
+    height: 97.8vh;
     background-color: #ffffff;
     border: 0px;
     border-radius: 5px;
-    box-shadow: 1px 1px 50px 3px  #d1cec6;
+    box-shadow: 1px 1px 50px 3px #d1cec6;
     margin-left: 0px;
 }
 
@@ -43,22 +45,24 @@ p{
     border: 2px solid #cda54d00;
     font-size: 120%;
     text-align: center;
-    box-shadow: 1px 1px 5px 3px  #d1cec6;
+    box-shadow: 1px 1px 5px 3px #d1cec6;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
 }
+
 .boton:hover {
     background-color: #080808;
     border: 2px solid #ffffff;
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
 
-.boton:active { 
+.boton:active {
     background: #e7a5a5;
 }
+
 .Session img {
     margin-top: 10vh;
-    transition: transform 0.3s ease-in-out,filter 0.3s ease;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease;
     animation: animacion 0.9s ease-in-out;
     height: 40%;
     width: 40%;
@@ -69,7 +73,8 @@ p{
     transform: scale(1.1);
     filter: brightness(1.2) contrast(1.1);
 }
-.img{
+
+.img {
     width: 50vw;
-    height: 100vh; 
+    height: 100vh;
 }

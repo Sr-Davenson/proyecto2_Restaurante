@@ -17,10 +17,12 @@ $platos = $controllerPlato->getAllPlatos();
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Crear Detalle orden</title>
 </head>
+
 <body>
     <h1>Registrar Pedido</h1>
     <br>
@@ -28,7 +30,7 @@ $platos = $controllerPlato->getAllPlatos();
         <?php
         foreach ($platos as $plato) {
             echo '<br>';
-            echo '<label for="descrip">'. $plato->get('descrip') .'</label>';
+            echo '<label for="descrip">' . $plato->get('descrip') . '</label>';
             echo '<input type="checkbox" value="' . $plato->get('id') . '" id="idCat" name="idCat"></input>';
             echo '<br>';
             echo '<label for="Precio">Precio</label>';
@@ -37,7 +39,7 @@ $platos = $controllerPlato->getAllPlatos();
             echo ' <input type="number" id="cantidad" name="cantidad" min="1" required>';
         }
         ?>
-            <br>
+        <br>
         <button type="submit">Guardar</button>
     </form>
     <div class="botones">

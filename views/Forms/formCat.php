@@ -43,19 +43,19 @@ $cat = empty($id) ? null : $controller->getCategoria($id);
         <?php
         if (!empty($id)) {
             echo '<input type="hidden" name="idCat" value="' . $id . '">';
-            echo '<div>'.
-                 '<label for="nameCat">Nombre Anterior:</label>'.
-                 '<input type="text" value="' . (empty($cat) ? '' : $cat->get('nombre')) . '" disabled>'.
-            '</div>'.
-            '<div>'.
-                 '<label for="nameCat">Nuevo Nombre:</label>'.
-                 '<input type="text" id="nameCat" name="nameCat" required>'.
-            '</div>';
+            echo '<div>' .
+                '<label for="nameCat">Nombre Anterior:</label>' .
+                '<input type="text" value="' . (empty($cat) ? '' : $cat->get('nombre')) . '" disabled>' .
+                '</div>' .
+                '<div>' .
+                '<label for="nameCat">Nuevo Nombre:</label>' .
+                '<input type="text" id="nameCat" name="nameCat" required>' .
+                '</div>';
         } else {
-            echo '<div>'.
-                 '<label for="nameCat">Nombre:</label>'.
-                 '<input type="text" id="nameCat" name="nameCat" required>'.
-            '</div>';
+            echo '<div>' .
+                '<label for="nameCat">Nombre:</label>' .
+                '<input type="text" id="nameCat" name="nameCat" required>' .
+                '</div>';
         }
         ?>
         <button type="submit">Guardar</button>

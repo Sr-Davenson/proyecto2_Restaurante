@@ -10,7 +10,7 @@ $controller = new controllerOrden();
 
 if (isset($_POST['idOrden']) && isset($_POST['confirmar'])) {
     $idOrden = $_POST['idOrden'];
-    $switch = $_POST['confirmar']; 
+    $switch = $_POST['confirmar'];
     switch ($res) {
         case '1':
             $res = $controller->removeOrden($_GET['id']);
@@ -22,8 +22,7 @@ if (isset($_POST['idOrden']) && isset($_POST['confirmar'])) {
         default:
             echo  '<p class="msg-error">El registro no existe</p>';
             break;
-        }
+    }
     header("Location: ../inicio.php");
     exit();
 }
-?>

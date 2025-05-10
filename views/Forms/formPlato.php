@@ -52,7 +52,7 @@ $cats = $controllerCat->getAllCategorias();
                 '<label for="precioPlato">Precio Anterior</label>' .
                 '<input type="number" value="' . (empty($plato) ? '' : $plato->get('precio')) . '"  disabled>' .
                 '</div>' .
-                '<br>'.
+                '<br>' .
                 '<div>' .
                 '<label for="descripPlato">Descripción Nueva</label>' .
                 '<input type="text" id="descripPlato" name="descripPlato" required>' .
@@ -70,8 +70,8 @@ $cats = $controllerCat->getAllCategorias();
             foreach ($cats as $cat) {
                 echo '<option value="' . $cat->get('id') . '" id="idCat" name="idCat">' . $cat->get('nombre') . '</option>';
             }
-            echo'</select>' ;
-            echo'</div>';
+            echo '</select>';
+            echo '</div>';
         }
         ?>
         <button type="submit">Guardar</button>

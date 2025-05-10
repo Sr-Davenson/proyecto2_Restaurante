@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #cccccc;
     padding: 0%;
     margin: 0%;
@@ -7,7 +7,10 @@ body{
 }
 
 .menu {
-    background:-webkit-linear-gradient(90deg, #000000,#2c1616,#700000,#4c0000);/* Chrome 10-25, Safari 5.1-6 */                          background: linear-gradient(90deg, #000000,#2c1616,#700000,#4c0000);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */                                                                             
+    background: -webkit-linear-gradient(90deg, #000000, #2c1616, #700000, #4c0000);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(90deg, #000000, #2c1616, #700000, #4c0000);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     width: 98.8vw;
     height: 15vh;
     margin-top: 0%;
@@ -32,9 +35,10 @@ body{
 img {
     display: block;
     margin: auto;
-    place-items: center; 
+    place-items: center;
     height: 80vh;
 }
+
 a {
     text-align: center;
     height: 60px;
@@ -42,7 +46,7 @@ a {
     color: #ffffff;
     text-decoration: none;
     padding: 5px 10px;
-    background-color: rgb(205, 165, 77,0);
+    background-color: rgb(205, 165, 77, 0);
     border: 2px solid #ffffff00;
     border-radius: 5px;
     margin: 10px;
@@ -55,6 +59,6 @@ a:hover {
     border: 2px solid #ffffff;
 }
 
-a:active { 
+a:active {
     background: #e7a5a5;
 }

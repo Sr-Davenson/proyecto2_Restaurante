@@ -67,7 +67,7 @@ class Mesas extends Model
                 $mesa = new Mesas();
                 $mesa->set('id', $row['id']);
                 $mesa->set('nombre', $row['name']);
-                $mesas[] = $mesa; 
+                $mesas[] = $mesa;
             }
         }
         return $mesas;

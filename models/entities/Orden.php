@@ -73,15 +73,15 @@ class Orden extends Model
         $conexDb = new ConexDB();
         $sql = "SELECT * FROM orders WHERE dateOrder BETWEEN '$fechaInicio' AND '$fechaFin' ORDER BY dateOrder DESC";
         $resConsul = $conexDb->exeSQL($sql);
-        $ordens=[];
-         if ($resConsul->num_rows > 0) {
+        $ordens = [];
+        if ($resConsul->num_rows > 0) {
             while ($row = $resConsul->fetch_assoc()) {
                 $orden = new Orden();
                 $orden->set('id', $row['id']);
                 $orden->set('fecha', $row['dateOrder']);
                 $orden->set('total', $row['total']);
                 $orden->set('idMesa', $row['idTable']);
-                $ordens[]= $orden;
+                $ordens[] = $orden;
             }
         }
         $conexDb->closeDB();

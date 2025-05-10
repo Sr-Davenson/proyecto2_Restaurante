@@ -1,10 +1,12 @@
 <?php
+
 namespace App\controllers;
 
 use App\models\util\Fecha;
 
-class ControllerFechas {
-    
+class ControllerFechas
+{
+
     public function calcSaludo()
     {
         $f = new Fecha();
@@ -14,12 +16,12 @@ class ControllerFechas {
         $horaTarInicio = strtotime("12:00");
         $horaTarFin = strtotime("19:00");
 
-        
+
         if ($hora >= $horaManInicio && $hora < $horaManFin) {
             return 1;
-        } elseif($hora >= $horaTarInicio && $hora < $horaTarFin){
+        } elseif ($hora >= $horaTarInicio && $hora < $horaTarFin) {
             return 2;
-        } else{
+        } else {
             return 3;
         }
     }

@@ -11,6 +11,4 @@ class controllerValidaciones
         $convertText = ucfirst(strtolower(trim($_POST[$text])));
         return $convertText;
     }
-
-    
 }

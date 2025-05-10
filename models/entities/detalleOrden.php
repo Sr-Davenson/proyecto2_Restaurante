@@ -23,13 +23,13 @@ class DetalleOrden extends Model
     }
 
     public function update()
-{
-    $conexDb = new ConexDB();
-    $sql = "UPDATE orders SET quantity='" . $this->cantidad . "', price=" . $this->precio . ", idOrder=" . $this->idOrden. ", idDish=" . $this->idPlato. " WHERE id=" . $this->id;
-    $resConsul = $conexDb->exeSQL($sql);
-    $conexDb->closeDB();
-    return $resConsul;
-}
+    {
+        $conexDb = new ConexDB();
+        $sql = "UPDATE orders SET quantity='" . $this->cantidad . "', price=" . $this->precio . ", idOrder=" . $this->idOrden . ", idDish=" . $this->idPlato . " WHERE id=" . $this->id;
+        $resConsul = $conexDb->exeSQL($sql);
+        $conexDb->closeDB();
+        return $resConsul;
+    }
 
     public function delete()
     {

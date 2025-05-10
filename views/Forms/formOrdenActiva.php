@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/styleForms.css">
- <title>Ordenes Activas</title>
+    <title>Ordenes Activas</title>
 
 </head>
 
@@ -16,12 +16,12 @@
     <br>
     <form class="form" action="../Actions/searchOrdenActiva.php" method="post">
         <div>
-                <label for="fechaIni">Fecha Inicio:</label>
-                <input type="date" id="fechaIni" name="fechaIni" required>
-                <label for="fechaFin">Fecha Fin:</label>
-                <input type="date" id="fechaFin" name="fechaFin" required>
-            </div>
-        
+            <label for="fechaIni">Fecha Inicio:</label>
+            <input type="date" id="fechaIni" name="fechaIni" required>
+            <label for="fechaFin">Fecha Fin:</label>
+            <input type="date" id="fechaFin" name="fechaFin" required>
+        </div>
+
         <button type="submit">Guardar</button>
     </form>
     <div class="botones">
