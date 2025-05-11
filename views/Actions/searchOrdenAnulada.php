@@ -20,20 +20,16 @@ $controllerMesa = new controllerMesas();
 
 $fechaIni = isset($_POST['fechaIni']) ? $_POST['fechaIni'] : null;
 $fechaFin = isset($_POST['fechaFin']) ? $_POST['fechaFin'] : null;
-$estado = 0;
+$estado = 1;
 if ($fechaFin == null || $fechaFin  == null) {
     header("Location: ../Forms/formOrdenActiva.php");
     exit();
 }
-$totalRecaudo = 0;
-
 if ($fechaIni && $fechaFin) {
-   $os = $controllerOr->filtrarPorFechas($fechaIni, $fechaFin, $estado);
+    $os = $controllerOr->filtrarPorFechas($fechaIni, $fechaFin, $estado);
 } else {
     $os = [];
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +44,7 @@ if ($fechaIni && $fechaFin) {
 
 <body>
     <?php
-     if ($fechaIni > $fechaFin) {
+    if ($fechaIni > $fechaFin) {
         echo '<h1>Resultados de la operación</h1>';
     echo '<p class="msg-error">La fecha de inicio no puede ser mayor que la fecha de fin.</p>';
 
@@ -68,7 +64,7 @@ if ($fechaIni && $fechaFin) {
         foreach ($os as $orden) {
             echo '<tr>';
             $mesa = $controllerMesa->getMesa($orden->get('idMesa'));
-                echo '<td>' . $orden->get('fecha') .
+            echo '<td>' . $orden->get('fecha') .
                 '</td>' .
                 '<td>' .
                 'COP $' . $orden->get('total') .
@@ -80,12 +76,7 @@ if ($fechaIni && $fechaFin) {
                 '<a  href="../Forms/viewsDetalleOrden.php?id=' . $orden->get('id') . '"> <img src="../../images/Read More.svg" alt="More"></a>' . '</td>' .
                 '</td>';
             echo '</tr>';
-            $totalRecaudo += $orden->get('total');
         }
-        echo '<tfoot>
-        <td>Total Recaudo</td>
-        <td>COP $' . $totalRecaudo . '</td>
-        </tfoot>';
         echo '</table>';
     }
     ?>
