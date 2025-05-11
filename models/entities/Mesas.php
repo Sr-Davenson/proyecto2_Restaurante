@@ -109,7 +109,7 @@ class Mesas extends Model
         }
         return false;
     }
-        public function existId($id)
+    public function existId($id)
     {
         $conexDb = new ConexDB();
         $sql = "SELECT id FROM restaurant_tables WHERE id = $id";

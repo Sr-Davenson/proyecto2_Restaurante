@@ -9,6 +9,7 @@ use App\controllers\controllerMesas;
 $controller = new controllerMesas();
 $id = empty($_GET['id']) ? null : $_GET['id'];
 $id =$controller->idExiste($id);
+$id = empty($_GET['id']) ? null : $_GET['id'];
 $mesa = empty($id) ? null : $controller->getMesa($id);
 ?>
 <!DOCTYPE html>

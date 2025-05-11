@@ -11,8 +11,10 @@ use App\controllers\controllerCategorias;
 
 $controllerPlato = new controllerPlatos();
 $controllerCat = new controllerCategorias();
+
 $id = empty($_GET['id']) ? null : $_GET['id'];
-$id =$controllerPlato->idExiste($id);
+$id = $controllerPlato->idExiste($id);
+$id = empty($_GET['id']) ? null : $_GET['id'];
 $plato = empty($id) ? null : $controllerPlato->getPlato($id);
 $cats = $controllerCat->getAllCategorias();
 ?>

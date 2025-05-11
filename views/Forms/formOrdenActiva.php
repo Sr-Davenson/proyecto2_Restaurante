@@ -22,10 +22,10 @@
             <input type="date" id="fechaFin" name="fechaFin" required>
         </div>
 
-        <button type="submit">Guardar</button>
+        <button type="submit">Buscar</button>
     </form>
     <div class="botones">
-        <a href="../AdminCategoria.php">Buscar otra Categoria</a>
+        <a href="../AdminOrdenes.php">Volver</a>
         <br>
         <a href="../inicio.php">Ir a inicio</a>
     </div>

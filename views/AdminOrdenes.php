@@ -11,9 +11,9 @@
 <body>
     <br>
     <div class="botones">
-        <a class="img" href="Forms/formOrdenAnulada.php">Reporte Ordenes anuladas</a>
+        <a class="img" href="Forms/formOrdenAnulada.php">Reporte Ordenes Anuladas</a>
         <br>
-        <a class="img" href="Forms/formOrdenActiva.php">Reporte Ordenes activas</a>
+        <a class="img" href="Forms/formOrdenActiva.php">Reporte Ordenes Activas</a>
         <br>
         <a href="inicio.php">Volver</a>
     </div>

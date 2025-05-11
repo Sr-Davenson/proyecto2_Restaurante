@@ -29,4 +29,11 @@ class controllerDetalleOrden
 
         return $totalOrden;
     }
+        public function getAllDetalleOrden($idOrden)
+    {
+        $model = new DetalleOrden();
+        $model->set('idOrder', $idOrden);
+        return $model->all($idOrden);
+    }
+    
 }

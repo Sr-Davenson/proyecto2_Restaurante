@@ -88,7 +88,7 @@ class controllerPlatos
         $platos = $model->all();
         return $platos;
     }
-        public function idExiste($id)
+    public function idExiste($id)
     {
         $model = new Plato();
         if ($id != null) {

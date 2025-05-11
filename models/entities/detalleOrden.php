@@ -13,14 +13,25 @@ class DetalleOrden extends Model
     protected $idOrden = null;
     protected $idPlato = null;
 
-    public function obtenerPrecio($idPlato)
+    public function all($idOrden)
     {
         $conexDb = new ConexDB();
-        $sqlPrecio = "SELECT price FROM dishes WHERE id = $idPlato";
-        $result = $conexDb->exeSQL($sqlPrecio);
-        $row = $result->fetch_assoc();
-        $precioUnitario = $row['price'];
-        return $precioUnitario;
+        $sql = "select * from order_details where idOrder=" . $idOrden;
+        $resConsul = $conexDb->exeSQL($sql);
+        $detallOrdenes = [];
+        if ($resConsul->num_rows > 0) {
+            while ($row = $resConsul->fetch_assoc()) {
+                $detallOrden = new DetalleOrden();
+                $detallOrden->set('id', $row['id']);
+                $detallOrden->set('cantidad', $row['quantity']);
+                $detallOrden->set('precio', $row['price']);
+                $detallOrden->set('idOrden', $row['idOrder']);
+                $detallOrden->set('idPlato', $row['idDish']);
+                array_push($detallOrdenes, $detallOrden);
+            }
+        }
+        $conexDb->closeDB();
+        return $detallOrdenes;
     }
 
     public function save()
@@ -30,5 +41,15 @@ class DetalleOrden extends Model
         $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
         return $resConsul;
+    }
+
+    public function obtenerPrecio($idPlato)
+    {
+        $conexDb = new ConexDB();
+        $sqlPrecio = "SELECT price FROM dishes WHERE id = $idPlato";
+        $result = $conexDb->exeSQL($sqlPrecio);
+        $row = $result->fetch_assoc();
+        $precioUnitario = $row['price'];
+        return $precioUnitario;
     }
 }

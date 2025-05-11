@@ -106,7 +106,7 @@ class Plato extends Model
         $res = $conexDb->exeSQL($sql);
         return ($res->num_rows > 0);
     }
-        public function confirmDelete($id)
+    public function confirmDelete($id)
     {
         $conexDb = new ConexDB();
         $sql = "SELECT COUNT(*) as total FROM order_details WHERE idDish = $id";
@@ -117,7 +117,7 @@ class Plato extends Model
         }
         return false;
     }
-        public function existId($id)
+    public function existId($id)
     {
         $conexDb = new ConexDB();
         $sql = "SELECT id FROM dishes WHERE id = $id";

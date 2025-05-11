@@ -1,0 +1,94 @@
+<?php
+include '../../models/connection/conexDB.php';
+include '../../models/util/model.php';
+include '../../models/entities/Orden.php';
+include '../../models/entities/Mesas.php';
+include '../../models/entities/Plato.php';
+include '../../models/entities/DetalleOrden.php';
+include '../../controller/controllerPlatos.php';
+include '../../controller/controllerMesas.php';
+include '../../controller/controllerOrden.php';
+include '../../controller/controllerDetalleOrden.php';
+
+use App\controllers\controllerDetalleOrden;
+use App\controllers\controllerOrden;
+use App\controllers\controllerMesas;
+use App\controllers\controllerPlatos;
+
+
+$controllerOrden = new controllerOrden();
+$controllerMesa = new controllerMesas();
+$controllerPlato = new controllerPlatos();
+$controllerDetallOrden = new controllerDetalleOrden();
+
+
+$id = empty($_GET['id']) ? null : $_GET['id'];
+$id =$controllerOrden->idExiste($id);    
+$id = empty($_GET['id']) ? null : $_GET['id'];
+$orden = empty($id) ? null : $controllerOrden->getOrden($id);
+$mesa = $controllerMesa->searchNameMesa($orden->get('idMesa'));
+$detalleOrdenes = $controllerDetallOrden->getAllDetalleOrden($id);
+$i = 0;
+$totalRecaudo = 0;
+
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Detalle Orden</title>
+</head>
+
+<body>
+    <h1>Detalle Orden</h1>
+    <form>
+        <label for="fecha">Fecha Orden:</label>
+        <input type="datetime-local" value="<?php echo $orden->get('fecha') ?>" disabled>
+
+        <label for="mesa">Mesa:</label>
+        <input type="text" value="<?php echo $mesa->get('nombre') ?>" disabled>
+
+        <h1>Factura</h1>
+        <?php
+        echo '<table class="tabla" border="1px">';
+        echo '<thead>
+                    <td>Item</td>
+                    <td>Descripcion</td>
+                    <td>Cantidad</td>
+                    <td>Precio Unitario</td>
+                    <td>SubTotal</td>
+                </thead>';
+        foreach ($detalleOrdenes as $detallOrd) {
+            $platos = $controllerPlato->getPlato($detallOrd->get('idPlato'));
+            echo '<tr>';
+            echo '<td>' . $i +=1;
+            echo '</td>';
+            echo '<td>';
+            echo $platos->get('descrip');
+            echo  '</td>';
+            echo  '<td>';
+            echo  $detallOrd->get('cantidad') ;
+            echo '</td>' ;
+            echo '<td>';
+            echo $detallOrd->get('precio');
+            echo '</td>';
+            echo '<td>';
+            echo $subTotal =  $detallOrd->get('cantidad') * $detallOrd->get('precio');
+            echo '</td>';
+            echo '<br>';
+            $totalRecaudo += $subTotal;
+        }
+        echo '<tfoot>
+        <td>Total Recaudo</td>
+        <td>COP $' . $totalRecaudo.'</td>
+        </tfoot>';
+        echo '</table>';
+        ?>
+    </form>
+    <a href="../inicio.php">Ir a inicio</a>
+</body>
+
+</html>

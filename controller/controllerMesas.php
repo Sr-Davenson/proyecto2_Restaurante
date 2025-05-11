@@ -71,7 +71,7 @@ class controllerMesas
         }
         return false;
     }
-        public function idExiste($id)
+    public function idExiste($id)
     {
         $model = new Mesas();
         if ($id != null) {
@@ -81,6 +81,12 @@ class controllerMesas
                 exit();
             }
         }
+    }
+    public function searchNameMesa($id)
+    {
+        $model = new Mesas();
+        $model->set('id', $id);
+        return $model->find();
     }
     public function procesarMesa($nameMesa, $pos)
     {

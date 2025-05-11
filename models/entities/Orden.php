@@ -64,4 +64,35 @@ class Orden extends Model
 
         return  $ordens;
     }
+        public function find()
+    {
+        $conexDb = new ConexDB();
+        $sql = "select * from orders where id=" . $this->id;
+        $resConsul = $conexDb->exeSQL($sql);
+        $orden = null;
+        if ($resConsul->num_rows > 0) {
+            while ($row = $resConsul->fetch_assoc()) {
+                $orden = new Orden();
+                $orden->set('id', $row['id']);
+                $orden->set('fecha', $row['dateOrder']);
+                $orden->set('total', $row['total']);
+                $orden->set('idMesa', $row['idTable']);
+                break;
+            }
+        }
+        $conexDb->closeDB();
+        return $orden;
+    }
+
+        public function existId($id)
+    {
+        $conexDb = new ConexDB();
+        $sql = "SELECT id FROM orders WHERE id = $id";
+        $res = $conexDb->exeSQL($sql);
+        if ($row = $res->fetch_assoc()) {
+            return $row['id'];
+        }
+
+        return false;
+    }
 }

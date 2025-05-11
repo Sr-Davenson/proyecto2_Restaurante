@@ -33,4 +33,21 @@ class controllerOrden
         $cats = $model->obtenerOrdenesPorFecha($fechaInicio, $fechaFin);
         return $cats;
     }
+    public function getOrden($id)
+    {
+        $model = new Orden();
+        $model->set('id', $id);
+        return $model->find();
+    }
+    public function idExiste($id)
+    {
+        $model = new Orden();
+        if ($id != null) {
+            if ($model->existId($id) == false) {
+                echo 'Orden no encontrada';
+                echo '<a href="../Actions/searchOrdenActiva.php">Ir a inicio</a>';
+                exit();
+            }
+        }
+    }
 }
