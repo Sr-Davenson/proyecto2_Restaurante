@@ -101,4 +101,12 @@ class Orden extends Model
 
         return false;
     }
+    public function cancelled($id)
+    {
+        $conexDb = new ConexDB();
+        $sql = "SELECT id FROM orders WHERE id = $id";
+        $sql = "UPDATE orders SET isCancelled = 1 WHERE id = $id";
+        $res = $conexDb->exeSQL($sql);
+        return $res;
+    }
 }

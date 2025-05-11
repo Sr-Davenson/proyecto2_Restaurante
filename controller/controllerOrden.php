@@ -52,4 +52,12 @@ class controllerOrden
             }
         }
     }
+
+     public function anular($id)
+    {
+        $model = new Orden();
+        $model->set('id', $id);
+        $resConsul = $model->cancelled($id);
+        return $resConsul ? 'yes' : 'not';
+    }
 }

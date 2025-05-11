@@ -28,7 +28,7 @@ if ($fechaFin == null || $fechaFin  == null) {
 $totalRecaudo = 0;
 
 if ($fechaIni && $fechaFin) {
-   $os = $controllerOr->filtrarPorFechas($fechaIni, $fechaFin, $estado);
+    $os = $controllerOr->filtrarPorFechas($fechaIni, $fechaFin, $estado);
 } else {
     $os = [];
 }
@@ -48,15 +48,13 @@ if ($fechaIni && $fechaFin) {
 
 <body>
     <?php
-     if ($fechaIni > $fechaFin) {
+    if ($fechaIni > $fechaFin) {
         echo '<h1>Resultados de la operación</h1>';
-    echo '<p class="msg-error">La fecha de inicio no puede ser mayor que la fecha de fin.</p>';
-
-    } elseif (empty($os)){
+        echo '<p class="msg-error">La fecha de inicio no puede ser mayor que la fecha de fin.</p>';
+    } elseif (empty($os)) {
         echo '<h1>Resultados de la operación</h1>';
         echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
-
-    }else {
+    } else {
         echo '<h1>Órdenes encontradas:</h1>';
         echo '<table class="tabla">';
         echo '<thead>
@@ -68,7 +66,7 @@ if ($fechaIni && $fechaFin) {
         foreach ($os as $orden) {
             echo '<tr>';
             $mesa = $controllerMesa->getMesa($orden->get('idMesa'));
-                echo '<td>' . $orden->get('fecha') .
+            echo '<td>' . $orden->get('fecha') .
                 '</td>' .
                 '<td>' .
                 'COP $' . $orden->get('total') .

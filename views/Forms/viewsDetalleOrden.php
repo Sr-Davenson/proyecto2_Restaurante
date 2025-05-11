@@ -23,14 +23,18 @@ $controllerDetallOrden = new controllerDetalleOrden();
 
 
 $id = empty($_GET['id']) ? null : $_GET['id'];
-$id =$controllerOrden->idExiste($id);    
+if ($id == null) {
+    header("Location: ../AdminOrdenes.php");
+    exit();
+}
+$id = $controllerOrden->idExiste($id);
 $id = empty($_GET['id']) ? null : $_GET['id'];
 $orden = empty($id) ? null : $controllerOrden->getOrden($id);
 $mesa = $controllerMesa->searchNameMesa($orden->get('idMesa'));
 $detalleOrdenes = $controllerDetallOrden->getAllDetalleOrden($id);
+
 $i = 0;
 $totalRecaudo = 0;
-
 ?>
 
 <!DOCTYPE html>
@@ -44,50 +48,64 @@ $totalRecaudo = 0;
 
 <body>
     <h1>Detalle Orden</h1>
-    <form>
+    <form action="../Actions/anularOrden.php" method="post">
         <label for="fecha">Fecha Orden:</label>
         <input type="datetime-local" value="<?php echo $orden->get('fecha') ?>" disabled>
 
         <label for="mesa">Mesa:</label>
         <input type="text" value="<?php echo $mesa->get('nombre') ?>" disabled>
-
-        <h1>Factura</h1>
         <?php
-        echo '<table class="tabla" border="1px">';
-        echo '<thead>
+        if ($orden->get('estado') == 0) {
+            $estado = 'Activa';
+            echo '<input type="hidden" name="idOrden" value="' . $orden->get('id') . '">';
+            echo '<label for="mesa">Estado:</label>';
+            echo '<input type="text" value="' . $estado . '" disabled>';
+            echo '<button type="submit">Anular Orden</button>';
+        } else {
+            $estado = 'Anulada';
+            echo '<label for="mesa">Estado:</label>';
+            echo '<input type="text" value="' . $estado . '" disabled>';
+        }
+
+        ?>
+    </form>
+
+    <h1>Factura</h1>
+    <?php
+    echo '<table class="tabla" border="1px">';
+    echo '<thead>
                     <td>Item</td>
                     <td>Descripcion</td>
                     <td>Cantidad</td>
                     <td>Precio Unitario</td>
                     <td>SubTotal</td>
                 </thead>';
-        foreach ($detalleOrdenes as $detallOrd) {
-            $platos = $controllerPlato->getPlato($detallOrd->get('idPlato'));
-            echo '<tr>';
-            echo '<td>' . $i +=1;
-            echo '</td>';
-            echo '<td>';
-            echo $platos->get('descrip');
-            echo  '</td>';
-            echo  '<td>';
-            echo  $detallOrd->get('cantidad') ;
-            echo '</td>' ;
-            echo '<td>';
-            echo $detallOrd->get('precio');
-            echo '</td>';
-            echo '<td>';
-            echo $subTotal =  $detallOrd->get('cantidad') * $detallOrd->get('precio');
-            echo '</td>';
-            echo '<br>';
-            $totalRecaudo += $subTotal;
-        }
-        echo '<tfoot>
+    foreach ($detalleOrdenes as $detallOrd) {
+        $platos = $controllerPlato->getPlato($detallOrd->get('idPlato'));
+        echo '<tr>';
+        echo '<td>' . $i += 1;
+        echo '</td>';
+        echo '<td>';
+        echo $platos->get('descrip');
+        echo  '</td>';
+        echo  '<td>';
+        echo  $detallOrd->get('cantidad');
+        echo '</td>';
+        echo '<td>';
+        echo $detallOrd->get('precio');
+        echo '</td>';
+        echo '<td>';
+        echo $subTotal =  $detallOrd->get('cantidad') * $detallOrd->get('precio');
+        echo '</td>';
+        echo '<br>';
+        $totalRecaudo += $subTotal;
+    }
+    echo '<tfoot>
         <td>Total Recaudo</td>
-        <td>COP $' . $totalRecaudo.'</td>
+        <td>COP $' . $totalRecaudo . '</td>
         </tfoot>';
-        echo '</table>';
-        ?>
-    </form>
+    echo '</table>';
+    ?>
     <a href="../inicio.php">Ir a inicio</a>
 </body>
 

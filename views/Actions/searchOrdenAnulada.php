@@ -22,7 +22,7 @@ $fechaIni = isset($_POST['fechaIni']) ? $_POST['fechaIni'] : null;
 $fechaFin = isset($_POST['fechaFin']) ? $_POST['fechaFin'] : null;
 $estado = 1;
 if ($fechaFin == null || $fechaFin  == null) {
-    header("Location: ../Forms/formOrdenActiva.php");
+    header("Location: ../Forms/formOrdenAnulada.php");
     exit();
 }
 if ($fechaIni && $fechaFin) {
@@ -39,21 +39,19 @@ if ($fechaIni && $fechaFin) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/styleSearch.css">
-    <title>Órdenes Activas</title>
+    <title>Órdenes Anuladas</title>
 </head>
 
 <body>
     <?php
     if ($fechaIni > $fechaFin) {
         echo '<h1>Resultados de la operación</h1>';
-    echo '<p class="msg-error">La fecha de inicio no puede ser mayor que la fecha de fin.</p>';
-
-    } elseif (empty($os)){
+        echo '<p class="msg-error">La fecha de inicio no puede ser mayor que la fecha de fin.</p>';
+    } elseif (empty($os)) {
         echo '<h1>Resultados de la operación</h1>';
         echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
-
-    }else {
-        echo '<h1>Órdenes encontradas:</h1>';
+    } else {
+        echo '<h1>Órdenes Anuladas encontradas:</h1>';
         echo '<table class="tabla">';
         echo '<thead>
                     <td>Fecha</td>
