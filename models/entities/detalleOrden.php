@@ -52,4 +52,27 @@ class DetalleOrden extends Model
         $precioUnitario = $row['price'];
         return $precioUnitario;
     }
+
+    public function rankingPlatos()
+    {
+        $conexDb = new ConexDB();
+        $sql = "SELECT p.nombre, SUM(d.cantidad) AS total_vendido
+            FROM order_details d
+            JOIN platos p ON d.idPlato = p.id
+            GROUP BY p.id
+            ORDER BY total_vendido DESC
+            LIMIT 10";
+
+        $res = $conexDb->exeSQL($sql);
+        $ranking = [];
+
+        while ($row = $res->fetch_assoc()) {
+            $ranking[] = [
+                'nombre' => $row['nombre'],
+                'total_vendido' => $row['total_vendido']
+            ];
+        }
+
+        return $ranking;
+    }
 }

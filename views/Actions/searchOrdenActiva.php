@@ -3,28 +3,37 @@ include '../../models/connection/conexDB.php';
 include '../../models/util/model.php';
 include '../../models/entities/Orden.php';
 include '../../models/entities/Mesas.php';
+include '../../models/entities/DetalleOrden.php';
 include '../../controller/controllerMesas.php';
 include '../../controller/controllerOrden.php';
+include '../../controller/controllerDetalleOrden.php';
 
+
+use App\controllers\controllerDetalleOrden;
 use App\controllers\controllerOrden;
 use App\controllers\controllerMesas;
 
 $controllerOr = new controllerOrden();
+$controllerDetallOrden = new controllerDetalleOrden();
 $controllerMesa = new controllerMesas();
 
 
 $fechaIni = isset($_POST['fechaIni']) ? $_POST['fechaIni'] : null;
 $fechaFin = isset($_POST['fechaFin']) ? $_POST['fechaFin'] : null;
-if ($fechaFin == null && $fechaFin  == null) {
+$estado = 0;
+if ($fechaFin == null || $fechaFin  == null) {
     header("Location: ../Forms/formOrdenActiva.php");
+    exit();
 }
 $totalRecaudo = 0;
 
 if ($fechaIni && $fechaFin) {
-    $os = $controllerOr->filtarPorfechas($fechaIni, $fechaFin);
+   $os = $controllerOr->filtrarPorFechas($fechaIni, $fechaFin, $estado);
 } else {
     $os = [];
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -56,8 +65,7 @@ if ($fechaIni && $fechaFin) {
             $mesa = $controllerMesa->getMesa($orden->get('idMesa'));
             echo '<td>';
 
-            echo '<input type="datetime-local" value="' . $orden->get('fecha') . '" disabled>' .
-                // echo '<p>' . $orden->get('fecha') .
+                echo '<p>' . $orden->get('fecha') .
                 '</td>' .
                 '<td>' .
                 'COP $' . $orden->get('total') .

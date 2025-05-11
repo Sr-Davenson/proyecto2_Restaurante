@@ -13,25 +13,27 @@ class controllerOrden
         $model->set('fecha', $request['fecha']);
         $model->set('total', $totalOrden);
         $model->set('idMesa', $request['idMesa']);
-        $a = $model->save();
-        return $a;
+        $model->set('idMesa', $request['idMesa']);
+        $orden = $model->save();
+        return $orden;
     }
 
-    public function updateOrden($totalOrden, $orderID)
+    public function updateOrden($totalOrden, $orderID,$estado)
     {
         $model = new Orden();
         $model->set('id', $orderID);
         $model->set('total', $totalOrden);
-        $resConsul = $model->update($totalOrden, $orderID);
+        $model->set('estado', $estado);
+        $resConsul = $model->update($totalOrden, $orderID,$estado);
         return $resConsul ? 'yes' : 'not';
     }
 
-    public function filtarPorfechas($fechaInicio, $fechaFin)
+    public function filtrarPorfechas($fechaInicio, $fechaFin,$estado)
     {
         $model = new Orden();
-        $cats = [];
-        $cats = $model->obtenerOrdenesPorFecha($fechaInicio, $fechaFin);
-        return $cats;
+        $ordenes = [];
+        $ordenes = $model->obtenerOrdenesPorFecha($fechaInicio, $fechaFin,$estado);
+        return $ordenes;
     }
     public function getOrden($id)
     {

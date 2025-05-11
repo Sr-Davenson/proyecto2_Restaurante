@@ -35,5 +35,11 @@ class controllerDetalleOrden
         $model->set('idOrder', $idOrden);
         return $model->all($idOrden);
     }
+    public function obtenerRanking()
+    {
+        $model = new DetalleOrden();
+        $t = $model->rankingPlatos();
+        return $t;
+    }
     
 }

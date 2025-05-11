@@ -11,22 +11,23 @@ class Orden extends Model
     protected $fecha = null;
     protected $total = null;
     protected $idMesa = null;
+    protected $estado = null;
 
     public function save()
     {
         $conexDb = new ConexDB();
-        $sql = "INSERT INTO orders (dateOrder,total,idTable) VALUES ('" . $this->fecha . "', '" . $this->total . "', '" . $this->idMesa . "')";
-        $resConsul = $conexDb->exeSQL($sql);
+        $sql = "INSERT INTO orders (dateOrder, total, idTable) VALUES ('" . $this->fecha . "', '" . $this->total . "', '" . $this->idMesa . "')";
+        $conexDb->exeSQL($sql);
         $id = $conexDb->lastInsertId();
         $conexDb->closeDB();
         return $id;
     }
 
 
-    public function update($orderID, $totalOrden)
+    public function update($orderID, $totalOrden, $estado)
     {
         $conexDb = new ConexDB();
-        $sql = "UPDATE orders SET total = $totalOrden WHERE id = $orderID";
+        $sql = "UPDATE orders SET total = $totalOrden, isCancelled = $estado WHERE id = $orderID";
         $resConsul = $conexDb->exeSQL($sql);
         $conexDb->closeDB();
         return $resConsul;
@@ -43,10 +44,12 @@ class Orden extends Model
         return false;
     }
 
-    public function obtenerOrdenesPorFecha($fechaInicio, $fechaFin)
+    public function obtenerOrdenesPorFecha($fechaInicio, $fechaFin,$estado)
     {
         $conexDb = new ConexDB();
-        $sql = "SELECT * FROM orders WHERE dateOrder BETWEEN '$fechaInicio 00:00:00' AND '$fechaFin 23:59:59' 
+        $sql = "SELECT * FROM orders 
+        WHERE dateOrder BETWEEN '$fechaInicio 00:00:00' AND '$fechaFin 23:59:59' 
+        AND isCancelled = $estado
         ORDER BY dateOrder DESC";
         $resConsul = $conexDb->exeSQL($sql);
         $ordens = [];
@@ -57,6 +60,8 @@ class Orden extends Model
                 $orden->set('fecha', $row['dateOrder']);
                 $orden->set('total', $row['total']);
                 $orden->set('idMesa', $row['idTable']);
+                $orden->set('estado', $row['isCancelled']);
+
                 $ordens[] = $orden;
             }
         }
@@ -64,7 +69,7 @@ class Orden extends Model
 
         return  $ordens;
     }
-        public function find()
+    public function find()
     {
         $conexDb = new ConexDB();
         $sql = "select * from orders where id=" . $this->id;
@@ -77,6 +82,7 @@ class Orden extends Model
                 $orden->set('fecha', $row['dateOrder']);
                 $orden->set('total', $row['total']);
                 $orden->set('idMesa', $row['idTable']);
+                $orden->set('estado', $row['isCancelled']);
                 break;
             }
         }
@@ -84,7 +90,7 @@ class Orden extends Model
         return $orden;
     }
 
-        public function existId($id)
+    public function existId($id)
     {
         $conexDb = new ConexDB();
         $sql = "SELECT id FROM orders WHERE id = $id";

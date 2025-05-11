@@ -23,10 +23,11 @@ $fecha = date('Y-m-d H:i:s', strtotime($_POST['fecha']));
 $idMesa = intval($_POST['idMesa']);
 $platosSeleccionados = $_POST['idPlato'];
 $totalOrden = 0;
+$estado = 0;
 $idOrden = $controllerOrden->saveNewOrden($_POST, 0);
 $totalOrden = $controllerDetalle->saveNewDetalleOrden($platosSeleccionados, $_POST['cantidad'], $idOrden);
 
-$res = $controllerOrden->updateOrden($idOrden, $totalOrden);
+$res = $controllerOrden->updateOrden($idOrden, $totalOrden, $estado);
 
 ?>
 <!DOCTYPE html>
