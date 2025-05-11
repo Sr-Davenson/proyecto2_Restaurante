@@ -108,4 +108,15 @@ class Categoria extends Model
         $res = $conexDb->exeSQL($sql);
         return ($res->num_rows > 0);
     }
+    public function existId($id)
+    {
+        $conexDb = new ConexDB();
+        $sql = "SELECT id FROM categories WHERE id = $id";
+        $res = $conexDb->exeSQL($sql);
+        if ($row = $res->fetch_assoc()) {
+            return $row['id'];
+        }
+
+        return false;
+    }
 }

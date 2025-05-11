@@ -79,6 +79,17 @@ class controllerCategorias
         }
         return false;
     }
+    public function idExiste($id)
+    {
+        $model = new Categoria();
+        if ($id != null) {
+            if ($model->existId($id) == false) {
+                echo 'categoria no encontrada';
+                echo '<a href="../Actions/searchCategoria.php">Ir a inicio</a>';
+                exit();
+            }
+        }
+    }
     public function procesarCategoria($nameCat, $pos)
     {
         if (empty($nameCat)) {

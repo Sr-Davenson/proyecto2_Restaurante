@@ -32,15 +32,27 @@ $mesas = $controller->searchMesa($search);
         echo '<h1>Resultados de la operación</h1>';
         echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
     } else {
+        echo '<table class="tabla">';
+        echo '<thead>
+                    <td>Nombre</td>
+                    <td>Actualizar</td>
+                    <td>Eliminar</td>
+                </thead>';
         echo '<h1>Mesas encontradas:</h1>';
         echo '<ul>';
         foreach ($mesas as $mesa) {
-            echo '<p>' . $mesa->get('nombre') . ' 
-        <a href="../Forms/formMesa.php?id=' . $mesa->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' .
-                ' <a href="deleteMesa.php?id=' . $mesa->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>'
+             echo '<tr>
+                    <td>';
+            echo '<p>' . $mesa->get('nombre') . 
+              '</td>' .
+                '<td>' .
+                '<a href="../Forms/formMesa.php?id=' . $mesa->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' . '</td>' .
+                '<td>' .
+                ' <a href="deleteMesa.php?id=' . $mesa->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>'. '</td>' 
                 . '</p>';
+        echo '</tr>';
         }
-        echo '</ul>';
+        echo '</table>';
     }
     ?>
     <br>

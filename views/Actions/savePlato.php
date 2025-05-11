@@ -25,7 +25,7 @@ $val = new controllerValidaciones();
     <h1>Resultado de la operación</h1>
     <?php
     $descripPlato = isset($_POST['descripPlato']) ? $_POST['descripPlato'] : header("Location: ../AdminPlatos.php");
-    $descripPlato = $val->formatoTextos('descripPlato');
+    $descripPlato = $val->formatoTextos($descripPlato);
     $res = $controller->procesarPlato($descripPlato, $_POST);
     if ($res == 'yes') {
         echo '<p>Datos guardados</p>';
@@ -34,9 +34,9 @@ $val = new controllerValidaciones();
     }
     ?>
     <br>
-    <a href="../Forms/formPlato.php">Crear otro plato</a>
+    <a class="botones" href="../Forms/formPlato.php">Crear otro plato</a>
     <a class="botones" href="../AdminPlatos.php">Buscar otro Plato</a>
-    <a href="../inicio.php">Ir a inicio</a>
+    <a class="botones" href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>

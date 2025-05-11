@@ -71,6 +71,17 @@ class controllerMesas
         }
         return false;
     }
+        public function idExiste($id)
+    {
+        $model = new Mesas();
+        if ($id != null) {
+            if ($model->existId($id) == false) {
+                echo 'Mesa no encontrada';
+                echo '<a href="../Actions/searchMesa.php">Ir a inicio</a>';
+                exit();
+            }
+        }
+    }
     public function procesarMesa($nameMesa, $pos)
     {
         if (empty($nameMesa)) {

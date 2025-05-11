@@ -7,7 +7,7 @@ include '../../controller/controllerPlatos.php';
 use App\controllers\controllerPlatos;
 
 $controller = new controllerPlatos();
-isset($_GET['id']) ?    $_GET['id'] : header("Location: ../AdminPlatos.php");
+isset($_GET['id']) ? $_GET['id'] : header("Location: ../AdminPlatos.php");
 $res = $controller->removePlato($_GET['id']);
 
 ?>
@@ -32,7 +32,7 @@ $res = $controller->removePlato($_GET['id']);
             echo  '<p class="msg-error">No se pudo borrar los datos</p>';
             break;
         case '3':
-            echo  '<p class="msg-error">No se puede eliminar el plato, Tiene una categoria asocida.</p>';
+            echo  '<p class="msg-error">No se puede eliminar el plato, Tiene una orden asociada.</p>';
             break;
         default:
             echo  '<p class="msg-error">El registro no existe</p>';

@@ -7,8 +7,8 @@ include '../../controller/controllerMesas.php';
 use App\controllers\controllerMesas;
 
 $controller = new controllerMesas();
-// $controller->getMesa($_GET['id']) ? $_GET['id'] : header("Location: ../AdminMesas.php");
 $id = empty($_GET['id']) ? null : $_GET['id'];
+$id =$controller->idExiste($id);
 $mesa = empty($id) ? null : $controller->getMesa($id);
 ?>
 <!DOCTYPE html>

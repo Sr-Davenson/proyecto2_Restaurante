@@ -97,6 +97,7 @@ class Mesas extends Model
         $res = $conexDb->exeSQL($sql);
         return ($res->num_rows > 0);
     }
+
     public function confirmDelete($id)
     {
         $conexDb = new ConexDB();
@@ -106,6 +107,17 @@ class Mesas extends Model
         if ($row['total'] > 0) {
             return true;
         }
+        return false;
+    }
+        public function existId($id)
+    {
+        $conexDb = new ConexDB();
+        $sql = "SELECT id FROM restaurant_tables WHERE id = $id";
+        $res = $conexDb->exeSQL($sql);
+        if ($row = $res->fetch_assoc()) {
+            return $row['id'];
+        }
+
         return false;
     }
 }

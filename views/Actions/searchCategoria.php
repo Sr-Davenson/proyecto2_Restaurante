@@ -32,17 +32,27 @@ $cats = $controller->searchCategoria($_POST['search']);
         echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
     } else {
         echo '<h1>Categorías encontradas:</h1>';
-        echo '<ul>';
+        echo '<table class="tabla">';
+        echo '<thead>
+                    <td>Nombre</td>
+                    <td>Actualizar</td>
+                    <td>Eliminar</td>
+                </thead>';
         foreach ($cats as $cat) {
-            echo '<p>' . $cat->get('nombre') . ' 
-            <a href="../Forms/formCat.php?id=' . $cat->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' .
-                ' <a href="deleteCat.php?id=' . $cat->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>'
+            echo '<tr>
+                    <td>';
+            echo '<p>' . $cat->get('nombre') .  
+                '</td>' .
+                '<td>' .
+                '<a href="../Forms/formCat.php?id=' . $cat->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' . '</td>' .
+                '<td>' .
+                ' <a href="deleteCat.php?id=' . $cat->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' . '</td>'
                 . '</p>';
+            echo '</tr>';
         }
-        echo '</ul>';
+        echo '</table>';
     }
     ?>
-    <br>
     <div class="botones">
         <a href="../AdminCategoria.php">Buscar otra categoría</a>
         <a href="../inicio.php">Ir a inicio</a>

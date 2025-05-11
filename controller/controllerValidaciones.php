@@ -8,7 +8,7 @@ class controllerValidaciones
 
     public function formatoTextos($text)
     {
-        $convertText = ucfirst(strtolower(trim($_POST[$text])));
+        $convertText = ucfirst(strtolower(trim($text)));
         return $convertText;
     }
 }

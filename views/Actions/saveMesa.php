@@ -25,7 +25,8 @@ $val = new controllerValidaciones();
     <h1>Resultado de la operación</h1>
     <?php
     $nameMesa = isset($_POST['nameMesa']) ? $_POST['nameMesa'] : header("Location: ../AdminMesas.php");
-    $nameMesa = $val->formatoTextos('nameMesa');
+    $nameMesa = $val->formatoTextos($nameMesa);
+    $_POST['nameMesa'] = $nameMesa;
     $res = $controller->procesarMesa($nameMesa, $_POST);
     if ($res == 'yes') {
         echo '<p>Datos guardados</p>';

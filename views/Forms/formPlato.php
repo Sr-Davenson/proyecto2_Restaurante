@@ -12,6 +12,7 @@ use App\controllers\controllerCategorias;
 $controllerPlato = new controllerPlatos();
 $controllerCat = new controllerCategorias();
 $id = empty($_GET['id']) ? null : $_GET['id'];
+$id =$controllerPlato->idExiste($id);
 $plato = empty($id) ? null : $controllerPlato->getPlato($id);
 $cats = $controllerCat->getAllCategorias();
 ?>
@@ -64,7 +65,7 @@ $cats = $controllerCat->getAllCategorias();
                 '<label for="descripPlato">Descripción</label>' .
                 '<input type="text" id="descripPlato" name="descripPlato" required>' .
                 '<label for="precioPlato">Precio</label>' .
-                '<input type="number" id="precioPlato" name="precioPlato" min="1" step="0.01" required>' .
+                '<input type="number" id="precioPlato" name="precioPlato" min="1" max="99999999.99" step="0.01" required>' .
                 '<label for="categoria">Selecciona una categoría:</label>' .
                 '<select name="idCat" id="categoria">';
             foreach ($cats as $cat) {

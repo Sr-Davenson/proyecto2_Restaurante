@@ -25,7 +25,7 @@ $val = new controllerValidaciones();
     <h1>Resultado de la operación</h1>
     <?php
     $nameCat = isset($_POST['nameCat']) ? $_POST['nameCat'] : header("Location: ../AdminCategoria.php");
-    $nameCat = $val->formatoTextos('nameCat');
+    $nameCat = $val->formatoTextos($nameCat);
     $res = $controller->procesarCategoria($nameCat, $_POST);
     if ($res == 'yes') {
         echo '<p class="msg-ok">Datos guardados</p>';

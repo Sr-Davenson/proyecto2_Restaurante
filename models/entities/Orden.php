@@ -42,11 +42,12 @@ class Orden extends Model
         }
         return false;
     }
-    
+
     public function obtenerOrdenesPorFecha($fechaInicio, $fechaFin)
     {
         $conexDb = new ConexDB();
-        $sql = "SELECT * FROM orders WHERE dateOrder BETWEEN '$fechaInicio' AND '$fechaFin' ORDER BY dateOrder DESC";
+        $sql = "SELECT * FROM orders WHERE dateOrder BETWEEN '$fechaInicio 00:00:00' AND '$fechaFin 23:59:59' 
+        ORDER BY dateOrder DESC";
         $resConsul = $conexDb->exeSQL($sql);
         $ordens = [];
         if ($resConsul->num_rows > 0) {

@@ -44,7 +44,7 @@ if ($fechaIni && $fechaFin) {
     ?>
     <br>
     <div class="botones">
-        <a href="../AdminPlatos.php">Buscar otro plato</a>
+        <a href="../Forms/formOrdenActiva.php">Buscar otro reporte</a>
         <a href="../inicio.php">Ir a inicio</a>
     </div>
 </body>

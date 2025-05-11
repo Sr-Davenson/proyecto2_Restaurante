@@ -31,12 +31,17 @@ class controllerPlatos
     public function removePlato($id)
     {
         $model = new Plato();
-        $model->set('id', $id);
-        if (empty($model->find())) {
-            return "empty";
+        if ($model->confirmDelete($id) == false) {
+            $model->set('id', $id);
+
+            if (empty($model->find())) {
+                return "empty";
+            }
+            $resConsul = $model->delete();
+            return $resConsul ? '1' : '2';
+        } else {
+            return 3;
         }
-        $resConsul =  $model->delete();
-        return $resConsul ? 'yes' : 'not';
     }
 
     public function searchPlato($search)
@@ -82,5 +87,16 @@ class controllerPlatos
         $model = new Plato();
         $platos = $model->all();
         return $platos;
+    }
+        public function idExiste($id)
+    {
+        $model = new Plato();
+        if ($id != null) {
+            if ($model->existId($id) == false) {
+                echo 'Plato no encontrado';
+                echo '<a href="../Actions/searchPlato.php">Ir a inicio</a>';
+                exit();
+            }
+        }
     }
 }

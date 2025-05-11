@@ -36,15 +36,33 @@ $platos = $controllerPlato->searchPlato($_POST['search']);
         echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
     } else {
         echo '<h1>Platos encontradas:</h1>';
-        echo '<ul>';
+        echo '<table class="tabla">';
+        echo '<thead>
+                    <td>Descripcion</td>
+                    <td>Precio</td>
+                    <td>Categoria</td>
+                    <td>Actualizar</td>
+                    <td>Eliminar</td>
+                </thead>';
         foreach ($platos as $plato) {
+            echo '<tr>';
             $cat = $controllerCat->searchNameCategoria($plato->get('idCat'));
-            echo '<p>' . $plato->get('descrip') . ', Precio: COP $' . $plato->get('precio') . ', Categoría: ' . $cat->get('nombre') .
-                '<a href="../Forms/formPlato.php?id=' . $plato->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' .
-                ' <a href="deletePlato.php?id=' . $plato->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' .
-                '</p>';
+            echo   '<td>' .
+                $plato->get('descrip') .
+                '</td>' .
+                '<td>' .
+                'COP $' . $plato->get('precio') .
+                '</td>' .
+                '<td>' .
+                $cat->get('nombre') .
+                '</td>' .
+                '<td>' .
+                '<a href="../Forms/formPlato.php?id=' . $plato->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' . '</td>' .
+                '<td>' .
+                ' <a href="deletePlato.php?id=' . $plato->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' . '</td>' ;
+            echo '</tr>';
         }
-        echo '</ul>';
+        echo '</table>';
     }
     ?>
 
