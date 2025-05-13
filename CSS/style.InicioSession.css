@@ -1,11 +1,14 @@
 body {
     display: flex;
     justify-content: right;
-    background-color: #E9D8B7;
+    background-color: #720101;
+    color: #d1cec6;
     padding: 0%;
     margin: 0%;
-    animation: animacion 1s ease-in-out;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    animation: animacion 1.5s ease-in-out;
+    font-family:serif;
+    border-style: solid;
+    border-color: #720101;
 }
 
 @keyframes animacion {
@@ -27,7 +30,7 @@ p {
     margin: auto;
     width: 50vw;
     height: 97.8vh;
-    background-color: #ffffff;
+    background-color: #6d3c3c;
     border: 0px;
     border-radius: 5px;
     box-shadow: 1px 1px 50px 3px #d1cec6;
@@ -45,7 +48,7 @@ p {
     border: 2px solid #cda54d00;
     font-size: 120%;
     text-align: center;
-    box-shadow: 1px 1px 5px 3px #d1cec6;
+    box-shadow: 1px 1px 5px 3px #632c25;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
 }
@@ -78,3 +81,8 @@ p {
     width: 50vw;
     height: 100vh;
 }
+
+.logo{
+    border-radius: 50px;
+}
+
