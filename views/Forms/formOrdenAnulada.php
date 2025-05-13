@@ -10,25 +10,27 @@
 </head>
 
 <body>
-    <h1>
-        <h1>Fechas</h1>
-    </h1>
-    <br>
-    <form class="form" action="../Actions/searchOrdenAnulada.php" method="post">
-        <div>
-            <label for="fechaIni">Fecha Inicio:</label>
-            <input type="date" id="fechaIni" name="fechaIni" required>
-            <label for="fechaFin">Fecha Fin:</label>
-            <input type="date" id="fechaFin" name="fechaFin" required>
-        </div>
-
-        <button type="submit">Buscar</button>
-    </form>
-    <div class="botones">
-        <a href="../AdminOrdenes.php">Volver</a>
+    <section class="container">
+        <h1>
+            <h1>Fechas Anuladas</h1>
+        </h1>
         <br>
-        <a href="../inicio.php">Ir a inicio</a>
-    </div>
+        <form class="form" action="../Actions/searchOrdenAnulada.php" method="post">
+            <div>
+                <label for="fechaIni">Fecha Inicio:</label>
+                <input type="date" id="fechaIni" name="fechaIni" required>
+                <label for="fechaFin">Fecha Fin:</label>
+                <input type="date" id="fechaFin" name="fechaFin" required>
+            </div>
+
+            <button type="submit">Buscar</button>
+        </form>
+        <div class="botones">
+            <a href="../AdminOrdenes.php">Volver</a>
+            <br>
+            <a href="../inicio.php">Ir a inicio</a>
+        </div>
+    </section>    
 </body>
 
 </html>

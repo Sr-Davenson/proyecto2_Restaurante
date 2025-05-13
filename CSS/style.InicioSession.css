@@ -50,9 +50,7 @@ p {
     text-align: center;
     box-shadow: 1px 1px 5px 3px #632c25;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-
 }
-
 .boton:hover {
     background-color: #080808;
     border: 2px solid #ffffff;
@@ -70,14 +68,10 @@ p {
     height: 40%;
     width: 40%;
 }
-
-
 .Session img:hover {
     transform: scale(1.1);
     filter: brightness(1.2) contrast(1.1);
 }
-
-<<<<<<< HEAD
 .img {
     width: 50vw;
     height: 100vh;
@@ -86,6 +80,6 @@ p {
 .logo{
     border-radius: 50px;
 }
-=======
->>>>>>> db0079d (valerin: cambios)
+
+
 

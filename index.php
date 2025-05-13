@@ -30,13 +30,8 @@ switch ($f->calcSaludo()) {
 <body>
     <div>
         <fieldset class="Session">
-<<<<<<< HEAD
             <img class = "logo"src="images/log.jpg" alt="Logo">
             <p><b><?php echo $sal . '<br>'; ?></b> !Bienvenidos a Fresh Food!</p>
-=======
-            <img src="images/log.jpg" alt="Logo">
-            <p><b><?php echo $sal . '<br>'; ?></b> ¡¡Bienvenidos a la Toscana!!</p>
->>>>>>> db0079d (valerin: cambios)
             <a class="boton" href="views/inicio.php">Ingresar</a>
         </fieldset>
     </div>

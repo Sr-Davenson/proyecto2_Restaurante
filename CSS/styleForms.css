@@ -1,11 +1,4 @@
 body {
-<<<<<<< HEAD
-    background-color: #cccccc;
-    padding: 0%;
-    margin: 0%;
-    animation: animacion 1s ease-in-out;
-    font-family:serif;
-=======
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg,#000000, #2c1616, #700000, #4c0000);
     display: flex;
@@ -13,9 +6,6 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
- 
-    
->>>>>>> db0079d (valerin: cambios)
 }
 
 .container {
@@ -25,8 +15,6 @@ body {
     box-shadow: 0px 6px 15px rgba(226, 210, 210, 0.3);
     width: 400px;
     text-align: center;
-   
-
 }
 
 h1 {
@@ -39,7 +27,6 @@ h1 {
     transform: translateX(-50%); 
     text-align: center; 
     width: 100%;
-    
 }
 
 .form-group {
@@ -76,6 +63,7 @@ button {
     cursor: pointer;
     transition: 0.3s;
     display: inline-block;
+    margin-top: 50px;
 }
 .botones{
     
@@ -84,7 +72,6 @@ button {
     align-items: center;
     justify-content: center;
     height: 5vh;
-
 }
 .botones a {
     height: 90%;
@@ -99,7 +86,8 @@ button {
     text-align: center;
     box-shadow: 1px 1px 5px 3px #541b1b;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin: 50px;
+    margin-top: 50px;
+    margin-right: 20px;
 
 }
 .botones a:hover {
@@ -113,5 +101,5 @@ button {
     margin: 5% auto auto auto;
     border-radius: 15px;
     padding: 40px 0;
-    
+    margin-top: 20%;
 }
