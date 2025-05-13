@@ -21,6 +21,7 @@ $controllerMesa = new controllerMesas();
 $fechaIni = isset($_POST['fechaIni']) ? $_POST['fechaIni'] : null;
 $fechaFin = isset($_POST['fechaFin']) ? $_POST['fechaFin'] : null;
 $estado = 1;
+$totalRecaudo = 0;
 if ($fechaFin == null || $fechaFin  == null) {
     header("Location: ../Forms/formOrdenAnulada.php");
     exit();
@@ -65,7 +66,7 @@ if ($fechaIni && $fechaFin) {
             echo '<td>' . $orden->get('fecha') .
                 '</td>' .
                 '<td>' .
-                'COP $' . $orden->get('total') .
+                'COP $' . number_format($orden->get('total'), 2)  .
                 '</td>' .
                 '<td>' .
                 $mesa->get('nombre') .
@@ -73,8 +74,14 @@ if ($fechaIni && $fechaFin) {
                 '<td>' .
                 '<a  href="../Forms/viewsDetalleOrden.php?id=' . $orden->get('id') . '"> <img src="../../images/Read More.svg" alt="More"></a>' . '</td>' .
                 '</td>';
+            $totalRecaudo += $orden->get('total');
             echo '</tr>';
         }
+        echo '<tfoot>
+        <tr>
+            <td>Total Recaudo</td>
+            <td>COP $' . number_format($totalRecaudo, 2)  . '</td>';
+        echo '</tfoot>';
         echo '</table>';
     }
     ?>

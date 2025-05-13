@@ -67,7 +67,7 @@ if ($fechaIni && $fechaFin) {
             echo '<tr>';
             $mesa = $controllerMesa->getMesa($orden->get('idMesa'));
             echo '<td>' . $orden->get('fecha') . '</td>' .
-                '<td>' . 'COP $' . $orden->get('total') . '</td>' .
+                '<td>' . 'COP $' . number_format($orden->get('total'), 2) . '</td>' .
                 '<td>' . $mesa->get('nombre') . '</td>' .
                 '<td>' . '<a  href="../Forms/viewsDetalleOrden.php?id=' . $orden->get('id') . '"> <img src="../../images/Read More.svg" alt="More"></a>' .
                 '</td>';

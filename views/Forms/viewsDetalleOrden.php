@@ -56,7 +56,7 @@ $totalRecaudo = 0;
         <input type="text" value="<?php echo $mesa->get('nombre') ?>" disabled>
         <?php
         if ($orden->get('estado') == 0) {
-            $estado = 'Activa';
+            $estado = 'Activo';
             echo '<input type="hidden" name="idOrden" value="' . $orden->get('id') . '">';
             echo '<label for="mesa">Estado:</label>';
             echo '<input type="text" value="' . $estado . '" disabled>';
