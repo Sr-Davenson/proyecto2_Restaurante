@@ -53,26 +53,28 @@ class DetalleOrden extends Model
         return $precioUnitario;
     }
 
-    public function rankingPlatos()
+    public function rankingPlatos($estado, $fechaFin, $fechaInicio)
     {
         $conexDb = new ConexDB();
-        $sql = "SELECT p.nombre, SUM(d.cantidad) AS total_vendido
-            FROM order_details d
-            JOIN platos p ON d.idPlato = p.id
-            GROUP BY p.id
-            ORDER BY total_vendido DESC
-            LIMIT 10";
+        $sql = "SELECT p.description AS nombre_plato, SUM(d.quantity) AS total_vendido
+        FROM order_details d
+        JOIN dishes p ON d.idDish = p.id
+        JOIN orders o ON d.idOrder = o.id
+        WHERE o.isCancelled = " . $estado . "
+        AND o.dateOrder BETWEEN '" . $fechaInicio . " 00:00:00' AND '" . $fechaFin . " 23:59:59'
+        GROUP BY p.id
+        ORDER BY total_vendido DESC;";
 
         $res = $conexDb->exeSQL($sql);
         $ranking = [];
 
         while ($row = $res->fetch_assoc()) {
-            $ranking[] = [
-                'nombre' => $row['nombre'],
+            $plato = [
+                'nombre' => $row['nombre_plato'],
                 'total_vendido' => $row['total_vendido']
             ];
+            array_push($ranking, $plato);
         }
-
         return $ranking;
     }
 }

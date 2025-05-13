@@ -21,7 +21,7 @@ $controllerMesa = new controllerMesas();
 $fechaIni = isset($_POST['fechaIni']) ? $_POST['fechaIni'] : null;
 $fechaFin = isset($_POST['fechaFin']) ? $_POST['fechaFin'] : null;
 $estado = 0;
-if ($fechaFin == null || $fechaFin  == null) {
+if ($fechaIni == null || $fechaFin  == null) {
     header("Location: ../Forms/formOrdenActiva.php");
     exit();
 }
@@ -66,25 +66,29 @@ if ($fechaIni && $fechaFin) {
         foreach ($os as $orden) {
             echo '<tr>';
             $mesa = $controllerMesa->getMesa($orden->get('idMesa'));
-            echo '<td>' . $orden->get('fecha') .
-                '</td>' .
-                '<td>' .
-                'COP $' . $orden->get('total') .
-                '</td>' .
-                '<td>' .
-                $mesa->get('nombre') .
-                '</td>' .
-                '<td>' .
-                '<a  href="../Forms/viewsDetalleOrden.php?id=' . $orden->get('id') . '"> <img src="../../images/Read More.svg" alt="More"></a>' . '</td>' .
+            echo '<td>' . $orden->get('fecha') . '</td>' .
+                '<td>' . 'COP $' . $orden->get('total') . '</td>' .
+                '<td>' . $mesa->get('nombre') . '</td>' .
+                '<td>' . '<a  href="../Forms/viewsDetalleOrden.php?id=' . $orden->get('id') . '"> <img src="../../images/Read More.svg" alt="More"></a>' .
                 '</td>';
             echo '</tr>';
             $totalRecaudo += $orden->get('total');
         }
+        $ranking = $controllerDetallOrden->obtenerRanking($estado, $fechaFin, $fechaIni);
+
         echo '<tfoot>
-        <td>Total Recaudo</td>
-        <td>COP $' . $totalRecaudo . '</td>
-        </tfoot>';
-        echo '</table>';
+        <tr>
+            <td>Total Recaudo</td>
+            <td>COP $' . number_format($totalRecaudo, 2) . '</td>';
+
+        if (!empty($ranking)) {
+            echo '<tr><td colspan="2"><b>Platos Más Vendidos</b></td></tr>';
+            foreach ($ranking as $plato) {
+                echo '<tr><td>' . $plato['nombre'] . '</td><td>' . $plato['total_vendido'] . '</td></tr>';
+            }
+        }
+        echo '</tfoot>
+        </table>';
     }
     ?>
     <br>

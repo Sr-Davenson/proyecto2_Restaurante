@@ -29,17 +29,16 @@ class controllerDetalleOrden
 
         return $totalOrden;
     }
-        public function getAllDetalleOrden($idOrden)
+    public function getAllDetalleOrden($idOrden)
     {
         $model = new DetalleOrden();
         $model->set('idOrder', $idOrden);
         return $model->all($idOrden);
     }
-    public function obtenerRanking()
+    public function obtenerRanking($estado, $fechaFin, $fechaInicio)
     {
         $model = new DetalleOrden();
-        $t = $model->rankingPlatos();
-        return $t;
+        $ranking = $model->rankingPlatos($estado, $fechaFin, $fechaInicio);
+        return $ranking;
     }
-    
 }
