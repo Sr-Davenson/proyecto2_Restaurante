@@ -1,4 +1,4 @@
-body {
+.body {
     background-color: #cccccc;
     padding: 0%;
     margin: 0%;
@@ -9,9 +9,7 @@ body {
 
 .menu {
     background: -webkit-linear-gradient(90deg, #000000, #2c1616, #700000, #4c0000);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(90deg, #000000, #2c1616, #700000, #4c0000);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     width: 98.8vw;
     height: 15vh;
     margin-top: 0%;
@@ -33,12 +31,23 @@ body {
     }
 }
 
+<<<<<<< HEAD
 /* img {
     display: block;
     margin: auto;
     place-items: center;
     height: 80vh;
 } */
+=======
+
+.img{
+  
+  background-size: cover; /* Asegura que cubra toda el área */
+  background-position: center; /* Centra la imagen */
+  width: 100%;
+  height: 100%;
+}
+>>>>>>> db0079d (valerin: cambios)
 
 a {
     text-align: center;
@@ -64,6 +73,7 @@ a:active {
     background: #e7a5a5;
 }
 
+<<<<<<< HEAD
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr; /* Tres columnas: izquierda, centro, derecha */
@@ -121,4 +131,7 @@ a:active {
     grid-row: 2 / 3;
     background-color: #ffffff;
 }
+=======
+
+>>>>>>> db0079d (valerin: cambios)
 

@@ -16,7 +16,9 @@
         <a href="CrearOrden.php">Iniciar nueva Orden</a>
         <a href="AdminOrdenes.php">Administrar Ordenes</a>
         <a href="../index.php">Salir</a>
+        
     </div>
+<<<<<<< HEAD
 
     <div class="grid-container">
         <div class="grid-item img-box"><img src="../images/img1.jpg" alt="IMG 1"></div>
@@ -25,6 +27,9 @@
         <div class="grid-item txt-box"><p>Texto 2</p></div>
         <div class="grid-item img-box"><img src="../images/img2.jpg" alt="IMG 2"></div>
     </div>
+=======
+    <img class="img" src="../images/" alt="fondo">
+    
+>>>>>>> db0079d (valerin: cambios)
 </body>
-
 </html>
