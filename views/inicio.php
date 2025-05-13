@@ -17,7 +17,14 @@
         <a href="AdminOrdenes.php">Administrar Ordenes</a>
         <a href="../index.php">Salir</a>
     </div>
-    <img class="img" src="" alt="imagenInicio">
+
+    <div class="grid-container">
+        <div class="grid-item img-box"><img src="../images/img1.jpg" alt="IMG 1"></div>
+        <div class="grid-item txt-box"><p>Texto 1</p></div>
+        <div class="grid-item center-img"><img src="../images/papa.jpg" alt="Imagen Central"></div>
+        <div class="grid-item txt-box"><p>Texto 2</p></div>
+        <div class="grid-item img-box"><img src="../images/img2.jpg" alt="IMG 2"></div>
+    </div>
 </body>
 
 </html>
