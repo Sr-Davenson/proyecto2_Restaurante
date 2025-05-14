@@ -72,6 +72,7 @@ p {
     transform: scale(1.1);
     filter: brightness(1.2) contrast(1.1);
 }
+
 .img {
     width: 50vw;
     height: 100vh;

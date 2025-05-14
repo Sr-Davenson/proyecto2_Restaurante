@@ -1,10 +1,9 @@
-.body {
-    background-color: #cccccc;
+body {
     padding: 0%;
     margin: 0%;
     animation: animacion 1s ease-in-out;
-    font-family: serif;
-    background: linear-gradient(135deg,#000000, #2c1616, #700000, #4c0000);
+    font-family: serif; 
+    background: linear-gradient(90deg, #000000, #2c1616, #700000, #4c0000);
 }
 
 .menu {
@@ -91,7 +90,7 @@ a:active {
 }
 
 .center-img img {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
 }
 
