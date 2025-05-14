@@ -18,7 +18,7 @@
         <a href="../index.php">Salir</a>
         
     </div>
-    <img class="img" src="../images/" alt="fondo">
+    <img class="img" src="../images/bre.jpg" alt="fondo">
     
 </body>
 </html>

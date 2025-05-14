@@ -35,6 +35,7 @@ body {
     margin: auto;
     place-items: center;
     height: 80vh;
+    background-color: #ffffff;
 } 
 
 a {
@@ -60,62 +61,3 @@ a:hover {
 a:active {
     background: #e7a5a5;
 }
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr; /* Tres columnas: izquierda, centro, derecha */
-    grid-template-rows: 1fr 1fr; /* Dos filas */
-    gap: 20px; /* Espacio entre elementos */
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Ocupa toda la pantalla */
-}
-
-/* Ajuste de los cuadrantes */
-.grid-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border: 2px solid #ccc;
-}
-
-/* Imagen central */
-.center-img {
-    grid-column: 2 / 3; /* Segunda columna */
-    grid-row: span 2; /* Ocupa ambas filas */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.center-img img {
-    max-width: 50%;
-    height: auto;
-}
-
-/* Corrección de los cuadrantes en los costados */
-.img-box:first-child { /* Primera columna - primera fila */
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    background-color: #ffffff;
-}
-
-.txt-box:nth-child(2) { /* Primera columna - segunda fila */
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    background-color: #ffffff;
-}
-
-.txt-box:nth-child(4) { /* Tercera columna - primera fila */
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
-    background-color: #ffffff;
-}
-
-.img-box:last-child { /* Tercera columna - segunda fila */
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-    background-color: #ffffff;
-}
-
