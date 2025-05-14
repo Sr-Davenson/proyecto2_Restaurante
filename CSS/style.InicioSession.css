@@ -2,12 +2,11 @@ body {
     display: flex;
     justify-content: right;
     background-color: #720101;
-    color: #d1cec6;
+    color: black;
     padding: 0%;
     margin: 0%;
     animation: animacion 1.5s ease-in-out;
     font-family:serif;
-    border-style: solid;
     border-color: #720101;
 }
 
@@ -30,7 +29,7 @@ p {
     margin: auto;
     width: 50vw;
     height: 97.8vh;
-    background-color: #6d3c3c;
+    background-color: white;
     border: 0px;
     border-radius: 5px;
     box-shadow: 1px 1px 50px 3px #d1cec6;
@@ -43,7 +42,7 @@ p {
     color: white;
     text-decoration: none;
     padding: 5px 10px;
-    background-color: #720101;
+    background-color: #2b8581;
     border-radius: 5px;
     border: 2px solid #cda54d00;
     font-size: 120%;
@@ -67,6 +66,7 @@ p {
     animation: animacion 0.9s ease-in-out;
     height: 40%;
     width: 40%;
+    border-radius: 50px;
 }
 .Session img:hover {
     transform: scale(1.1);
@@ -74,13 +74,11 @@ p {
 }
 
 .img {
-    width: 50vw;
+    width: 100vw;
     height: 100vh;
 }
 
-.logo{
-    border-radius: 50px;
-}
+
 
 
 
