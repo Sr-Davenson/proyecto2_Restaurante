@@ -1,9 +1,11 @@
 body {
-    background-color: #cccccc;
     padding: 0%;
     margin: 0%;
     animation: animacion 1s ease-in-out;
-    font-family:serif;
+    font-family:serif; 
+    background: linear-gradient(90deg, #000000, #2c1616, #700000, #4c0000);
+    animation: animacion 1s ease-in-out;
+    margin-top: 10%;
 }
 
 @keyframes animacion {
@@ -44,7 +46,7 @@ img:hover {
     color: white;
     text-decoration: none;
     padding: 5px 10px;
-    background-color: #2150ea;
+    background-color: #5f0904;
     border-radius: 5px;
     border: 2px solid #cda54d00;
     font-size: 120%;
@@ -78,4 +80,14 @@ img:hover {
      text-align: center;
     font-size: 30px;
         border: 3px solid #720101;
+}
+
+.container{
+    background-color: #ffffff;
+    width: 80%;
+    margin: 5% auto auto auto;
+    border-radius: 15px;
+    padding: 40px 0;
+    margin-top: 10%;
+    text-align: center;
 }

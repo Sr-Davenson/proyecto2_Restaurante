@@ -30,47 +30,50 @@ $platos = $controllerPlato->searchPlato($_POST['search']);
 </head>
 
 <body>
-    <?php
-    if (empty($platos)) {
-        echo ' <h1>Resultados de la operación</h1>';
-        echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
-    } else {
-        echo '<h1>Platos encontradas:</h1>';
-        echo '<table class="tabla">';
-        echo '<thead>
+    <section class="container">
+        
+        <?php
+        if (empty($platos)) {
+            echo ' <h1>Resultados de la operación</h1>';
+            echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
+        } else {
+            echo '<h1>Platos encontradas:</h1>';
+            echo '<table class="tabla">';
+            echo '<thead>
                     <td>Descripcion</td>
                     <td>Precio</td>
                     <td>Categoria</td>
                     <td>Actualizar</td>
                     <td>Eliminar</td>
                 </thead>';
-        foreach ($platos as $plato) {
-            echo '<tr>';
-            $cat = $controllerCat->searchNameCategoria($plato->get('idCat'));
-            echo   '<td>' .
-                $plato->get('descrip') .
-                '</td>' .
-                '<td>' .
-                'COP $' . $plato->get('precio') .
-                '</td>' .
-                '<td>' .
-                $cat->get('nombre') .
-                '</td>' .
-                '<td>' .
-                '<a href="../Forms/formPlato.php?id=' . $plato->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' . '</td>' .
-                '<td>' .
-                ' <a href="deletePlato.php?id=' . $plato->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' . '</td>' ;
-            echo '</tr>';
+            foreach ($platos as $plato) {
+                echo '<tr>';
+                $cat = $controllerCat->searchNameCategoria($plato->get('idCat'));
+                echo   '<td>' .
+                    $plato->get('descrip') .
+                    '</td>' .
+                    '<td>' .
+                    'COP $' . $plato->get('precio') .
+                    '</td>' .
+                    '<td>' .
+                    $cat->get('nombre') .
+                    '</td>' .
+                    '<td>' .
+                    '<a href="../Forms/formPlato.php?id=' . $plato->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' . '</td>' .
+                    '<td>' .
+                    ' <a href="deletePlato.php?id=' . $plato->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' . '</td>';
+                echo '</tr>';
+            }
+            echo '</table>';
         }
-        echo '</table>';
-    }
-    ?>
+        ?>
 
-    <br>
-    <div class="botones">
-        <a href="../AdminPlatos.php">Buscar otro plato</a>
-        <a href="../inicio.php">Ir a inicio</a>
-    </div>
+        <br>
+        <div class="botones">
+            <a href="../AdminPlatos.php">Buscar otro plato</a>
+            <a href="../inicio.php">Ir a inicio</a>
+        </div>
+    </section>
 </body>
 
 </html>

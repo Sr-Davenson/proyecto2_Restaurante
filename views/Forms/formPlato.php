@@ -24,6 +24,7 @@ $cats = $controllerCat->getAllCategorias();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">    
     <link rel="stylesheet" href="../../CSS/styleForms.css">
     <?php
     if (empty($id)) {
@@ -61,7 +62,7 @@ $cats = $controllerCat->getAllCategorias();
                     '<label for="descripPlato">Descripción Nueva</label>' .
                     '<input type="text" id="descripPlato" name="descripPlato" required>' .
                     '<label for="precioPlato">Precio Nuevo</label>' .
-                    '<input type="number" id="precioPlato" name="precioPlato" min="1" step="0.01" required>' .
+                    '<input type="number" id="precioPlato" name="precioPlato" min="1" step="0.01" min="1" max="99999999.99" required>' .
                     '<div>';
             } else {
                 echo '<div>' .
@@ -87,7 +88,7 @@ $cats = $controllerCat->getAllCategorias();
         </div>
     </section>
      <footer class="footer">
-        <div>
+        <div >
             <img src="../../images/log.jpg" alt="logo"></img>
             <p>&copy; FRECH FOOD - Todos los derechos reservados</p>
             <p>Teléfono: (+57 1) 123 4567</p>

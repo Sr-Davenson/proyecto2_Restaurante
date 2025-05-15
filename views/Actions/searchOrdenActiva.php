@@ -47,55 +47,57 @@ if ($fechaIni && $fechaFin) {
 </head>
 
 <body>
-    <?php
-    if ($fechaIni > $fechaFin) {
-        echo '<h1>Resultados de la operación</h1>';
-        echo '<p class="msg-error">La fecha de inicio no puede ser mayor que la fecha de fin.</p>';
-    } elseif (empty($os)) {
-        echo '<h1>Resultados de la operación</h1>';
-        echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
-    } else {
-        echo '<h1>Órdenes encontradas:</h1>';
-        echo '<table class="tabla">';
-        echo '<thead>
+    <section class="container">
+        <?php
+        if ($fechaIni > $fechaFin) {
+            echo '<h1>Resultados de la operación</h1>';
+            echo '<p class="msg-error">La fecha de inicio no puede ser mayor que la fecha de fin.</p>';
+        } elseif (empty($os)) {
+            echo '<h1>Resultados de la operación</h1>';
+            echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
+        } else {
+            echo '<h1>Órdenes encontradas:</h1>';
+            echo '<table class="tabla">';
+            echo '<thead>
                     <td>Fecha</td>
                     <td>Total</td>
                     <td>Mesa</td>
                     <td>Ver detalle</td>
                 </thead>';
-        foreach ($os as $orden) {
-            echo '<tr>';
-            $mesa = $controllerMesa->getMesa($orden->get('idMesa'));
-            echo '<td>' . $orden->get('fecha') . '</td>' .
-                '<td>' . 'COP $' . number_format($orden->get('total'), 2) . '</td>' .
-                '<td>' . $mesa->get('nombre') . '</td>' .
-                '<td>' . '<a  href="../Forms/viewsDetalleOrden.php?id=' . $orden->get('id') . '"> <img src="../../images/Read More.svg" alt="More"></a>' .
-                '</td>';
-            echo '</tr>';
-            $totalRecaudo += $orden->get('total');
-        }
-        $ranking = $controllerDetallOrden->obtenerRanking($estado, $fechaFin, $fechaIni);
+            foreach ($os as $orden) {
+                echo '<tr>';
+                $mesa = $controllerMesa->getMesa($orden->get('idMesa'));
+                echo '<td>' . $orden->get('fecha') . '</td>' .
+                    '<td>' . 'COP $' . number_format($orden->get('total'), 2) . '</td>' .
+                    '<td>' . $mesa->get('nombre') . '</td>' .
+                    '<td>' . '<a  href="../Forms/viewsDetalleOrden.php?id=' . $orden->get('id') . '"> <img src="../../images/Read More.svg" alt="More"></a>' .
+                    '</td>';
+                echo '</tr>';
+                $totalRecaudo += $orden->get('total');
+            }
+            $ranking = $controllerDetallOrden->obtenerRanking($estado, $fechaFin, $fechaIni);
 
-        echo '<tfoot>
+            echo '<tfoot>
         <tr>
             <td>Total Recaudo</td>
             <td>COP $' . number_format($totalRecaudo, 2) . '</td>';
 
-        if (!empty($ranking)) {
-            echo '<tr><td colspan="2"><b>Platos Más Vendidos</b></td></tr>';
-            foreach ($ranking as $plato) {
-                echo '<tr><td>' . $plato['nombre'] . '</td><td>' . $plato['total_vendido'] . '</td></tr>';
+            if (!empty($ranking)) {
+                echo '<tr><td colspan="2"><b>Platos Más Vendidos</b></td></tr>';
+                foreach ($ranking as $plato) {
+                    echo '<tr><td>' . $plato['nombre'] . '</td><td>' . $plato['total_vendido'] . '</td></tr>';
+                }
             }
-        }
-        echo '</tfoot>
+            echo '</tfoot>
         </table>';
-    }
-    ?>
-    <br>
-    <div class="botones">
-        <a href="../Forms/formOrdenActiva.php">Buscar otro reporte</a>
-        <a href="../inicio.php">Ir a inicio</a>
-    </div>
+        }
+        ?>
+        <br>
+        <div class="botones">
+            <a href="../Forms/formOrdenActiva.php">Buscar otro reporte</a>
+            <a href="../inicio.php">Ir a inicio</a>
+        </div>
+    </section>
 </body>
 
 </html>

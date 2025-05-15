@@ -18,6 +18,7 @@ $mesa = empty($id) ? null : $controller->getMesa($id);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../../CSS/styleForms.css">
     <?php
     if (empty($id)) {
@@ -51,12 +52,12 @@ $mesa = empty($id) ? null : $controller->getMesa($id);
                     '</div>' .
                     '<div>' .
                     '<label for="nameMesa">Nuevo Nombre:</label>' .
-                    '<input type="text" id="nameMesa" name="nameMesa" required>' .
+                    '<input type="text" id="nameMesa" name="nameMesa" maxlength="10" required>' .
                     '</div>';
             } else {
                 echo '<div>' .
                     '<label for="nameMesa">Nombre:</label>' .
-                    '<input type="text" id="nameMesa" name="nameMesa" required>' .
+                    '<input type="text" id="nameMesa" name="nameMesa" maxlength="10" required>' .
                     '</div>';
             }
             ?>

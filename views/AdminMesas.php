@@ -12,7 +12,7 @@
     <section class="container">
         <form action="Actions/searchMesa.php" method="post">
             <img src="../images/log.jpg" alt="logo"></img>
-            <input type="text" name="search" placeholder="Buscar mesa" required>
+            <input type="text" name="search" placeholder="Buscar mesa" maxlength="10" required>
             <button type="submit">Buscar</button>
         </form>
         <br>

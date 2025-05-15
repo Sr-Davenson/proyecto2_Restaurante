@@ -26,37 +26,39 @@ $cats = $controller->searchCategoria($_POST['search']);
 </head>
 
 <body>
-    <?php
-    if (empty($cats)) {
-        echo '<h1>Resultados de la operación</h1>';
-        echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
-    } else {
-        echo '<h1>Categorías encontradas:</h1>';
-        echo '<table class="tabla">';
-        echo '<thead>
+    <section class="container">
+        <?php
+        if (empty($cats)) {
+            echo '<h1>Resultados de la operación</h1>';
+            echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
+        } else {
+            echo '<h1>Categorías encontradas:</h1>';
+            echo '<table class="tabla">';
+            echo '<thead>
                     <td>Nombre</td>
                     <td>Actualizar</td>
                     <td>Eliminar</td>
                 </thead>';
-        foreach ($cats as $cat) {
-            echo '<tr>
+            foreach ($cats as $cat) {
+                echo '<tr>
                     <td>';
-            echo '<p>' . $cat->get('nombre') .  
-                '</td>' .
-                '<td>' .
-                '<a href="../Forms/formCat.php?id=' . $cat->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' . '</td>' .
-                '<td>' .
-                ' <a href="deleteCat.php?id=' . $cat->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' . '</td>'
-                . '</p>';
-            echo '</tr>';
+                echo '<p>' . $cat->get('nombre') .
+                    '</td>' .
+                    '<td>' .
+                    '<a href="../Forms/formCat.php?id=' . $cat->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' . '</td>' .
+                    '<td>' .
+                    ' <a href="deleteCat.php?id=' . $cat->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' . '</td>'
+                    . '</p>';
+                echo '</tr>';
+            }
+            echo '</table>';
         }
-        echo '</table>';
-    }
-    ?>
-    <div class="botones">
-        <a href="../AdminCategoria.php">Buscar otra categoría</a>
-        <a href="../inicio.php">Ir a inicio</a>
-    </div>
+        ?>
+        <div class="botones">
+            <a href="../AdminCategoria.php">Buscar otra categoría</a>
+            <a href="../inicio.php">Ir a inicio</a>
+        </div>
+    </section>
 </body>
 
 </html>
