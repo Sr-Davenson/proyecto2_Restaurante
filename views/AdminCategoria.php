@@ -12,7 +12,7 @@
     <section class="container">
         <form action="Actions/searchCategoria.php" method="post">
               <img src="../images/log.jpg" alt="logo"></img>
-            <input type="text" name="search" placeholder="Buscar por nombre" required>
+            <input type="text" name="search" placeholder="Buscar por nombre" maxlength="10" required>
             <button type="submit">Buscar</button>
         </form>
         <br>

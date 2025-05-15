@@ -61,7 +61,7 @@ $cats = $controllerCat->getAllCategorias();
                     '<label for="descripPlato">Descripción Nueva</label>' .
                     '<input type="text" id="descripPlato" name="descripPlato" required>' .
                     '<label for="precioPlato">Precio Nuevo</label>' .
-                    '<input type="number" id="precioPlato" name="precioPlato" min="1" step="0.01" required>' .
+                    '<input type="number" id="precioPlato" name="precioPlato" min="1" step="0.01" min="1" max="99999999.99" required>' .
                     '<div>';
             } else {
                 echo '<div>' .
