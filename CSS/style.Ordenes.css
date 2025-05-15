@@ -10,8 +10,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-
 h1 {
     color: #ffffff;
     font-size: 26px;
@@ -23,20 +21,17 @@ h1 {
     text-align: center; 
     width: 100%;
 }
-
 .form-group {
     display: flex;
     flex-direction: column;
     text-align: left;
     margin-bottom: 15px;
 }
-
 label {
     font-weight: bold;
     color: #ce8a7e;
     margin-bottom: 5px;
 }
-
 input, select {
    width: 100%;
     padding: 12px;
@@ -48,7 +43,6 @@ input, select {
     
 
 }
-
 button {
     width: 30%;
     padding: 12px;
@@ -112,11 +106,9 @@ button {
     width: 100%;
     
 }
-
-
 img{
     position: absolute;
-    bottom: 15px; 
+    bottom: 3vh;
     left: 20%; 
     width: 100px; 
     border-radius: 10%;
