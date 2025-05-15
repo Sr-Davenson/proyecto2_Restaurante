@@ -51,12 +51,12 @@ $mesa = empty($id) ? null : $controller->getMesa($id);
                     '</div>' .
                     '<div>' .
                     '<label for="nameMesa">Nuevo Nombre:</label>' .
-                    '<input type="text" id="nameMesa" name="nameMesa" required>' .
+                    '<input type="text" id="nameMesa" name="nameMesa" maxlength="10" required>' .
                     '</div>';
             } else {
                 echo '<div>' .
                     '<label for="nameMesa">Nombre:</label>' .
-                    '<input type="text" id="nameMesa" name="nameMesa" required>' .
+                    '<input type="text" id="nameMesa" name="nameMesa" maxlength="10" required>' .
                     '</div>';
             }
             ?>
