@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/log.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../../CSS/style.Ordenes.css">
     <title>Ordenes Activas</title>
@@ -32,8 +33,7 @@
             <a href="../inicio.php">Ir a inicio</a>
         </div>
     </section>
-     <footer class="footer">
-        <div>
+     <footer>
             <img src="../../images/log.jpg" alt="logo"></img>
             <p>&copy; FRECH FOOD - Todos los derechos reservados</p>
             <p>Teléfono: (+57 1) 123 4567</p>
@@ -43,7 +43,6 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-whatsapp"></i></a>
             <br><br>
-        </div>
     </footer>
 </body>
 

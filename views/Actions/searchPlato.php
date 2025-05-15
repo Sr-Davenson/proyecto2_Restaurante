@@ -25,6 +25,7 @@ $platos = $controllerPlato->searchPlato($_POST['search']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" conte nt="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/log.ico">
     <link rel="stylesheet" href="../../CSS/styleSearch.css">
     <title>Buscar Plato</title>
 </head>

@@ -22,7 +22,7 @@ switch ($f->calcSaludo()) {
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="images/logo.png">
+    <link rel="icon" href="images/log.ico">
     <link rel="stylesheet" href="CSS/style.InicioSession.css">
     <title>Inicia Session</title>
 </head>
