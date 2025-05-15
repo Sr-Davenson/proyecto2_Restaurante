@@ -1,11 +1,11 @@
 body {
     font-family: serif;
-    background: linear-gradient(135deg, #000000, #2c1616, #700000, #4c0000);
+    background: linear-gradient(135deg,#000000, #2c1616, #700000, #4c0000);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    margin:0;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -16,16 +16,16 @@ h1 {
     color: #ffffff;
     font-size: 26px;
     margin-bottom: 20px;
-    position: absolute;
+    position:absolute;
     top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
+    left: 50%; 
+    transform: translateX(-50%); 
+    text-align: center; 
     width: 100%;
 }
 
 .form-group {
-    display: flex;
+    display: flex;  
     flex-direction: column;
     text-align: left;
     margin-bottom: 15px;
@@ -37,15 +37,20 @@ label {
     margin-bottom: 5px;
 }
 
-input,
-select {
-    width: 100%;
+input, select {
+   width: 100%;
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #8a2c2c;
     background: #f2e6e6;
     font-size: 15px;
+<<<<<<< HEAD
     box-sizing: border-box;
+=======
+    box-sizing: border-box; 
+    
+
+>>>>>>> b7f5e1bce9d4ecd6b89e621a2264217325f81ec5
 }
 
 button {
@@ -56,7 +61,11 @@ button {
     padding: 5px 10px;
     background-color: #5f0904;
     border-radius: 5px;
+<<<<<<< HEAD
     border: 2px solid #c4890c00;
+=======
+    border: 2px solid #9e772200;
+>>>>>>> b7f5e1bce9d4ecd6b89e621a2264217325f81ec5
     font-size: 18px;
     text-align: center;
     box-shadow: 1px 1px 5px 3px #541b1b;
@@ -65,16 +74,14 @@ button {
     margin-right: 20px;
     background-color: #5f0904;
 }
-
-.botones {
-
+.botones{
+    
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 5vh;
 }
-
 .botones a {
     height: 90%;
     width: 30%;
@@ -92,14 +99,12 @@ button {
     margin-right: 20px;
 
 }
-
 .botones a:hover {
     background-color: #080808;
    
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
-
-.container {
+.container{
     background-color: #ffffff;
     width: 80%;
     margin: 5% auto auto auto;
@@ -108,38 +113,35 @@ button {
     margin-top: 10%;
     text-align: center;
 }
-
-footer {
+.footer {
     background-color: #080808;
     color: #eaeaea;
     width: 98.9vw;
-    text-align: center;
+    text-align: center; 
     padding: 35px 0px;
     margin-top: 10%;
     width: 100%;
-
+    
 }
 
-footer img {
+.footer img{
     position: absolute;
     left: 20%;
-    width: 100px;
+    width: 100px; 
     border-radius: 10%;
 
 }
-
-footer a {
+.footer a {
     margin-top: 11%;
     color: #eaeaea;
     font-size: 24px;
     text-decoration: none;
 }
 
-footer a:hover {
+.footer a:hover {
     color: #7c7c7c;
 }
-
-img:hover {
+ img:hover {
     transform: scale(1.1);
     filter: brightness(1.2) contrast(1.1);
 }
