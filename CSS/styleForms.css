@@ -9,9 +9,15 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-
+    animation: animacion 1.5s ease-in-out;
 }
 
+@keyframes animacion {
+    from {
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
 h1 {
     color: #ffffff;
     font-size: 26px;
@@ -90,7 +96,6 @@ button {
 }
 .botones a:hover {
     background-color: #080808;
-   
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
 .container{

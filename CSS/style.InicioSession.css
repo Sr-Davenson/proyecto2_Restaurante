@@ -5,9 +5,9 @@ body {
     color: rgb(255, 255, 255);
     padding: 0%;
     margin: 0%;
-    animation: animacion 1.5s ease-in-out;
-    font-family:serif;
+    font-family: serif;
     border-color: #720101;
+    animation: animacion 1.5s ease-in-out;
 }
 
 @keyframes animacion {
@@ -42,14 +42,15 @@ p {
     color: rgb(106, 21, 21);
     text-decoration: none;
     padding: 5px 10px;
-    background-color:  #e7e7e7;
+    background-color: #e7e7e7;
     border-radius: 5px;
     border: 2px solid #cda54d00;
     font-size: 120%;
     text-align: center;
     box-shadow: 1px 1px 5px 3px #632c25;
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out,color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
 .boton:hover {
     background-color: #080808;
     color: rgb(255, 255, 255);
@@ -65,6 +66,7 @@ p {
     width: 40%;
     border-radius: 50px;
 }
+
 .Session img:hover {
     transform: scale(1.1);
     filter: brightness(1.2) contrast(1.1);
@@ -74,8 +76,3 @@ p {
     width: 100vw;
     height: 100vh;
 }
-
-
-
-
-

@@ -54,10 +54,11 @@ a {
 }
 
 a:hover {
-    background-color: #9d0303;
+    background-color: #c36d6d;
     border: 2px solid #ffffff;
 }
 
 a:active {
-    background: #e7a5a5;
+    background: #ffffff;
+    color: rgb(106, 21, 21);
 }

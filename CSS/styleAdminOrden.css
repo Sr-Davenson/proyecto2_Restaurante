@@ -1,9 +1,7 @@
 body {
-
-    background: linear-gradient(135deg,#000000, #2c1616, #700000, #4c0000);
-    animation: animacion 1s ease-in-out;
-
+    background: linear-gradient(135deg, #000000, #2c1616, #700000, #4c0000);
 }
+
 button {
     height: 40px;
     width: 17%;
@@ -52,19 +50,27 @@ a:hover {
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
 
-.container{
+.container {
     background-color: #ffffff;
     width: 70%;
     height: 90%;
-    margin: 5% auto auto auto ;
+    margin: 5% auto auto auto;
     border-radius: 15px;
-    padding: 50px ;
-
+    padding: 50px;
+    animation: animacion 1.5s ease-in-out;
 }
-img{
+
+@keyframes animacion {
+    from {
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+
+img {
     display: block;
     margin: 0 auto 30px auto;
-    width: 40%; 
+    width: 40%;
     height: 50%;
     border-radius: 10px;
 }

@@ -1,15 +1,8 @@
 body {
-    background: linear-gradient(135deg,#000000, #2c1616, #700000, #4c0000);
-    animation: animacion 1s ease-in-out;
-    font-family:serif;
+    background: linear-gradient(135deg, #000000, #2c1616, #700000, #4c0000);
+    font-family: serif;
 }
 
-@keyframes animacion {
-    from {
-        filter: blur(20px);
-        opacity: 0;
-    }
-}
 
 form {
     display: flex;
@@ -87,18 +80,27 @@ a:hover {
 a:active {
     background: #9f1e1e;
 }
-.container{
+
+.container {
     background-color: #ffffff;
     width: 50%;
     margin: 2% auto 2% auto;
     border-radius: 15px;
-    padding: 40px ;
+    padding: 40px;
+    animation: animacion 1.5s ease-in-out;
 
 }
-img{
+@keyframes animacion {
+    from {
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+
+img {
     display: block;
     margin: 0 auto 30px auto;
-    width: 40%; 
+    width: 40%;
     height: 50%;
     border-radius: 10px;
 }
