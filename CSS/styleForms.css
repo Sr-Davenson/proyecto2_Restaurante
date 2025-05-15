@@ -44,13 +44,7 @@ input, select {
     border: 1px solid #8a2c2c;
     background: #f2e6e6;
     font-size: 15px;
-<<<<<<< HEAD
     box-sizing: border-box;
-=======
-    box-sizing: border-box; 
-    
-
->>>>>>> b7f5e1bce9d4ecd6b89e621a2264217325f81ec5
 }
 
 button {
@@ -61,11 +55,7 @@ button {
     padding: 5px 10px;
     background-color: #5f0904;
     border-radius: 5px;
-<<<<<<< HEAD
     border: 2px solid #c4890c00;
-=======
-    border: 2px solid #9e772200;
->>>>>>> b7f5e1bce9d4ecd6b89e621a2264217325f81ec5
     font-size: 18px;
     text-align: center;
     box-shadow: 1px 1px 5px 3px #541b1b;
@@ -75,7 +65,6 @@ button {
     background-color: #5f0904;
 }
 .botones{
-    
     display: flex;
     flex-direction: row;
     align-items: center;

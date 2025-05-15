@@ -46,8 +46,11 @@ class controllerOrden
         $model = new Orden();
         if ($id != null) {
             if ($model->existId($id) == false) {
+                echo '<h1>Resultado de la operación</h1>';
                 echo 'Orden no encontrada';
+                echo '<div class="botones">';
                 echo '<a href="../Actions/searchOrdenActiva.php">Ir a inicio</a>';
+                echo '</div>';
                 exit();
             }
         }

@@ -27,10 +27,6 @@ if ($id == null) {
     header("Location: ../AdminOrdenes.php");
     exit();
 }
-$id = $controllerOrden->idExiste($id);
-$id = empty($_GET['id']) ? null : $_GET['id'];
-$orden = empty($id) ? null : $controllerOrden->getOrden($id);
-$mesa = $controllerMesa->searchNameMesa($orden->get('idMesa'));
 $detalleOrdenes = $controllerDetallOrden->getAllDetalleOrden($id);
 
 $i = 0;
@@ -50,6 +46,12 @@ $totalRecaudo = 0;
 
 <body>
     <section class="container">
+        <?php
+        $id = $controllerOrden->idExiste($id);
+        $id = empty($_GET['id']) ? null : $_GET['id'];
+        $orden = empty($id) ? null : $controllerOrden->getOrden($id);
+        $mesa = $controllerMesa->searchNameMesa($orden->get('idMesa'));
+        ?>
         <h1>Detalle Orden</h1>
         <form action="../Actions/anularOrden.php" method="post">
             <label for="fecha">Fecha Orden:</label>
@@ -112,7 +114,7 @@ $totalRecaudo = 0;
         <div class="botones">
             <a href="../inicio.php">Ir a inicio</a>
         </div>
-        
+
     </section>
 </body>
 
