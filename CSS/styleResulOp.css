@@ -20,15 +20,12 @@ h1 {
 
 .msg-ok {
     color: black;
-
     text-align: center;
 }
 
 .msg-error {
-    color: #ff0000;
-    margin: 0 40%;
-    font-size: 30px;
-    text-align: justify;
+    color: #000000;
+    text-align: center;
 }
 
 

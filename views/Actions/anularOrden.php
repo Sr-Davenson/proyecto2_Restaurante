@@ -32,18 +32,23 @@ if ($id == null) {
 </head>
 
 <body>
-    <h1>Resultado de la operación</h1>
-    <?php
-    $res = $controllerOrden->anular($id);
-    if ($res == 'yes') {
-        echo '<p class="msg-ok">Orden Anulada</p>';
-        echo '';
-    } else {
-        echo  '<p class="msg-error">No se pudo anular la orden/p>';
-    }
-    ?>
-    <br>
-    <a class="button" href="../inicio.php">Ir a inicio</a>
+    <section class="container">
+        <h1>Resultado de la operación</h1>
+        <?php
+        $res = $controllerOrden->anular($id);
+        if ($res == 'yes') {
+            echo '<p class="msg-ok">Orden Anulada</p>';
+            echo '';
+        } else {
+            echo  '<p class="msg-error">No se pudo anular la orden/p>';
+        }
+        ?>
+        <br>
+        <div>
+            <a class="botones" href="../inicio.php">Ir a inicio</a>
+        </div>
+        
+    </section>
 </body>
 
 </html>

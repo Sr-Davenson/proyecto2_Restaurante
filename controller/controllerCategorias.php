@@ -84,6 +84,7 @@ class controllerCategorias
         $model = new Categoria();
         if ($id != null) {
             if ($model->existId($id) == false) {
+                echo '<h1>Resultado de la operación</h1>';
                 echo 'categoria no encontrada';
                 echo '<div class= "botones">';
                 echo '<a href="../Actions/searchCategoria.php">Ir a inicio</a>';
