@@ -57,12 +57,15 @@ p {
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
 
+<<<<<<< Updated upstream
 .boton:active {
     background: #e7a5a5;
     color: rgb(255, 255, 255);
 
 }
 
+=======
+>>>>>>> Stashed changes
 .Session img {
     margin-top: 10vh;
     transition: transform 0.3s ease-in-out, filter 0.3s ease;

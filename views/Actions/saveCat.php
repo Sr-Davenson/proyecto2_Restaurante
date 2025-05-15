@@ -23,22 +23,24 @@ $val = new controllerValidaciones();
 </head>
 
 <body>
-    <h1>Resultado de la operación</h1>
-    <?php
-    $nameCat = isset($_POST['nameCat']) ? $_POST['nameCat'] : header("Location: ../AdminCategoria.php");
-    $nameCat = $val->formatoTextos($nameCat);
-    $res = $controller->procesarCategoria($nameCat, $_POST);
-    if ($res == 'yes') {
-        echo '<p class="msg-ok">Datos guardados</p>';
-        echo '';
-    } else {
-        echo  '<p class="msg-error">No se pudo guardar los datos</p>';
-    }
-    ?>
-    <br>
-    <a class="botones" href="../Forms/formCat.php">Crear otra Categoria</a>
-    <a class="botones" href="../AdminCategoria.php">Buscar otra Categoria</a>
-    <a class="botones" href="../inicio.php">Ir a inicio</a>
+    <section class="container">
+        <h1>Resultado de la operación</h1>
+        <?php
+        $nameCat = isset($_POST['nameCat']) ? $_POST['nameCat'] : header("Location: ../AdminCategoria.php");
+        $nameCat = $val->formatoTextos($nameCat);
+        $res = $controller->procesarCategoria($nameCat, $_POST);
+        if ($res == 'yes') {
+            echo '<p class="msg-ok">Datos guardados</p>';
+            echo '';
+        } else {
+            echo  '<p class="msg-error">No se pudo guardar los datos</p>';
+        }
+        ?>
+        <br>
+        <a class="botones" href="../Forms/formCat.php">Crear otra Categoria</a>
+        <a class="botones" href="../AdminCategoria.php">Buscar otra Categoria</a>
+        <a class="botones" href="../inicio.php">Ir a inicio</a>
+    </section>
 </body>
 
 </html>

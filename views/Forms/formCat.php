@@ -8,9 +8,6 @@ use App\controllers\controllerCategorias;
 
 $controller = new controllerCategorias();
 $id = empty($_GET['id']) ? null : $_GET['id'];
-$id = $controller->idExiste($id);
-$id = empty($_GET['id']) ? null : $_GET['id'];
-$cat = empty($id) ? null : $controller->getCategoria($id);
 
 ?>
 <!DOCTYPE html>
@@ -35,6 +32,11 @@ $cat = empty($id) ? null : $controller->getCategoria($id);
 <body>
 
     <section class="container">
+        <?php
+$id = $controller->idExiste($id);
+$id = empty($_GET['id']) ? null : $_GET['id'];
+$cat = empty($id) ? null : $controller->getCategoria($id);
+        ?>
         <h1>
             <?php
             if (empty($id)) {
