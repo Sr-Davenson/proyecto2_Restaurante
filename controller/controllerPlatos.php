@@ -93,8 +93,11 @@ class controllerPlatos
         $model = new Plato();
         if ($id != null) {
             if ($model->existId($id) == false) {
+                echo '<h1>Resultado de la operación</h1>';
                 echo 'Plato no encontrado';
+                echo '<div class= "botones">';
                 echo '<a href="../Actions/searchPlato.php">Ir a inicio</a>';
+                echo '</div>';
                 exit();
             }
         }
