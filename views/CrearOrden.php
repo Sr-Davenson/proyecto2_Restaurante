@@ -27,39 +27,41 @@ $mesas = $controllerMesa->getAllMesas();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="../CSS/styleForms.css"> -->
+    <link rel="stylesheet" href="../CSS/styleCrearOrden.css">
     <title>Crear Orden</title>
 </head>
 
 <body>
-    <h1>Orden</h1>
-    <form action="Actions/saveOrden.php" method="post">
-        <label for="fecha">Fecha Orden:</label>
-        <input type="datetime-local" name="fecha" id="fecha" required>
+    <section class="container">
+        <h1>Orden</h1>
+        <form action="Actions/saveOrden.php" method="post">
+            <label for="fecha">Fecha Orden:</label>
+            <input type="datetime-local" name="fecha" id="fecha" required>
 
-        <label for="mesa">Mesa:</label>
-        <select name="idMesa">
+            <label for="mesa">Mesa:</label>
+            <select name="idMesa">
+                <?php
+                foreach ($mesas as $mesa) {
+                    echo '<option value="' . $mesa->get('id') . '">' . $mesa->get('nombre') . '</option>';
+                }
+                ?>
+            </select>
+            <h1>Registrar Pedido</h1>
+
+            <h2>Seleccionar los platos</h2>
             <?php
-            foreach ($mesas as $mesa) {
-                echo '<option value="' . $mesa->get('id') . '">' . $mesa->get('nombre') . '</option>';
+
+            foreach ($platos as $plato) {
+                echo '<input type="checkbox" name="idPlato[]" value="' . $plato->get('id') . '">';
+                echo '<label>' . $plato->get('descrip') . ' ($' . $plato->get('precio') . ')</label>';
+                echo '<input type="number" name="cantidad[' . $plato->get('id') . ']" min="1" value="1">';
             }
             ?>
-        </select>
-        <h1>Registrar Pedido</h1>
 
-        <h2>Seleccionar los platos</h2>
-        <?php
-
-        foreach ($platos as $plato) {
-            echo '<input type="checkbox" name="idPlato[]" value="' . $plato->get('id') . '">';
-            echo '<label>' . $plato->get('descrip') . ' ($' . $plato->get('precio') . ')</label>';
-            echo '<input type="number" name="cantidad[' . $plato->get('id') . ']" min="1" value="1">';
-        }
-        ?>
-
-        <button type="submit">Guardar Orden</button>
-    </form>
-    <a href="inicio.php">Ir a inicio</a>
+            <button type="submit">Guardar Orden</button>
+        </form>
+        <a href="inicio.php">Ir a inicio</a>
+    </section>
 </body>
 
 </html>

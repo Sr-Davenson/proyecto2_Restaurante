@@ -26,40 +26,42 @@ $mesas = $controller->searchMesa($search);
 </head>
 
 <body>
-    <?php
+    <section class="container">
+        <?php
 
-    if (!$mesas) {
-        echo '<h1>Resultados de la operación</h1>';
-        echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
-    } else {
-        echo '<table class="tabla">';
-        echo '<thead>
+        if (!$mesas) {
+            echo '<h1>Resultados de la operación</h1>';
+            echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
+        } else {
+            echo '<table class="tabla">';
+            echo '<thead>
                     <td>Nombre</td>
                     <td>Actualizar</td>
                     <td>Eliminar</td>
                 </thead>';
-        echo '<h1>Mesas encontradas:</h1>';
-        echo '<ul>';
-        foreach ($mesas as $mesa) {
-             echo '<tr>
+            echo '<h1>Mesas encontradas:</h1>';
+            echo '<ul>';
+            foreach ($mesas as $mesa) {
+                echo '<tr>
                     <td>';
-            echo '<p>' . $mesa->get('nombre') . 
-              '</td>' .
-                '<td>' .
-                '<a href="../Forms/formMesa.php?id=' . $mesa->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' . '</td>' .
-                '<td>' .
-                ' <a href="deleteMesa.php?id=' . $mesa->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>'. '</td>' 
-                . '</p>';
-        echo '</tr>';
+                echo '<p>' . $mesa->get('nombre') .
+                    '</td>' .
+                    '<td>' .
+                    '<a href="../Forms/formMesa.php?id=' . $mesa->get('id') . '"> <img src="../../images/update.svg" alt="update"></a>' . '</td>' .
+                    '<td>' .
+                    ' <a href="deleteMesa.php?id=' . $mesa->get('id') . '"> <img src="../../images/delete.svg" alt="delete"></a>' . '</td>'
+                    . '</p>';
+                echo '</tr>';
+            }
+            echo '</table>';
         }
-        echo '</table>';
-    }
-    ?>
-    <br>
-    <div class="botones">
-        <a href="../AdminMesas.php">Buscar otra Mesa</a>
-        <a href="../inicio.php">Ir a inicio</a>
-    </div>
+        ?>
+        <br>
+        <div class="botones">
+            <a href="../AdminMesas.php">Buscar otra Mesa</a>
+            <a href="../inicio.php">Ir a inicio</a>
+        </div>
+    </section>
 </body>
 
 </html>

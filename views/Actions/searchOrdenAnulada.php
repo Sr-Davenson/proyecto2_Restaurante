@@ -44,52 +44,54 @@ if ($fechaIni && $fechaFin) {
 </head>
 
 <body>
-    <?php
-    if ($fechaIni > $fechaFin) {
-        echo '<h1>Resultados de la operación</h1>';
-        echo '<p class="msg-error">La fecha de inicio no puede ser mayor que la fecha de fin.</p>';
-    } elseif (empty($os)) {
-        echo '<h1>Resultados de la operación</h1>';
-        echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
-    } else {
-        echo '<h1>Órdenes Anuladas encontradas:</h1>';
-        echo '<table class="tabla">';
-        echo '<thead>
+    <section class="container">
+        <?php
+        if ($fechaIni > $fechaFin) {
+            echo '<h1>Resultados de la operación</h1>';
+            echo '<p class="msg-error">La fecha de inicio no puede ser mayor que la fecha de fin.</p>';
+        } elseif (empty($os)) {
+            echo '<h1>Resultados de la operación</h1>';
+            echo '<p class="msg-error">No se pudo encontrar ninguna coincidencia.</p>';
+        } else {
+            echo '<h1>Órdenes Anuladas encontradas:</h1>';
+            echo '<table class="tabla">';
+            echo '<thead>
                     <td>Fecha</td>
                     <td>Total</td>
                     <td>Mesa</td>
                     <td>Ver detalle</td>
                 </thead>';
-        foreach ($os as $orden) {
-            echo '<tr>';
-            $mesa = $controllerMesa->getMesa($orden->get('idMesa'));
-            echo '<td>' . $orden->get('fecha') .
-                '</td>' .
-                '<td>' .
-                'COP $' . number_format($orden->get('total'), 2)  .
-                '</td>' .
-                '<td>' .
-                $mesa->get('nombre') .
-                '</td>' .
-                '<td>' .
-                '<a  href="../Forms/viewsDetalleOrden.php?id=' . $orden->get('id') . '"> <img src="../../images/Read More.svg" alt="More"></a>' . '</td>' .
-                '</td>';
-            $totalRecaudo += $orden->get('total');
-            echo '</tr>';
-        }
-        echo '<tfoot>
+            foreach ($os as $orden) {
+                echo '<tr>';
+                $mesa = $controllerMesa->getMesa($orden->get('idMesa'));
+                echo '<td>' . $orden->get('fecha') .
+                    '</td>' .
+                    '<td>' .
+                    'COP $' . number_format($orden->get('total'), 2)  .
+                    '</td>' .
+                    '<td>' .
+                    $mesa->get('nombre') .
+                    '</td>' .
+                    '<td>' .
+                    '<a  href="../Forms/viewsDetalleOrden.php?id=' . $orden->get('id') . '"> <img src="../../images/Read More.svg" alt="More"></a>' . '</td>' .
+                    '</td>';
+                $totalRecaudo += $orden->get('total');
+                echo '</tr>';
+            }
+            echo '<tfoot>
         <tr>
             <td>Total Recaudo</td>
             <td>COP $' . number_format($totalRecaudo, 2)  . '</td>';
-        echo '</tfoot>';
-        echo '</table>';
-    }
-    ?>
-    <br>
-    <div class="botones">
-        <a href="../Forms/formOrdenActiva.php">Buscar otro reporte</a>
-        <a href="../inicio.php">Ir a inicio</a>
-    </div>
+            echo '</tfoot>';
+            echo '</table>';
+        }
+        ?>
+        <br>
+        <div class="botones">
+            <a href="../Forms/formOrdenActiva.php">Buscar otro reporte</a>
+            <a href="../inicio.php">Ir a inicio</a>
+        </div>
+    </section>
 </body>
 
 </html>

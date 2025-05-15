@@ -43,70 +43,73 @@ $totalRecaudo = 0;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/styleCrearOrden.css">
     <title>Ver Detalle Orden</title>
 </head>
 
 <body>
-    <h1>Detalle Orden</h1>
-    <form action="../Actions/anularOrden.php" method="post">
-        <label for="fecha">Fecha Orden:</label>
-        <input type="datetime-local" value="<?php echo $orden->get('fecha') ?>" disabled>
+    <section class="container">
+        <h1>Detalle Orden</h1>
+        <form action="../Actions/anularOrden.php" method="post">
+            <label for="fecha">Fecha Orden:</label>
+            <input type="datetime-local" value="<?php echo $orden->get('fecha') ?>" disabled>
 
-        <label for="mesa">Mesa:</label>
-        <input type="text" value="<?php echo $mesa->get('nombre') ?>" disabled>
+            <label for="mesa">Mesa:</label>
+            <input type="text" value="<?php echo $mesa->get('nombre') ?>" disabled>
+            <?php
+            if ($orden->get('estado') == 0) {
+                $estado = 'Activo';
+                echo '<input type="hidden" name="idOrden" value="' . $orden->get('id') . '">';
+                echo '<label for="mesa">Estado:</label>';
+                echo '<input type="text" value="' . $estado . '" disabled>';
+                echo '<button type="submit">Anular Orden</button>';
+            } else {
+                $estado = 'Anulada';
+                echo '<label for="mesa">Estado:</label>';
+                echo '<input type="text" value="' . $estado . '" disabled>';
+            }
+
+            ?>
+        </form>
+
+        <h1>Factura</h1>
         <?php
-        if ($orden->get('estado') == 0) {
-            $estado = 'Activo';
-            echo '<input type="hidden" name="idOrden" value="' . $orden->get('id') . '">';
-            echo '<label for="mesa">Estado:</label>';
-            echo '<input type="text" value="' . $estado . '" disabled>';
-            echo '<button type="submit">Anular Orden</button>';
-        } else {
-            $estado = 'Anulada';
-            echo '<label for="mesa">Estado:</label>';
-            echo '<input type="text" value="' . $estado . '" disabled>';
-        }
-
-        ?>
-    </form>
-
-    <h1>Factura</h1>
-    <?php
-    echo '<table class="tabla" border="1px">';
-    echo '<thead>
+        echo '<table class="tabla" border="1px">';
+        echo '<thead>
                     <td>Item</td>
                     <td>Descripcion</td>
                     <td>Cantidad</td>
                     <td>Precio Unitario</td>
                     <td>SubTotal</td>
                 </thead>';
-    foreach ($detalleOrdenes as $detallOrd) {
-        $platos = $controllerPlato->getPlato($detallOrd->get('idPlato'));
-        echo '<tr>';
-        echo '<td>' . $i += 1;
-        echo '</td>';
-        echo '<td>';
-        echo $platos->get('descrip');
-        echo  '</td>';
-        echo  '<td>';
-        echo  $detallOrd->get('cantidad');
-        echo '</td>';
-        echo '<td>';
-        echo $detallOrd->get('precio');
-        echo '</td>';
-        echo '<td>';
-        echo $subTotal =  $detallOrd->get('cantidad') * $detallOrd->get('precio');
-        echo '</td>';
-        echo '<br>';
-        $totalRecaudo += $subTotal;
-    }
-    echo '<tfoot>
+        foreach ($detalleOrdenes as $detallOrd) {
+            $platos = $controllerPlato->getPlato($detallOrd->get('idPlato'));
+            echo '<tr>';
+            echo '<td>' . $i += 1;
+            echo '</td>';
+            echo '<td>';
+            echo $platos->get('descrip');
+            echo  '</td>';
+            echo  '<td>';
+            echo  $detallOrd->get('cantidad');
+            echo '</td>';
+            echo '<td>';
+            echo $detallOrd->get('precio');
+            echo '</td>';
+            echo '<td>';
+            echo $subTotal =  $detallOrd->get('cantidad') * $detallOrd->get('precio');
+            echo '</td>';
+            echo '<br>';
+            $totalRecaudo += $subTotal;
+        }
+        echo '<tfoot>
         <td>Total Recaudo</td>
         <td>COP $' . $totalRecaudo . '</td>
         </tfoot>';
-    echo '</table>';
-    ?>
-    <a href="../inicio.php">Ir a inicio</a>
+        echo '</table>';
+        ?>
+        <a href="../inicio.php">Ir a inicio</a>
+    </section>
 </body>
 
 </html>

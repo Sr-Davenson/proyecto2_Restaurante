@@ -1,5 +1,4 @@
 body {
-
     background: linear-gradient(135deg,#000000, #2c1616, #700000, #4c0000);
     animation: animacion 1s ease-in-out;
     font-family:serif;
@@ -19,9 +18,9 @@ form {
     justify-content: center;
     gap: 20px;
     height: 80vh;
-    background-color: rgb(102, 17, 11);
+    background-color: #5f0904;
     border-radius: 15px;
-   
+    color: #ffffff;
 }
 
 input {
