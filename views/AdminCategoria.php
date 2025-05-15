@@ -9,16 +9,20 @@
 </head>
 
 <body>
-    <form action="Actions/searchCategoria.php" method="post">
-        <input type="text" name="search" placeholder="Buscar por nombre" required>
-        <button type="submit">Buscar</button>
-    </form>
-    <br>
-    <div class="botones">
-        <a class="img" href="Forms/formCat.php">Crear una nueva Categoria</a>
+    <section class="container">
+        <form action="Actions/searchCategoria.php" method="post">
+              <img src="../images/log.jpg" alt="logo"></img>
+            <input type="text" name="search" placeholder="Buscar por nombre" required>
+            <button type="submit">Buscar</button>
+        </form>
         <br>
-        <a href="inicio.php">Volver</a>
-    </div>
+        <div class="botones">
+            <a class="img" href="Forms/formCat.php">Crear una nueva Categoria</a>
+            <br>
+            <a href="inicio.php">Volver</a>
+        </div>
+       
+    </section>    
 </body>
 
 </html>

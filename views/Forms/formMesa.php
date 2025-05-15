@@ -67,7 +67,20 @@ $mesa = empty($id) ? null : $controller->getMesa($id);
             <br>
             <a href="../inicio.php">Ir a inicio</a>
         </div>
-    </section>    
+    </section> 
+     <footer class="footer">
+        <div>
+            <img src="../../images/log.jpg" alt="logo"></img>
+            <p>&copy; FRECH FOOD - Todos los derechos reservados</p>
+            <p>Teléfono: (+57 1) 123 4567</p>
+            <p>Dirección: Calle 20 #10-15., Tunja, Boyacá, Colombia</p>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <br><br>
+        </div>
+    </footer>   
 </body>
 
 </html>

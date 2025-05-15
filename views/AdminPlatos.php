@@ -9,16 +9,19 @@
 </head>
 
 <body>
-    <form action="Actions/searchPlato.php" method="post">
-        <input type="text" name="search" placeholder="Buscar por nombre" required>
-        <button type="submit">Buscar</button>
-    </form>
-    <br>
-    <div class="botones">
-        <a class="img" href="Forms/formPlato.php">Registrar nuevo plato</a>
+    <section class="container">
+        <form action="Actions/searchPlato.php" method="post">
+            <img src="../images/log.jpg" alt="logo"></img>
+            <input type="text" name="search" placeholder="Buscar por nombre" required>
+            <button type="submit">Buscar</button>
+        </form>
         <br>
-        <a href="inicio.php">Volver</a>
-    </div>
+        <div class="botones">
+            <a class="img" href="Forms/formPlato.php">Registrar nuevo plato</a>
+            <br>
+            <a href="inicio.php">Volver</a>
+        </div>
+    </section>
 </body>
 
 </html>

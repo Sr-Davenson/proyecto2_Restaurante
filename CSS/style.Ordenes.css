@@ -5,14 +5,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
     height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
-
 }
-
 
 
 h1 {
@@ -105,12 +102,12 @@ button {
     margin-top: 10%;
     text-align: center;
 }
-.footer {
+.footer{
     background-color: #080808;
     color: #eaeaea;
     width: 98.9vw;
     text-align: center; 
-    padding: 35px 0px;
+    padding: 10px 0;
     margin-top: 10%;
     width: 100%;
     
@@ -119,9 +116,9 @@ button {
 
 img{
     position: absolute;
-    bottom: 50px; /* Lo coloca en la parte inferior */
-    left: 20%; /* Lo alinea a la izquierda */
-    width: 100px; /* Ajusta el tamaño según necesites */
+    bottom: 15px; 
+    left: 20%; 
+    width: 100px; 
     border-radius: 10%;
 
 }
