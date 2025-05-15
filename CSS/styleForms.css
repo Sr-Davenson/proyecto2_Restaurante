@@ -65,6 +65,7 @@ button {
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     margin-top: 50px;
     margin-right: 20px;
+    background-color: #453434;
 }
 
 .botones {
