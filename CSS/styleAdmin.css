@@ -31,10 +31,6 @@ input {
 
 }
 
-input:hover {
-    background-color: #0d0808;
-}
-
 button {
     height: 40px;
     width: 17%;

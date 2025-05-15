@@ -42,15 +42,17 @@ $res = $controllerOrden->updateOrden($idOrden, $totalOrden, $estado);
 </head>
 
 <body>
-    <h1>Resultado de la operación</h1>
-    <?php
-    if ($res == 'yes') {
-        echo "<p class='msg-ok'>Orden creada, preparando preparacion</p>";
-        echo '<a class="botones" href="../inicio.php">Ir a inicio</a>';
-    } else {
-        echo "<p class='msg-error'>No se pudo registrar la orden</p>";
-    }
-    ?>
+    <section class="container">
+        <h1>Resultado de la operación</h1>
+        <?php
+        if ($res == 'yes') {
+            echo "<p class='msg-ok'>Orden creada, preparando tu pedido</p> <br>";
+            echo '<a class="botones" href="../inicio.php">Ir a inicio</a>';
+        } else {
+            echo "<p class='msg-error'>No se pudo registrar la orden</p>";
+        }
+        ?>
+    </section>
 </body>
 
 </html>

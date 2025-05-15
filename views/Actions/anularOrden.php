@@ -43,7 +43,7 @@ if ($id == null) {
     }
     ?>
     <br>
-    <a class="botones" href="../inicio.php">Ir a inicio</a>
+    <a class="button" href="../inicio.php">Ir a inicio</a>
 </body>
 
 </html>

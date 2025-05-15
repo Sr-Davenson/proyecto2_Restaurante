@@ -26,7 +26,7 @@ h1 {
 }
 label {
     font-weight: bold;
-    color: #ce8a7e;
+    color: black;
     margin-bottom: 5px;
 }
 input, select {
@@ -53,6 +53,8 @@ button {
     transition: 0.3s;
     display: inline-block;
     margin-top: 50px;
+    background-color: #5f0904;
+    color: white;
 }
 .botones{
     
@@ -68,7 +70,7 @@ button {
     color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 5px 10px;
-    background-color: #471c1a;
+    background-color: #5f0904;
     border-radius: 5px;
     border: 2px solid #cda54d00;
     font-size: 120%;
@@ -125,3 +127,47 @@ footer img{
     transform: scale(1.1);
     filter: brightness(1.2) contrast(1.1);
 }
+
+.tabla {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 50px;
+    border-collapse: collapse; /* Evita doble borde */
+    background-color: #ffffff; /* Fondo blanco para contraste */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Agrega sombra para efecto visual */
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden; /* Evita que sobresalgan bordes */
+}
+
+/* Estilo del encabezado */
+.tabla thead {
+    text-align: center;
+    font-size: 22px;
+    background-color: #720101; /* Fondo vino tinto */
+    color: white; /* Texto en blanco */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Estilo de las celdas */
+.tabla td {
+    text-align: center;
+    font-size: 18px;
+    border: 2px solid #720101; /* Borde vino tinto */
+    padding: 15px; /* Espacio interno */
+}
+
+/* Alternar colores en filas */
+.tabla tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Fila gris claro */
+}
+
+.tabla tbody tr:nth-child(odd) {
+    background-color: #fff; /* Fondo blanco */
+}
+
+/* Efecto hover */
+.tabla tbody tr:hover {
+    background-color: #ddd; /* Efecto al pasar el mouse */
+}
+

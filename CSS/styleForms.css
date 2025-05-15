@@ -33,7 +33,7 @@ h1 {
 
 label {
     font-weight: bold;
-    color: #ce8a7e;
+    color: black;
     margin-bottom: 5px;
 }
 
@@ -46,8 +46,6 @@ select {
     background: #f2e6e6;
     font-size: 15px;
     box-sizing: border-box;
-
-
 }
 
 button {
@@ -58,14 +56,14 @@ button {
     padding: 5px 10px;
     background-color: #5f0904;
     border-radius: 5px;
-    border: 2px solid #cda54d00;
+    border: 2px solid #c4890c00;
     font-size: 18px;
     text-align: center;
     box-shadow: 1px 1px 5px 3px #541b1b;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     margin-top: 50px;
     margin-right: 20px;
-    background-color: #453434;
+    background-color: #5f0904;
 }
 
 .botones {
@@ -97,7 +95,7 @@ button {
 
 .botones a:hover {
     background-color: #080808;
-    border: 2px solid #453434;
+   
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
 

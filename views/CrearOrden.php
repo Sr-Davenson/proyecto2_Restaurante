@@ -28,7 +28,7 @@ $mesas = $controllerMesa->getAllMesas();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../images/log.ico">
-    <link rel="stylesheet" href="../CSS/styleCrearOrden.css">
+    <link rel="stylesheet" href="../CSS/style.Ordenes.css">
     <title>Crear Orden</title>
 </head>
 
@@ -58,10 +58,11 @@ $mesas = $controllerMesa->getAllMesas();
                 echo '<input type="number" name="cantidad[' . $plato->get('id') . ']" min="1" value="1">';
             }
             ?>
-
             <button type="submit">Guardar Orden</button>
         </form>
-        <a href="inicio.php">Ir a inicio</a>
+        <div class="botones">
+            <a href="inicio.php">Ir a inicio</a>
+        </div>
     </section>
 </body>
 
