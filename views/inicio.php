@@ -17,9 +17,27 @@
         <a href="CrearOrden.php">Iniciar nueva Orden</a>
         <a href="AdminOrdenes.php">Administrar Ordenes</a>
         <a href="../index.php">Salir</a>
-        
     </div>
-    <img class="img" src="../images/bre.jpg" alt="fondo">
-    
+    <div class="grid-container">
+        <div class="grid-item img-box">
+            <img src="../images/bri.jpg" alt="IMG">
+        </div>
+        <div class="grid-item text-box">
+            <p>Fres Food, te ofrece opciones frescas y llenas de sabor, perfectas para cualquier ocasión.</p>
+        </div>
+        <div class="grid-item center-img">
+            <img src="../images/rest.jpg" alt="Imagen Central">
+        </div>
+        <div class="grid-item text-box">
+            <p>En Fresh Food, cada plato es una celebración de los ingredientes frescos y la pasión por la
+                buena cocina. <br> ¡Te esperamos!</p>
+        </div>
+        <div class="grid-item img-box">
+            <img src="../images/cena.jpg" alt="IMG">
+        </div>
+    </div>
+
+
 </body>
+
 </html>
