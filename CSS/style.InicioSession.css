@@ -9,19 +9,16 @@ body {
     border-color: #720101;
     animation: animacion 1.5s ease-in-out;
 }
-
 @keyframes animacion {
     from {
         filter: blur(20px);
         opacity: 0;
     }
 }
-
 p {
     font-size: 30px;
     text-align: justify;
 }
-
 .Session {
     display: flex;
     flex-direction: column;
@@ -35,7 +32,6 @@ p {
     box-shadow: 1px 1px 50px 3px #d1cec6;
     margin-left: 0px;
 }
-
 .boton {
     height: 40px;
     width: 25%;
@@ -50,14 +46,12 @@ p {
     box-shadow: 1px 1px 5px 3px #632c25;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-
 .boton:hover {
     background-color: #080808;
     color: rgb(255, 255, 255);
     border: 2px solid #ffffff;
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
-
 .Session img {
     margin-top: 10vh;
     transition: transform 0.3s ease-in-out, filter 0.3s ease;
@@ -66,12 +60,10 @@ p {
     width: 40%;
     border-radius: 50px;
 }
-
 .Session img:hover {
     transform: scale(1.1);
     filter: brightness(1.2) contrast(1.1);
 }
-
 .img {
     width: 100vw;
     height: 100vh;

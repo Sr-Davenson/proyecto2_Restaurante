@@ -6,30 +6,25 @@ body {
     margin-top: 10%;
     animation: animacion 1.5s ease-in-out;
 }
-
 @keyframes animacion {
     from {
         filter: blur(20px);
         opacity: 0;
     }
 }
-
 h1 {
     text-align: center;
 }
-
 img {
     transition-property: background-color, box-shadow;
     transition: transform 0.3s ease-in-out, filter 0.3s ease;
     margin: auto;
     display: block;
 }
-
 img:hover {
     transform: scale(1.5);
     filter: brightness(1.2) contrast(1.1);
 }
-
 .botones {
     display: flex;
     flex-direction: row;
@@ -38,7 +33,6 @@ img:hover {
     height: 5vh;
     margin-bottom: 30px;
 }
-
 .botones a {
     height: 40px;
     width: 17%;
@@ -54,17 +48,14 @@ img:hover {
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     margin: 50px;
 }
-
 .botones a:hover {
     background-color: #080808;
     border: 2px solid #ffffff;
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
-
 .botones a:active {
     background:  #5f0904;
 }
-
 .tabla{
     width: 50%;
     height: 50%;
@@ -80,7 +71,6 @@ img:hover {
     font-size: 30px;
         border: 3px solid #720101;
 }
-
 .container{
     background-color: #ffffff;
     width: 80%;

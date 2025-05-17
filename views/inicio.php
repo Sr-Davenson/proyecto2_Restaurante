@@ -23,12 +23,14 @@
             <img src="../images/bri.jpg" alt="IMG">
         </div>
         <div class="grid-item text-box">
-            <p>Fres Food, te ofrece opciones frescas y llenas de sabor, perfectas para cualquier ocasión.</p>
+            <h1>Una invitación a la excelencia</h1>
+            <p>Fresh Food, te ofrece opciones frescas y llenas de sabor, perfectas para cualquier ocasión.</p>
         </div>
         <div class="grid-item center-img">
             <img src="../images/rest.jpg" alt="Imagen Central">
         </div>
         <div class="grid-item text-box">
+            <h1>¿Buscas una experiencia deliciosa y saludable?</h1>
             <p>En Fresh Food, cada plato es una celebración de los ingredientes frescos y la pasión por la
                 buena cocina. <br> ¡Te esperamos!</p>
         </div>
@@ -36,8 +38,6 @@
             <img src="../images/cena.jpg" alt="IMG">
         </div>
     </div>
-
-
 </body>
 
 </html>

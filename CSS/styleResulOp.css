@@ -4,31 +4,24 @@ body {
     margin: 0%;
     animation: animacion 1s ease-in-out;
     font-family: serif;
-
 }
-
 @keyframes animacion {
     from {
         filter: blur(20px);
         opacity: 0;
     }
 }
-
 h1 {
     text-align: center;
 }
-
 .msg-ok {
     color: black;
     text-align: center;
 }
-
 .msg-error {
     color: #000000;
     text-align: center;
 }
-
-
 .botones {
     height: 40px;
     width: 17%;
@@ -44,17 +37,14 @@ h1 {
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     margin: 50px;
 }
-
 .botones:hover {
     background-color: #080808;
     border: 2px solid #ffffff;
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
-
 .botones:active {
     background-color: #9d0303;
 }
-
 .container{
     background-color: #ffffff;
     width: 80%;

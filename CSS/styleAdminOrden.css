@@ -1,7 +1,6 @@
 body {
     background: linear-gradient(135deg, #000000, #2c1616, #700000, #4c0000);
 }
-
 button {
     height: 40px;
     width: 17%;
@@ -16,18 +15,13 @@ button {
     box-shadow: 1px 1px 5px 3px #d1cec6;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
-
-
 .botones {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 30px;
-
 }
-
 a {
     height: 40px;
     width: 17%;
@@ -43,13 +37,11 @@ a {
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     margin: 50px;
 }
-
 a:hover {
     background-color: #080808;
     border: 2px solid #ffffff;
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
-
 .container {
     background-color: #ffffff;
     width: 70%;
@@ -59,14 +51,12 @@ a:hover {
     padding: 50px;
     animation: animacion 1.5s ease-in-out;
 }
-
 @keyframes animacion {
     from {
         filter: blur(20px);
         opacity: 0;
     }
 }
-
 img {
     display: block;
     margin: 0 auto 30px auto;
