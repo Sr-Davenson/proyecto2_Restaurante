@@ -63,4 +63,10 @@ img {
     width: 40%;
     height: 50%;
     border-radius: 10px;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2) contrast(1.1);
 }

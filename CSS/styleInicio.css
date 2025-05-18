@@ -31,8 +31,16 @@ body {
     margin: auto;
     place-items: center;
     height: 80vh;
+    border-radius: 10px;
     background-color: #ffffff;
-} 
+    transition: transform 0.3s ease-in-out, filter 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2) contrast(1.1);
+}
+
 a {
     text-align: center;
     height: 60px;
@@ -63,6 +71,16 @@ a:active {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    animation: animacion 1s ease-in-out;
+}
+
+
+@keyframes animacion {
+    from {
+        transform: translateY(100%);
+        filter: blur(20px);
+        opacity: 0;
+    }
 }
 .grid-item {
     display: flex;
@@ -76,7 +94,6 @@ a:active {
 .img-box img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
 }
 .center-img {
     grid-column: 2 / 3; 
@@ -104,6 +121,11 @@ a:active {
     align-items: center;
     padding: 20px;
     text-align: center;
+transition: transform 0.3s ease-in-out, filter 0.3s ease;
+}
+
+.text-box:hover {
+    transform: scale(1.03);
 }
 .text-box:nth-child(4) {
     grid-column: 2 / 4; 
@@ -117,7 +139,10 @@ a:active {
     align-items: center;
     padding: 20px;
     text-align: center;
+transition: transform 0.3s ease-in-out, filter 0.3s ease;
+
 }
+
 .img-box:last-child {
     grid-column: 3 / 4;
     grid-row: 2 / 3;

@@ -97,17 +97,18 @@ $totalRecaudo = 0;
             echo  $detallOrd->get('cantidad');
             echo '</td>';
             echo '<td>';
-            echo $detallOrd->get('precio');
+            echo 'COP $' . number_format($detallOrd->get('precio'),2);
             echo '</td>';
             echo '<td>';
-            echo $subTotal =  $detallOrd->get('cantidad') * $detallOrd->get('precio');
+            $subTotal =  $detallOrd->get('cantidad') * $detallOrd->get('precio');
+            echo 'COP $' . number_format($subTotal,2);
             echo '</td>';
             echo '<br>';
             $totalRecaudo += $subTotal;
         }
         echo '<tfoot>
         <td>Total Recaudo</td>
-        <td>COP $' . $totalRecaudo . '</td>
+        <td>COP $' . number_format( $totalRecaudo,2) . '</td>
         </tfoot>';
         echo '</table>';
         ?>

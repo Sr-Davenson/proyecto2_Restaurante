@@ -14,7 +14,7 @@
         <a href="AdminCategoria.php">Administrar Categoria</a>
         <a href="AdminPlatos.php">Administrar Platos</a>
         <a href="AdminMesas.php">Administrar Mesas</a>
-        <a href="CrearOrden.php">Iniciar nueva Orden</a>
+        <a href="CrearOrden.php">Iniciar Nueva Orden</a>
         <a href="AdminOrdenes.php">Administrar Ordenes</a>
         <a href="../index.php">Salir</a>
     </div>
@@ -38,6 +38,12 @@
             <img src="../images/cena.jpg" alt="IMG">
         </div>
     </div>
+    <script>
+        window.history.scrollRestoration = "manual";
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
 </body>
 
 </html>

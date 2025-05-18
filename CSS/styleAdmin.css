@@ -2,6 +2,7 @@ body {
     background: linear-gradient(135deg, #000000, #2c1616, #700000, #4c0000);
     font-family: serif;
 }
+
 form {
     display: flex;
     flex-direction: column;
@@ -13,12 +14,14 @@ form {
     border-radius: 15px;
     color: #ffffff;
 }
+
 input {
     padding: 10px;
     width: 40%;
     border-radius: 5px;
     border-bottom: 2px solid #afa1a1;
 }
+
 button {
     height: 40px;
     width: 17%;
@@ -39,6 +42,7 @@ button:hover {
     border: 2px solid #ffffff;
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
+
 .botones {
     display: flex;
     flex-direction: row;
@@ -46,6 +50,7 @@ button:hover {
     justify-content: center;
     height: 30px;
 }
+
 a {
     height: 40px;
     width: 17%;
@@ -61,14 +66,17 @@ a {
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     margin: 50px;
 }
+
 a:hover {
     background-color: #080808;
     border: 2px solid #ffffff;
     box-shadow: 0 4px 8px rgba(71, 70, 60, 0.999);
 }
+
 a:active {
     background: #9f1e1e;
 }
+
 .container {
     background-color: #ffffff;
     width: 50%;
@@ -77,16 +85,24 @@ a:active {
     padding: 40px;
     animation: animacion 1.5s ease-in-out;
 }
+
 @keyframes animacion {
     from {
         filter: blur(20px);
         opacity: 0;
     }
 }
+
 img {
     display: block;
     margin: 0 auto 30px auto;
     width: 40%;
     height: 50%;
     border-radius: 10px;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2) contrast(1.1);
 }

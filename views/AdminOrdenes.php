@@ -13,6 +13,7 @@
     <section class="container"> 
         <br>
         <img src="../images/log.jpg" alt="logo"></img>
+        <br>
         <div class="botones">
             <a class="img" href="Forms/formOrdenAnulada.php">Reporte Ordenes Anuladas</a>
             <br>
