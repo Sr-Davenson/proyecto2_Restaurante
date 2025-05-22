@@ -31,7 +31,6 @@ class controllerPlatos
     public function removePlato($id)
     {
         if (empty($id)) {
-            var_dump(isset($id));
             header("Location: ../AdminPlatos.php");
             exit();
         }

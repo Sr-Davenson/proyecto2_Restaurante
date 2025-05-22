@@ -34,7 +34,6 @@ class controllerCategorias
     public function removeCategoria($id)
     {
         if (empty($id)) {
-            var_dump(isset($id));
             header("Location: ../AdminCategoria.php");
             exit();
         }
