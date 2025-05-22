@@ -33,6 +33,11 @@ class controllerCategorias
 
     public function removeCategoria($id)
     {
+        if (empty($id)) {
+            var_dump(isset($id));
+            header("Location: ../AdminCategoria.php");
+            exit();
+        }
         $model = new Categoria();
         if ($model->confirmDelete($id) == false) {
             $model->set('id', $id);

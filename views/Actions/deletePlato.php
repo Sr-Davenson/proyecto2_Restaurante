@@ -23,6 +23,8 @@ $res = $controller->removePlato($_GET['id']);
 </head>
 
 <body>
+    <div class="container">
+
     <h1>Resultados de la operacion</h1>
     <?php
     switch ($res) {
@@ -42,6 +44,7 @@ $res = $controller->removePlato($_GET['id']);
     ?>
     <br>
     <a class="botones" href="searchPlato.php">Volver</a>
+    </div>
 </body>
 
 </html>

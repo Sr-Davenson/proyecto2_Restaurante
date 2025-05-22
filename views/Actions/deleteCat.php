@@ -7,7 +7,7 @@ include '../../controller/controllerCategorias.php';
 use App\controllers\controllerCategorias;
 
 $controllerCat = new controllerCategorias();
-isset($_GET['id']) ?    $_GET['id'] : header("Location: ../AdminCategoria.php");
+isset($_GET['id']) ? $_GET['id'] : header("Location: ../AdminCategoria.php");
 $res = $controllerCat->removeCategoria($_GET['id']);
 
 ?>
@@ -24,6 +24,7 @@ $res = $controllerCat->removeCategoria($_GET['id']);
 </head>
 
 <body>
+    <div class="container">
     <h1>Resultados de la operacion</h1>
     <?php
     switch ($res) {
@@ -43,6 +44,7 @@ $res = $controllerCat->removeCategoria($_GET['id']);
     ?>
     <br>
     <a class="botones" href="searchCategoria.php">Volver</a>
+    </div>
 </body>
 
 </html>

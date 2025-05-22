@@ -24,6 +24,7 @@ $res = $controller->removeMesas($_GET['id']);
 </head>
 
 <body>
+    <div class="container">
     <h1>Resultados de la operacion</h1>
     <?php
     switch ($res) {
@@ -43,6 +44,7 @@ $res = $controller->removeMesas($_GET['id']);
     ?>
     <br>
     <a class="botones" href="searchMesa.php">Volver</a>
+    </div>
 </body>
 
 </html>

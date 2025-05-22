@@ -33,6 +33,11 @@ class controllerMesas
 
     public function removeMesas($id)
     {
+        if (empty($id)) {
+            var_dump(isset($id));
+            header("Location: ../AdminMesas.php");
+            exit();
+        }
         $model = new Mesas();
         if ($model->confirmDelete($id) == false) {
             $model->set('id', $id);
